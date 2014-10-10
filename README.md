@@ -1,4 +1,4 @@
-geo_tappy_ios
+GeoTappy
 =============
 
-GeoTappy iOS App
+[HackZürich](http://www.hackzurich.com/) Project, work in progress :)
