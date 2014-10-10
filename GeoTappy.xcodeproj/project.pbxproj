@@ -11,20 +11,9 @@
 		9A73205819E87299006E8B0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73205719E87299006E8B0C /* AppDelegate.m */; };
 		9A73205B19E87299006E8B0C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73205A19E87299006E8B0C /* ViewController.m */; };
 		9A73206019E87299006E8B0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A73205F19E87299006E8B0C /* Images.xcassets */; };
-		9A73206F19E87299006E8B0C /* GeoTappyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73206E19E87299006E8B0C /* GeoTappyTests.m */; };
 		9AA4BB4319E8889D00CC45C8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB4219E8889D00CC45C8 /* SplashViewController.m */; };
 		C79789E5387642FBA3CD3774 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22201F5EB057418A8E6A8508 /* libPods.a */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9A73206919E87299006E8B0C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9A73204719E87299006E8B0C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9A73204E19E87299006E8B0C;
-			remoteInfo = GeoTappy;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		22201F5EB057418A8E6A8508 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,9 +25,6 @@
 		9A73205919E87299006E8B0C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9A73205A19E87299006E8B0C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9A73205F19E87299006E8B0C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9A73206819E87299006E8B0C /* GeoTappyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoTappyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A73206D19E87299006E8B0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A73206E19E87299006E8B0C /* GeoTappyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeoTappyTests.m; sourceTree = "<group>"; };
 		9AA4BB4119E8889D00CC45C8 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		9AA4BB4219E8889D00CC45C8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		9AA4BB4419E8891100CC45C8 /* GeoTappy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeoTappy-Prefix.pch"; sourceTree = "<group>"; };
@@ -51,13 +37,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C79789E5387642FBA3CD3774 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A73206519E87299006E8B0C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				9A73205119E87299006E8B0C /* GeoTappy */,
-				9A73206B19E87299006E8B0C /* GeoTappyTests */,
 				9A73205019E87299006E8B0C /* Products */,
 				BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */,
 				82C618A20F38451B8FD82E92 /* Frameworks */,
@@ -87,7 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				9A73204F19E87299006E8B0C /* GeoTappy.app */,
-				9A73206819E87299006E8B0C /* GeoTappyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,23 +94,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9A73206B19E87299006E8B0C /* GeoTappyTests */ = {
-			isa = PBXGroup;
-			children = (
-				9A73206E19E87299006E8B0C /* GeoTappyTests.m */,
-				9A73206C19E87299006E8B0C /* Supporting Files */,
-			);
-			path = GeoTappyTests;
-			sourceTree = "<group>";
-		};
-		9A73206C19E87299006E8B0C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9A73206D19E87299006E8B0C /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,24 +116,6 @@
 			productReference = 9A73204F19E87299006E8B0C /* GeoTappy.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9A73206719E87299006E8B0C /* GeoTappyTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9A73207519E87299006E8B0C /* Build configuration list for PBXNativeTarget "GeoTappyTests" */;
-			buildPhases = (
-				9A73206419E87299006E8B0C /* Sources */,
-				9A73206519E87299006E8B0C /* Frameworks */,
-				9A73206619E87299006E8B0C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9A73206A19E87299006E8B0C /* PBXTargetDependency */,
-			);
-			name = GeoTappyTests;
-			productName = GeoTappyTests;
-			productReference = 9A73206819E87299006E8B0C /* GeoTappyTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -185,10 +127,6 @@
 				TargetAttributes = {
 					9A73204E19E87299006E8B0C = {
 						CreatedOnToolsVersion = 6.0.1;
-					};
-					9A73206719E87299006E8B0C = {
-						CreatedOnToolsVersion = 6.0.1;
-						TestTargetID = 9A73204E19E87299006E8B0C;
 					};
 				};
 			};
@@ -206,7 +144,6 @@
 			projectRoot = "";
 			targets = (
 				9A73204E19E87299006E8B0C /* GeoTappy */,
-				9A73206719E87299006E8B0C /* GeoTappyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -217,13 +154,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A73206019E87299006E8B0C /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9A73206619E87299006E8B0C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,23 +204,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A73206419E87299006E8B0C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A73206F19E87299006E8B0C /* GeoTappyTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9A73206A19E87299006E8B0C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9A73204E19E87299006E8B0C /* GeoTappy */;
-			targetProxy = 9A73206919E87299006E8B0C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9A73207019E87299006E8B0C /* Debug */ = {
@@ -393,40 +307,6 @@
 			};
 			name = Release;
 		};
-		9A73207619E87299006E8B0C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = GeoTappyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoTappy.app/GeoTappy";
-			};
-			name = Debug;
-		};
-		9A73207719E87299006E8B0C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = GeoTappyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoTappy.app/GeoTappy";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -444,15 +324,6 @@
 			buildConfigurations = (
 				9A73207319E87299006E8B0C /* Debug */,
 				9A73207419E87299006E8B0C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9A73207519E87299006E8B0C /* Build configuration list for PBXNativeTarget "GeoTappyTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9A73207619E87299006E8B0C /* Debug */,
-				9A73207719E87299006E8B0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
