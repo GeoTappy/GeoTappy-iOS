@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		9A73205519E87299006E8B0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73205419E87299006E8B0C /* main.m */; };
 		9A73205819E87299006E8B0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73205719E87299006E8B0C /* AppDelegate.m */; };
-		9A73205B19E87299006E8B0C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73205A19E87299006E8B0C /* ViewController.m */; };
 		9A73206019E87299006E8B0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A73205F19E87299006E8B0C /* Images.xcassets */; };
-		9AA4BB4319E8889D00CC45C8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB4219E8889D00CC45C8 /* SplashViewController.m */; };
 		9AA4BB4B19E894C700CC45C8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA4BB4A19E894C700CC45C8 /* NotificationCenter.framework */; };
 		9AA4BB5119E894C700CC45C8 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB5019E894C700CC45C8 /* TodayViewController.m */; };
 		9AA4BB5619E894C700CC45C8 /* GeoTappyToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9AA4BB4919E894C600CC45C8 /* GeoTappyToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9AA4BB5E19E8958000CC45C8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AA4BB5D19E8958000CC45C8 /* MainInterface.storyboard */; };
 		9AA4BB6019E8969E00CC45C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA4BB5F19E8969E00CC45C8 /* Images.xcassets */; };
+		9AA4BB6419E8A14700CC45C8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB6319E8A14700CC45C8 /* SplashViewController.m */; };
+		9AA4BB6819E8A18800CC45C8 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB6719E8A18800CC45C8 /* API.m */; };
 		C79789E5387642FBA3CD3774 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22201F5EB057418A8E6A8508 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -58,11 +58,7 @@
 		9A73205419E87299006E8B0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9A73205619E87299006E8B0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9A73205719E87299006E8B0C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9A73205919E87299006E8B0C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9A73205A19E87299006E8B0C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9A73205F19E87299006E8B0C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9AA4BB4119E8889D00CC45C8 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
-		9AA4BB4219E8889D00CC45C8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		9AA4BB4419E8891100CC45C8 /* GeoTappy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeoTappy-Prefix.pch"; sourceTree = "<group>"; };
 		9AA4BB4919E894C600CC45C8 /* GeoTappyToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GeoTappyToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA4BB4A19E894C700CC45C8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -71,6 +67,10 @@
 		9AA4BB5019E894C700CC45C8 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		9AA4BB5D19E8958000CC45C8 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainInterface.storyboard; path = "../../BitStore-iOS/BitStoreToday/MainInterface.storyboard"; sourceTree = "<group>"; };
 		9AA4BB5F19E8969E00CC45C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9AA4BB6219E8A14700CC45C8 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		9AA4BB6319E8A14700CC45C8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		9AA4BB6619E8A18800CC45C8 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
+		9AA4BB6719E8A18800CC45C8 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
 		BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,12 +126,10 @@
 		9A73205119E87299006E8B0C /* GeoTappy */ = {
 			isa = PBXGroup;
 			children = (
+				9AA4BB6519E8A16800CC45C8 /* Config */,
+				9AA4BB6119E8A14700CC45C8 /* Controller */,
 				9A73205619E87299006E8B0C /* AppDelegate.h */,
 				9A73205719E87299006E8B0C /* AppDelegate.m */,
-				9AA4BB4119E8889D00CC45C8 /* SplashViewController.h */,
-				9AA4BB4219E8889D00CC45C8 /* SplashViewController.m */,
-				9A73205919E87299006E8B0C /* ViewController.h */,
-				9A73205A19E87299006E8B0C /* ViewController.m */,
 				9AA4BB4419E8891100CC45C8 /* GeoTappy-Prefix.pch */,
 				9A73205F19E87299006E8B0C /* Images.xcassets */,
 				9A73205219E87299006E8B0C /* Supporting Files */,
@@ -166,6 +164,24 @@
 				9AA4BB4E19E894C700CC45C8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9AA4BB6119E8A14700CC45C8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9AA4BB6219E8A14700CC45C8 /* SplashViewController.h */,
+				9AA4BB6319E8A14700CC45C8 /* SplashViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9AA4BB6519E8A16800CC45C8 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				9AA4BB6619E8A18800CC45C8 /* API.h */,
+				9AA4BB6719E8A18800CC45C8 /* API.m */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,10 +320,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A73205B19E87299006E8B0C /* ViewController.m in Sources */,
 				9A73205819E87299006E8B0C /* AppDelegate.m in Sources */,
 				9A73205519E87299006E8B0C /* main.m in Sources */,
-				9AA4BB4319E8889D00CC45C8 /* SplashViewController.m in Sources */,
+				9AA4BB6819E8A18800CC45C8 /* API.m in Sources */,
+				9AA4BB6419E8A14700CC45C8 /* SplashViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

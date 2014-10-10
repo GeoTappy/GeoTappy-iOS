@@ -49,8 +49,7 @@
     [jsonDict setObject:auth forKey:@"auth"];
     NSData* json = [NSJSONSerialization dataWithJSONObject:jsonDict options:NSJSONWritingPrettyPrinted error:nil];
 
-    NSString* url = [NSString stringWithFormat:@"http://geo-tappy.herokuapp.com/api/v1/token"];
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[API facebookRegisterUrl]]];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:json];
