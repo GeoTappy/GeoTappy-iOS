@@ -42,7 +42,33 @@
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
     NSString* token = [FBSession activeSession].accessTokenData.accessToken;
-    NSLog(@"token: %@", token);
+    NSMutableDictionary* jsonDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* auth = [[NSMutableDictionary alloc] init];
+    [auth setObject:@"facebook" forKey:@"provider"];
+    [auth setObject:token forKey:@"token"];
+    [jsonDict setObject:auth forKey:@"auth"];
+    NSData* json = [NSJSONSerialization dataWithJSONObject:jsonDict options:NSJSONWritingPrettyPrinted error:nil];
+
+    NSString* url = [NSString stringWithFormat:@"http://geo-tappy.herokuapp.com/api/v1/token"];
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:json];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,
+                                               NSData *data,
+                                               NSError *error) {
+                               
+                               if (!error && data) {
+                                   NSError* jsonError;
+                                   NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                                   if (!jsonError) {
+                                       NSLog(@"result: %@", json);
+                                   } else {
+
+                                   }
+                               }
+                           }];
 }
 
 @end
