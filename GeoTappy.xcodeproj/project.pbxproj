@@ -12,8 +12,44 @@
 		9A73205B19E87299006E8B0C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73205A19E87299006E8B0C /* ViewController.m */; };
 		9A73206019E87299006E8B0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A73205F19E87299006E8B0C /* Images.xcassets */; };
 		9AA4BB4319E8889D00CC45C8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB4219E8889D00CC45C8 /* SplashViewController.m */; };
+		9AA4BB4B19E894C700CC45C8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA4BB4A19E894C700CC45C8 /* NotificationCenter.framework */; };
+		9AA4BB5119E894C700CC45C8 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB5019E894C700CC45C8 /* TodayViewController.m */; };
+		9AA4BB5619E894C700CC45C8 /* GeoTappyToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9AA4BB4919E894C600CC45C8 /* GeoTappyToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9AA4BB5E19E8958000CC45C8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AA4BB5D19E8958000CC45C8 /* MainInterface.storyboard */; };
+		9AA4BB6019E8969E00CC45C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA4BB5F19E8969E00CC45C8 /* Images.xcassets */; };
 		C79789E5387642FBA3CD3774 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22201F5EB057418A8E6A8508 /* libPods.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9AA4BB5419E894C700CC45C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A73204719E87299006E8B0C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AA4BB4819E894C600CC45C8;
+			remoteInfo = GeoTappyToday;
+		};
+		9AA4BB5719E894C700CC45C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A73204719E87299006E8B0C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AA4BB4819E894C600CC45C8;
+			remoteInfo = GeoTappyToday;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9AA4BB5C19E894C700CC45C8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9AA4BB5619E894C700CC45C8 /* GeoTappyToday.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		22201F5EB057418A8E6A8508 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,6 +64,13 @@
 		9AA4BB4119E8889D00CC45C8 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		9AA4BB4219E8889D00CC45C8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		9AA4BB4419E8891100CC45C8 /* GeoTappy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeoTappy-Prefix.pch"; sourceTree = "<group>"; };
+		9AA4BB4919E894C600CC45C8 /* GeoTappyToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GeoTappyToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AA4BB4A19E894C700CC45C8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		9AA4BB4E19E894C700CC45C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AA4BB4F19E894C700CC45C8 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		9AA4BB5019E894C700CC45C8 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		9AA4BB5D19E8958000CC45C8 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainInterface.storyboard; path = "../../BitStore-iOS/BitStoreToday/MainInterface.storyboard"; sourceTree = "<group>"; };
+		9AA4BB5F19E8969E00CC45C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -40,6 +83,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9AA4BB4619E894C600CC45C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AA4BB4B19E894C700CC45C8 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -47,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				22201F5EB057418A8E6A8508 /* libPods.a */,
+				9AA4BB4A19E894C700CC45C8 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -55,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				9A73205119E87299006E8B0C /* GeoTappy */,
+				9AA4BB4C19E894C700CC45C8 /* GeoTappyToday */,
 				9A73205019E87299006E8B0C /* Products */,
 				BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */,
 				82C618A20F38451B8FD82E92 /* Frameworks */,
@@ -65,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				9A73204F19E87299006E8B0C /* GeoTappy.app */,
+				9AA4BB4919E894C600CC45C8 /* GeoTappyToday.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,6 +148,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9AA4BB4C19E894C700CC45C8 /* GeoTappyToday */ = {
+			isa = PBXGroup;
+			children = (
+				9AA4BB4F19E894C700CC45C8 /* TodayViewController.h */,
+				9AA4BB5019E894C700CC45C8 /* TodayViewController.m */,
+				9AA4BB5D19E8958000CC45C8 /* MainInterface.storyboard */,
+				9AA4BB4D19E894C700CC45C8 /* Supporting Files */,
+				9AA4BB5F19E8969E00CC45C8 /* Images.xcassets */,
+			);
+			path = GeoTappyToday;
+			sourceTree = "<group>";
+		};
+		9AA4BB4D19E894C700CC45C8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9AA4BB4E19E894C700CC45C8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,15 +180,35 @@
 				9A73204C19E87299006E8B0C /* Frameworks */,
 				9A73204D19E87299006E8B0C /* Resources */,
 				EC425289109A458C9A45479A /* Copy Pods Resources */,
+				9AA4BB5C19E894C700CC45C8 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9AA4BB5519E894C700CC45C8 /* PBXTargetDependency */,
+				9AA4BB5819E894C700CC45C8 /* PBXTargetDependency */,
 			);
 			name = GeoTappy;
 			productName = GeoTappy;
 			productReference = 9A73204F19E87299006E8B0C /* GeoTappy.app */;
 			productType = "com.apple.product-type.application";
+		};
+		9AA4BB4819E894C600CC45C8 /* GeoTappyToday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AA4BB5919E894C700CC45C8 /* Build configuration list for PBXNativeTarget "GeoTappyToday" */;
+			buildPhases = (
+				9AA4BB4519E894C600CC45C8 /* Sources */,
+				9AA4BB4619E894C600CC45C8 /* Frameworks */,
+				9AA4BB4719E894C600CC45C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeoTappyToday;
+			productName = GeoTappyToday;
+			productReference = 9AA4BB4919E894C600CC45C8 /* GeoTappyToday.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -126,6 +220,9 @@
 				ORGANIZATIONNAME = "Dylan Marriott";
 				TargetAttributes = {
 					9A73204E19E87299006E8B0C = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					9AA4BB4819E894C600CC45C8 = {
 						CreatedOnToolsVersion = 6.0.1;
 					};
 				};
@@ -144,6 +241,7 @@
 			projectRoot = "";
 			targets = (
 				9A73204E19E87299006E8B0C /* GeoTappy */,
+				9AA4BB4819E894C600CC45C8 /* GeoTappyToday */,
 			);
 		};
 /* End PBXProject section */
@@ -154,6 +252,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A73206019E87299006E8B0C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AA4BB4719E894C600CC45C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AA4BB5E19E8958000CC45C8 /* MainInterface.storyboard in Resources */,
+				9AA4BB6019E8969E00CC45C8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +311,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9AA4BB4519E894C600CC45C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AA4BB5119E894C700CC45C8 /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9AA4BB5519E894C700CC45C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AA4BB4819E894C600CC45C8 /* GeoTappyToday */;
+			targetProxy = 9AA4BB5419E894C700CC45C8 /* PBXContainerItemProxy */;
+		};
+		9AA4BB5819E894C700CC45C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AA4BB4819E894C600CC45C8 /* GeoTappyToday */;
+			targetProxy = 9AA4BB5719E894C700CC45C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		9A73207019E87299006E8B0C /* Debug */ = {
@@ -307,6 +435,30 @@
 			};
 			name = Release;
 		};
+		9AA4BB5A19E894C700CC45C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GeoTappyToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		9AA4BB5B19E894C700CC45C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = GeoTappyToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -327,6 +479,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		9AA4BB5919E894C700CC45C8 /* Build configuration list for PBXNativeTarget "GeoTappyToday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AA4BB5A19E894C700CC45C8 /* Debug */,
+				9AA4BB5B19E894C700CC45C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
