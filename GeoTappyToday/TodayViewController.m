@@ -8,7 +8,8 @@
 
 #import "TodayViewController.h"
 #import <NotificationCenter/NotificationCenter.h>
-#import <QuartzCore/QuartzCore.h>
+#import "ProfileView.h"
+#import "HorizontalScroller.h"
 
 @interface TodayViewController () <NCWidgetProviding>
 
@@ -30,11 +31,16 @@
     description.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     [self.view addSubview:description];
     
-    UIImageView* test = [[UIImageView alloc] initWithFrame:CGRectMake(9, 30, 40, 40)];
-    test.image = [UIImage imageNamed:@"demo-profile"];
-    test.layer.cornerRadius = 20;
-    test.clipsToBounds = YES;
-    [self.view addSubview:test];
+    UIImage* demoImage = [UIImage imageNamed:@"demo-profile"];
+    ProfileView* profileView1 = [[ProfileView alloc] initWithFrame:CGRectMake(0, 0, 44, 44) images:@[demoImage]];
+    ProfileView* profileView2 = [[ProfileView alloc] initWithFrame:CGRectMake(0, 0, 44, 44) images:@[demoImage]];
+    
+    HorizontalScroller* scroller = [[HorizontalScroller alloc] initWithViews:@[profileView1, profileView2]];
+    scroller.view.frame = CGRectMake(0, 30, 200, 44);
+    scroller.padding = UIOffsetMake(10, 0);
+    [self addChildViewController:scroller];
+    [self.view addSubview:scroller.view];
+    
 }
 
 - (void)didReceiveMemoryWarning {

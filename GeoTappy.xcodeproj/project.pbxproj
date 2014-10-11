@@ -17,6 +17,8 @@
 		9AA4BB6019E8969E00CC45C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA4BB5F19E8969E00CC45C8 /* Images.xcassets */; };
 		9AA4BB6419E8A14700CC45C8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB6319E8A14700CC45C8 /* SplashViewController.m */; };
 		9AA4BB6819E8A18800CC45C8 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB6719E8A18800CC45C8 /* API.m */; };
+		9AA4BB6B19E8A3BB00CC45C8 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB6A19E8A3BB00CC45C8 /* ProfileView.m */; };
+		9AA4BB6E19E8ACB200CC45C8 /* HorizontalScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB6D19E8ACB200CC45C8 /* HorizontalScroller.m */; };
 		C79789E5387642FBA3CD3774 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22201F5EB057418A8E6A8508 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,10 @@
 		9AA4BB6319E8A14700CC45C8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		9AA4BB6619E8A18800CC45C8 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		9AA4BB6719E8A18800CC45C8 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
+		9AA4BB6919E8A3BB00CC45C8 /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
+		9AA4BB6A19E8A3BB00CC45C8 /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
+		9AA4BB6C19E8ACB200CC45C8 /* HorizontalScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalScroller.h; sourceTree = "<group>"; };
+		9AA4BB6D19E8ACB200CC45C8 /* HorizontalScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalScroller.m; sourceTree = "<group>"; };
 		BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +155,10 @@
 		9AA4BB4C19E894C700CC45C8 /* GeoTappyToday */ = {
 			isa = PBXGroup;
 			children = (
+				9AA4BB6919E8A3BB00CC45C8 /* ProfileView.h */,
+				9AA4BB6A19E8A3BB00CC45C8 /* ProfileView.m */,
+				9AA4BB6C19E8ACB200CC45C8 /* HorizontalScroller.h */,
+				9AA4BB6D19E8ACB200CC45C8 /* HorizontalScroller.m */,
 				9AA4BB4F19E894C700CC45C8 /* TodayViewController.h */,
 				9AA4BB5019E894C700CC45C8 /* TodayViewController.m */,
 				9AA4BB5D19E8958000CC45C8 /* MainInterface.storyboard */,
@@ -331,7 +341,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA4BB6B19E8A3BB00CC45C8 /* ProfileView.m in Sources */,
 				9AA4BB5119E894C700CC45C8 /* TodayViewController.m in Sources */,
+				9AA4BB6E19E8ACB200CC45C8 /* HorizontalScroller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
