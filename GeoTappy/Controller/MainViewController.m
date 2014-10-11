@@ -18,6 +18,7 @@
 @implementation MainViewController {
     CLLocationManager* _locationManager;
     User* _user;
+    UITableView* _tableView;
 }
 
 - (void)viewDidLoad {
@@ -56,11 +57,35 @@
     [self.view addSubview:nameLabel];
     
     
-    UITableView* tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, self.view.frame.size.width, self.view.frame.size.height - 150) style:UITableViewStyleGrouped];
-    tableView.dataSource = self;
-    tableView.delegate = self;
-    tableView.editing = YES;
-    [self.view addSubview:tableView];
+    
+    UIButton* editButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 110, 35, 35)];
+    [editButton setImage:[[UIImage imageNamed:@"edit"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    editButton.tintColor = [UIColor whiteColor];
+    editButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    editButton.layer.shadowRadius = 1;
+    editButton.layer.shadowOffset = CGSizeMake(0, 0);
+    editButton.layer.shadowOpacity = 0.5;
+    editButton.layer.masksToBounds = NO;
+    [editButton addTarget:self action:@selector(actionEdit:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:editButton];
+    
+    
+    UIButton* addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 25 - 10, 115, 25, 25)];
+    [addButton setImage:[[UIImage imageNamed:@"add"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    addButton.tintColor = [UIColor whiteColor];
+    addButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    addButton.layer.shadowRadius = 1;
+    addButton.layer.shadowOffset = CGSizeMake(0, 0);
+    addButton.layer.shadowOpacity = 0.5;
+    addButton.layer.masksToBounds = NO;
+    [addButton addTarget:self action:@selector(actionAdd:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:addButton];
+    
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, self.view.frame.size.width, self.view.frame.size.height - 150) style:UITableViewStyleGrouped];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    [self.view addSubview:_tableView];
     
     // this is just to get the permission here in the app
     // has to be an instance var, otherwise it will get released, an the alert view disappears
@@ -69,6 +94,14 @@
     [_locationManager requestWhenInUseAuthorization];
     
     [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (void)actionEdit:(id)sender {
+    [_tableView setEditing:!_tableView.editing animated:YES];
+}
+
+- (void)actionAdd:(id)sender {
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -102,6 +135,7 @@
         fav = [_user.unselectedFavourites objectAtIndex:indexPath.row];
     }
     cell.textLabel.text = [fav displayName];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

@@ -28,12 +28,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.delegate = self;
-    _locationManager.pausesLocationUpdatesAutomatically = NO;
-    _locationManager.distanceFilter = kCLDistanceFilterNone;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    [_locationManager requestWhenInUseAuthorization];
+//    _locationManager = [[CLLocationManager alloc] init];
+//    _locationManager.delegate = self;
+//    _locationManager.pausesLocationUpdatesAutomatically = NO;
+//    _locationManager.distanceFilter = kCLDistanceFilterNone;
+//    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+//    [_locationManager requestWhenInUseAuthorization];
     
     self.preferredContentSize = CGSizeMake(200, 200);
 }
@@ -46,7 +46,9 @@
     for (id<Favourite> favourite in user.selectedFavourites) {
         NSMutableArray* images = [NSMutableArray array];
         if ([favourite isKindOfClass:[User class]]) {
-            [images addObject:((User *)favourite).profileImage];
+            if (((User *)favourite).profileImage != nil) {
+                [images addObject:((User *)favourite).profileImage];
+            }
         }
         ProfileView* pv = [[ProfileView alloc] initWithFrame:CGRectMake(0, 0, 44, 44) images:images];
         [pv addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTap:)]];
@@ -59,7 +61,7 @@
     [self addChildViewController:scroller];
     [self.view addSubview:scroller.view];
     
-    [_locationManager startUpdatingLocation];
+    //[_locationManager startUpdatingLocation];
     NSLog(@"start location manager");
 }
 
@@ -130,7 +132,7 @@
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
 
-    completionHandler(NCUpdateResultNewData);
+    completionHandler(NCUpdateResultNoData);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {

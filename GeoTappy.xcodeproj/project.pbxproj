@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A2D9AA819E9A3EB00397285 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D9AA719E9A3EB00397285 /* Group.m */; };
 		9A5D882B19E94C7B00E4EC3D /* SuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D882A19E94C7B00E4EC3D /* SuccessView.m */; };
 		9A73205519E87299006E8B0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73205419E87299006E8B0C /* main.m */; };
 		9A73205819E87299006E8B0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73205719E87299006E8B0C /* AppDelegate.m */; };
@@ -67,6 +68,8 @@
 
 /* Begin PBXFileReference section */
 		22201F5EB057418A8E6A8508 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A2D9AA619E9A3EB00397285 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		9A2D9AA719E9A3EB00397285 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		9A5D882919E94C7B00E4EC3D /* SuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessView.h; sourceTree = "<group>"; };
 		9A5D882A19E94C7B00E4EC3D /* SuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessView.m; sourceTree = "<group>"; };
 		9A73204F19E87299006E8B0C /* GeoTappy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoTappy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +241,8 @@
 			isa = PBXGroup;
 			children = (
 				9AA4BB8119E9317800CC45C8 /* Favourite.h */,
+				9A2D9AA619E9A3EB00397285 /* Group.h */,
+				9A2D9AA719E9A3EB00397285 /* Group.m */,
 				9A917D2719E98C630008448A /* User.h */,
 				9A917D2819E98C630008448A /* User.m */,
 			);
@@ -413,6 +418,7 @@
 				9A73205519E87299006E8B0C /* main.m in Sources */,
 				9AA4BB6819E8A18800CC45C8 /* API.m in Sources */,
 				9AA4BB6419E8A14700CC45C8 /* SplashViewController.m in Sources */,
+				9A2D9AA819E9A3EB00397285 /* Group.m in Sources */,
 				9AA4BB8419E935CA00CC45C8 /* RequestHelper.m in Sources */,
 				9AA4BB7919E8B57900CC45C8 /* UserDefaults.m in Sources */,
 			);

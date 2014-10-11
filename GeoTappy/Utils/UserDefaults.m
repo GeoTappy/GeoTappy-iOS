@@ -56,6 +56,14 @@ static UserDefaults* sharedInstance;
     [self setCodableObject:accessToken forKey:@"accessToken"];
 }
 
+- (NSArray *)groups {
+    return (NSArray *)[self codableObjectForKey:@"groups"];
+}
+
+- (void)setGroups:(NSArray *)groups {
+    [self setCodableObject:groups forKey:@"groups"];
+}
+
 #pragma mark -
 - (void)reset {
     NSString* domain = [[NSBundle mainBundle] bundleIdentifier];
