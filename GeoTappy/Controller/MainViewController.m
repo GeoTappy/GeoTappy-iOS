@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "User.h"
 #import "UserDefaults.h"
+#import <Mapbox-iOS-SDK/Mapbox.h>
 
 @implementation MainViewController
 
@@ -33,6 +34,11 @@
     profileImageView.layer.borderWidth = 4;
     profileImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:profileImageView];
+    
+    RMMapboxSource* mapSource = [[RMMapboxSource alloc] initWithMapID:@"d-32.jo11kh4m"];
+    RMMapView* mapView = [[RMMapView alloc] initWithFrame:CGRectMake(0, 150, self.view.frame.size.width, self.view.frame.size.height - 150) andTilesource:mapSource];
+    [self.view addSubview:mapView];
+    
     
     [self setNeedsStatusBarAppearanceUpdate];
 }

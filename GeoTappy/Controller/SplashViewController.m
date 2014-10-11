@@ -73,6 +73,9 @@
 }
 
 - (UIImage *)downloadImage:(NSString *)url {
+    if ([url isKindOfClass:[NSNull class]]) {
+        return nil;
+    }
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     return [[UIImage alloc] initWithData:data];
