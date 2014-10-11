@@ -78,4 +78,8 @@
     return [[UIImage alloc] initWithData:data];
 }
 
+- (UIStatusBarStyle) preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 @end
