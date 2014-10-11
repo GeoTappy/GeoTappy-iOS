@@ -11,6 +11,7 @@
 #import "MainViewController.h"
 #import "User.h"
 #import "UserDefaults.h"
+#import "NullHelper.h"
 
 @interface SplashViewController () <FBLoginViewDelegate>
 
@@ -50,6 +51,7 @@
     [auth setObject:@"facebook" forKey:@"provider"];
     [auth setObject:token forKey:@"token"];
     [jsonDict setObject:auth forKey:@"auth"];
+    [jsonDict setObject:[NullHelper nullOrObject:[UserDefaults instance].pushToken] forKey:@"push_token"];
     NSData* json = [NSJSONSerialization dataWithJSONObject:jsonDict options:NSJSONWritingPrettyPrinted error:nil];
 
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[API facebookRegisterUrl]]];

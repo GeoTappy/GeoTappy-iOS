@@ -13,6 +13,7 @@
 @interface UserDefaults : NSObject
 
 @property (nonatomic) User* currentUser;
+@property (nonatomic) NSString* pushToken;
 
 + (UserDefaults *)instance;
 - (void)reset;

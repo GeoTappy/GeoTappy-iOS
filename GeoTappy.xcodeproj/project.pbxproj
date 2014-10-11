@@ -24,6 +24,7 @@
 		9AA4BB7919E8B57900CC45C8 /* UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7819E8B57900CC45C8 /* UserDefaults.m */; };
 		9AA4BB7A19E915BA00CC45C8 /* UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7819E8B57900CC45C8 /* UserDefaults.m */; };
 		9AA4BB7B19E915C000CC45C8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7119E8B44400CC45C8 /* User.m */; };
+		9AA4BB8019E92D2300CC45C8 /* NullHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7F19E92D2300CC45C8 /* NullHelper.m */; };
 		C79789E5387642FBA3CD3774 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22201F5EB057418A8E6A8508 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,8 @@
 		9AA4BB7819E8B57900CC45C8 /* UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaults.m; sourceTree = "<group>"; };
 		9AA4BB7C19E9164100CC45C8 /* GeoTappy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GeoTappy.entitlements; sourceTree = "<group>"; };
 		9AA4BB7D19E9164F00CC45C8 /* GeoTappyToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GeoTappyToday.entitlements; sourceTree = "<group>"; };
+		9AA4BB7E19E92D2300CC45C8 /* NullHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NullHelper.h; sourceTree = "<group>"; };
+		9AA4BB7F19E92D2300CC45C8 /* NullHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullHelper.m; sourceTree = "<group>"; };
 		BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,6 +230,8 @@
 			children = (
 				9AA4BB7719E8B57900CC45C8 /* UserDefaults.h */,
 				9AA4BB7819E8B57900CC45C8 /* UserDefaults.m */,
+				9AA4BB7E19E92D2300CC45C8 /* NullHelper.h */,
+				9AA4BB7F19E92D2300CC45C8 /* NullHelper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 			files = (
 				9AA4BB7219E8B44400CC45C8 /* User.m in Sources */,
 				9AA4BB7519E8B4D100CC45C8 /* MainViewController.m in Sources */,
+				9AA4BB8019E92D2300CC45C8 /* NullHelper.m in Sources */,
 				9A73205819E87299006E8B0C /* AppDelegate.m in Sources */,
 				9A73205519E87299006E8B0C /* main.m in Sources */,
 				9AA4BB6819E8A18800CC45C8 /* API.m in Sources */,

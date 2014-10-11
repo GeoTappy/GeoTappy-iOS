@@ -10,6 +10,7 @@
 #import "SplashViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "MainViewController.h"
+#import "UserDefaults.h"
 
 @interface AppDelegate ()
 
@@ -23,10 +24,38 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    
+    
+    
 //    [FBSession.activeSession closeAndClearTokenInformation];
 //    [FBSession.activeSession close];
 //    [FBSession setActiveSession:nil];
+//    [[UserDefaults instance] reset];
     
+    
+    return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings NS_AVAILABLE_IOS(8_0) {
+    [application registerForRemoteNotifications];
+}
+
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {
+    NSString* token = [deviceToken description];
+    token = [token stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [UserDefaults instance].pushToken = token;
+    [self openApp];
+}
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error {
+    [self openApp];
+}
+
+- (void)openApp {
     NSString* token = FBSession.activeSession.accessTokenData.accessToken;
     if (token) {
         MainViewController* mainViewController = [[MainViewController alloc] init];
@@ -35,8 +64,6 @@
         SplashViewController* splashViewController = [[SplashViewController alloc] init];
         self.window.rootViewController = splashViewController;
     }
-    
-    return YES;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
