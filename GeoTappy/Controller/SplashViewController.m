@@ -56,7 +56,7 @@
     [request setHTTPBody:json];
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 
-    spinner.center = CGPointMake(160, 240);
+    spinner.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
     spinner.hidesWhenStopped = YES;
     [self.view addSubview:spinner];
     [spinner startAnimating];
