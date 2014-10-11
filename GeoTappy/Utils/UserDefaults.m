@@ -48,6 +48,14 @@ static UserDefaults* sharedInstance;
     [self setCodableObject:pushToken forKey:@"pushToken"];
 }
 
+- (NSString *)accessToken {
+    return (NSString *)[self codableObjectForKey:@"accessToken"];
+}
+
+- (void)setAccessToken:(NSString *)accessToken {
+    [self setCodableObject:accessToken forKey:@"accessToken"];
+}
+
 #pragma mark -
 - (void)reset {
     NSString* domain = [[NSBundle mainBundle] bundleIdentifier];

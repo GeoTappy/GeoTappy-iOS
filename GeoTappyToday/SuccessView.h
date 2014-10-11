@@ -1,5 +1,5 @@
 //
-//  API.h
+//  SuccessView.h
 //  GeoTappy
 //
 //  Created by Dylan Marriott on 11/10/14.
@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface API : NSObject
-
-+ (NSString *)facebookRegisterUrl;
-+ (NSString *)shareLocationUrl;
+@interface SuccessView : UIView
 
 @end

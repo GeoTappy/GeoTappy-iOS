@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A5D882B19E94C7B00E4EC3D /* SuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D882A19E94C7B00E4EC3D /* SuccessView.m */; };
 		9A73205519E87299006E8B0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73205419E87299006E8B0C /* main.m */; };
 		9A73205819E87299006E8B0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73205719E87299006E8B0C /* AppDelegate.m */; };
 		9A73206019E87299006E8B0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A73205F19E87299006E8B0C /* Images.xcassets */; };
@@ -25,6 +26,9 @@
 		9AA4BB7A19E915BA00CC45C8 /* UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7819E8B57900CC45C8 /* UserDefaults.m */; };
 		9AA4BB7B19E915C000CC45C8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7119E8B44400CC45C8 /* User.m */; };
 		9AA4BB8019E92D2300CC45C8 /* NullHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7F19E92D2300CC45C8 /* NullHelper.m */; };
+		9AA4BB8419E935CA00CC45C8 /* RequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB8319E935CA00CC45C8 /* RequestHelper.m */; };
+		9AA4BB8519E938AA00CC45C8 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB6719E8A18800CC45C8 /* API.m */; };
+		9AA4BB8619E939E800CC45C8 /* RequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB8319E935CA00CC45C8 /* RequestHelper.m */; };
 		C79789E5387642FBA3CD3774 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22201F5EB057418A8E6A8508 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +65,8 @@
 
 /* Begin PBXFileReference section */
 		22201F5EB057418A8E6A8508 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A5D882919E94C7B00E4EC3D /* SuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessView.h; sourceTree = "<group>"; };
+		9A5D882A19E94C7B00E4EC3D /* SuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessView.m; sourceTree = "<group>"; };
 		9A73204F19E87299006E8B0C /* GeoTappy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoTappy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A73205319E87299006E8B0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A73205419E87299006E8B0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -93,6 +99,9 @@
 		9AA4BB7D19E9164F00CC45C8 /* GeoTappyToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GeoTappyToday.entitlements; sourceTree = "<group>"; };
 		9AA4BB7E19E92D2300CC45C8 /* NullHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NullHelper.h; sourceTree = "<group>"; };
 		9AA4BB7F19E92D2300CC45C8 /* NullHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullHelper.m; sourceTree = "<group>"; };
+		9AA4BB8119E9317800CC45C8 /* Favourite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Favourite.h; sourceTree = "<group>"; };
+		9AA4BB8219E935CA00CC45C8 /* RequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestHelper.h; sourceTree = "<group>"; };
+		9AA4BB8319E935CA00CC45C8 /* RequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestHelper.m; sourceTree = "<group>"; };
 		BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,6 +188,8 @@
 				9AA4BB6A19E8A3BB00CC45C8 /* ProfileView.m */,
 				9AA4BB6C19E8ACB200CC45C8 /* HorizontalScroller.h */,
 				9AA4BB6D19E8ACB200CC45C8 /* HorizontalScroller.m */,
+				9A5D882919E94C7B00E4EC3D /* SuccessView.h */,
+				9A5D882A19E94C7B00E4EC3D /* SuccessView.m */,
 				9AA4BB4F19E894C700CC45C8 /* TodayViewController.h */,
 				9AA4BB5019E894C700CC45C8 /* TodayViewController.m */,
 				9AA4BB5D19E8958000CC45C8 /* MainInterface.storyboard */,
@@ -221,6 +232,7 @@
 			children = (
 				9AA4BB7019E8B44400CC45C8 /* User.h */,
 				9AA4BB7119E8B44400CC45C8 /* User.m */,
+				9AA4BB8119E9317800CC45C8 /* Favourite.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -232,6 +244,8 @@
 				9AA4BB7819E8B57900CC45C8 /* UserDefaults.m */,
 				9AA4BB7E19E92D2300CC45C8 /* NullHelper.h */,
 				9AA4BB7F19E92D2300CC45C8 /* NullHelper.m */,
+				9AA4BB8219E935CA00CC45C8 /* RequestHelper.h */,
+				9AA4BB8319E935CA00CC45C8 /* RequestHelper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -391,6 +405,7 @@
 				9A73205519E87299006E8B0C /* main.m in Sources */,
 				9AA4BB6819E8A18800CC45C8 /* API.m in Sources */,
 				9AA4BB6419E8A14700CC45C8 /* SplashViewController.m in Sources */,
+				9AA4BB8419E935CA00CC45C8 /* RequestHelper.m in Sources */,
 				9AA4BB7919E8B57900CC45C8 /* UserDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,10 +414,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA4BB8519E938AA00CC45C8 /* API.m in Sources */,
 				9AA4BB7B19E915C000CC45C8 /* User.m in Sources */,
 				9AA4BB7A19E915BA00CC45C8 /* UserDefaults.m in Sources */,
 				9AA4BB6B19E8A3BB00CC45C8 /* ProfileView.m in Sources */,
+				9A5D882B19E94C7B00E4EC3D /* SuccessView.m in Sources */,
 				9AA4BB5119E894C700CC45C8 /* TodayViewController.m in Sources */,
+				9AA4BB8619E939E800CC45C8 /* RequestHelper.m in Sources */,
 				9AA4BB6E19E8ACB200CC45C8 /* HorizontalScroller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,7 +530,7 @@
 				INFOPLIST_FILE = GeoTappy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6297e090-5c2e-42c2-bf1c-f1017626daa1";
 			};
 			name = Debug;
 		};
@@ -527,7 +545,7 @@
 				INFOPLIST_FILE = GeoTappy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6297e090-5c2e-42c2-bf1c-f1017626daa1";
 			};
 			name = Release;
 		};
@@ -591,6 +609,7 @@
 				9AA4BB5B19E894C700CC45C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

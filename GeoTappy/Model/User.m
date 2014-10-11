@@ -17,6 +17,7 @@
         self.profileImage = [aDecoder decodeObjectForKey:@"profileImage"];
         self.coverImage = [aDecoder decodeObjectForKey:@"coverImage"];
         self.friends = [aDecoder decodeObjectForKey:@"friends"];
+        self.favourites = [aDecoder decodeObjectForKey:@"favourites"];
     }
     return self;
 }
@@ -27,6 +28,7 @@
     [aCoder encodeObject:self.profileImage forKey:@"profileImage"];
     [aCoder encodeObject:self.coverImage forKey:@"coverImage"];
     [aCoder encodeObject:self.friends forKey:@"friends"];
+    [aCoder encodeObject:self.favourites forKey:@"favourites"];
 }
 
 @end

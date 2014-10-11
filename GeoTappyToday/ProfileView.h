@@ -14,4 +14,7 @@
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (instancetype)initWithFrame:(CGRect)frame UNAVAILABLE_ATTRIBUTE;
 
+- (void)setLoading:(BOOL)loading;
+- (void)showSuccess;
+
 @end

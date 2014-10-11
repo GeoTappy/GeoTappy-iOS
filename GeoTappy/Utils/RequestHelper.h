@@ -1,5 +1,5 @@
 //
-//  API.h
+//  RequestHelper.h
 //  GeoTappy
 //
 //  Created by Dylan Marriott on 11/10/14.
@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface API : NSObject
+@interface RequestHelper : NSObject
 
-+ (NSString *)facebookRegisterUrl;
-+ (NSString *)shareLocationUrl;
++ (NSMutableDictionary *)emptyJsonRequest;
 
 @end
