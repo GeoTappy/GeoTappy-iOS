@@ -8,6 +8,9 @@
 
 #import "SplashViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "MainViewController.h"
+#import "User.h"
+#import "UserDefaults.h"
 
 @interface SplashViewController () <FBLoginViewDelegate>
 
@@ -41,7 +44,7 @@
 }
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
-    NSString* token = [FBSession activeSession].accessTokenData.accessToken;
+    NSString* token = FBSession.activeSession.accessTokenData.accessToken;
     NSMutableDictionary* jsonDict = [[NSMutableDictionary alloc] init];
     NSMutableDictionary* auth = [[NSMutableDictionary alloc] init];
     [auth setObject:@"facebook" forKey:@"provider"];
@@ -58,16 +61,21 @@
                                                NSData *data,
                                                NSError *error) {
                                
-                               if (!error && data) {
-                                   NSError* jsonError;
-                                   NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                   if (!jsonError) {
-                                       NSLog(@"result: %@", json);
-                                   } else {
-
-                                   }
-                               }
+                               
+                               NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                               User* user = [[User alloc] init];
+                               user.coverImage = [self downloadImage:[[json objectForKey:@"profile"] objectForKey:@"cover_photo_url"]];
+                               user.profileImage = [self downloadImage:[[json objectForKey:@"profile"] objectForKey:@"profile_photo_url"]];
+                               [UserDefaults instance].currentUser = user;
+                               self.view.window.rootViewController = [[MainViewController alloc] init];
+                               
                            }];
+}
+
+- (UIImage *)downloadImage:(NSString *)url {
+    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    return [[UIImage alloc] initWithData:data];
 }
 
 @end

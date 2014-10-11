@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SplashViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "MainViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,8 +23,18 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    SplashViewController* splashViewController = [[SplashViewController alloc] init];
-    self.window.rootViewController = splashViewController;
+    [FBSession.activeSession closeAndClearTokenInformation];
+    [FBSession.activeSession close];
+    [FBSession setActiveSession:nil];
+    
+    NSString* token = FBSession.activeSession.accessTokenData.accessToken;
+    if (token) {
+        MainViewController* mainViewController = [[MainViewController alloc] init];
+        self.window.rootViewController = mainViewController;
+    } else {
+        SplashViewController* splashViewController = [[SplashViewController alloc] init];
+        self.window.rootViewController = splashViewController;
+    }
     
     return YES;
 }

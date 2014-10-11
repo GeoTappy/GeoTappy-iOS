@@ -19,6 +19,9 @@
 		9AA4BB6819E8A18800CC45C8 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB6719E8A18800CC45C8 /* API.m */; };
 		9AA4BB6B19E8A3BB00CC45C8 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB6A19E8A3BB00CC45C8 /* ProfileView.m */; };
 		9AA4BB6E19E8ACB200CC45C8 /* HorizontalScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB6D19E8ACB200CC45C8 /* HorizontalScroller.m */; };
+		9AA4BB7219E8B44400CC45C8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7119E8B44400CC45C8 /* User.m */; };
+		9AA4BB7519E8B4D100CC45C8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7419E8B4D100CC45C8 /* MainViewController.m */; };
+		9AA4BB7919E8B57900CC45C8 /* UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7819E8B57900CC45C8 /* UserDefaults.m */; };
 		C79789E5387642FBA3CD3774 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22201F5EB057418A8E6A8508 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +80,12 @@
 		9AA4BB6A19E8A3BB00CC45C8 /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
 		9AA4BB6C19E8ACB200CC45C8 /* HorizontalScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalScroller.h; sourceTree = "<group>"; };
 		9AA4BB6D19E8ACB200CC45C8 /* HorizontalScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalScroller.m; sourceTree = "<group>"; };
+		9AA4BB7019E8B44400CC45C8 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		9AA4BB7119E8B44400CC45C8 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		9AA4BB7319E8B4D100CC45C8 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		9AA4BB7419E8B4D100CC45C8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		9AA4BB7719E8B57900CC45C8 /* UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaults.h; sourceTree = "<group>"; };
+		9AA4BB7819E8B57900CC45C8 /* UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaults.m; sourceTree = "<group>"; };
 		BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +143,8 @@
 			children = (
 				9AA4BB6519E8A16800CC45C8 /* Config */,
 				9AA4BB6119E8A14700CC45C8 /* Controller */,
+				9AA4BB6F19E8B43000CC45C8 /* Model */,
+				9AA4BB7619E8B56000CC45C8 /* Utils */,
 				9A73205619E87299006E8B0C /* AppDelegate.h */,
 				9A73205719E87299006E8B0C /* AppDelegate.m */,
 				9AA4BB4419E8891100CC45C8 /* GeoTappy-Prefix.pch */,
@@ -179,6 +190,8 @@
 		9AA4BB6119E8A14700CC45C8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9AA4BB7319E8B4D100CC45C8 /* MainViewController.h */,
+				9AA4BB7419E8B4D100CC45C8 /* MainViewController.m */,
 				9AA4BB6219E8A14700CC45C8 /* SplashViewController.h */,
 				9AA4BB6319E8A14700CC45C8 /* SplashViewController.m */,
 			);
@@ -192,6 +205,24 @@
 				9AA4BB6719E8A18800CC45C8 /* API.m */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		9AA4BB6F19E8B43000CC45C8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9AA4BB7019E8B44400CC45C8 /* User.h */,
+				9AA4BB7119E8B44400CC45C8 /* User.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9AA4BB7619E8B56000CC45C8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9AA4BB7719E8B57900CC45C8 /* UserDefaults.h */,
+				9AA4BB7819E8B57900CC45C8 /* UserDefaults.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,10 +361,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA4BB7219E8B44400CC45C8 /* User.m in Sources */,
+				9AA4BB7519E8B4D100CC45C8 /* MainViewController.m in Sources */,
 				9A73205819E87299006E8B0C /* AppDelegate.m in Sources */,
 				9A73205519E87299006E8B0C /* main.m in Sources */,
 				9AA4BB6819E8A18800CC45C8 /* API.m in Sources */,
 				9AA4BB6419E8A14700CC45C8 /* SplashViewController.m in Sources */,
+				9AA4BB7919E8B57900CC45C8 /* UserDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
