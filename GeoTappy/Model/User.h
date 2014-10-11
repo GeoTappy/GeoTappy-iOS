@@ -16,6 +16,9 @@
 @property (nonatomic) UIImage* profileImage;
 @property (nonatomic) UIImage* coverImage;
 @property (nonatomic) NSArray* friends; // User
-@property (nonatomic) NSArray* favourites; // id<Favourite>
+@property (nonatomic) NSMutableArray* selectedFavourites; // id<Favourite>
+@property (nonatomic) NSMutableArray* unselectedFavourites; // id<Favourite>
+
+- (void)save;
 
 @end

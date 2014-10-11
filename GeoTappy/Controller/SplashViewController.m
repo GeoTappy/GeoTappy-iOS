@@ -72,7 +72,7 @@
                                    [friends addObject:[self userFromJson:friend]];
                                }
                                user.friends = friends;
-                               user.favourites = friends; // just temporary
+                               user.unselectedFavourites = friends; // just temporary
                                [UserDefaults instance].currentUser = user;
                                [UserDefaults instance].accessToken = [profile objectForKey:@"access_token"];
                                self.view.window.rootViewController = [[MainViewController alloc] init];

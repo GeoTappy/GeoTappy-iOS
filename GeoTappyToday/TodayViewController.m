@@ -43,7 +43,7 @@
     
     User* user = [UserDefaults instance].currentUser;
     _profileViews = [NSMutableArray array];
-    for (id<Favourite> favourite in user.favourites) {
+    for (id<Favourite> favourite in user.selectedFavourites) {
         NSMutableArray* images = [NSMutableArray array];
         if ([favourite isKindOfClass:[User class]]) {
             [images addObject:((User *)favourite).profileImage];
@@ -73,7 +73,7 @@
     [view setLoading:YES];
     NSUInteger index = [_profileViews indexOfObject:view];
     User* user = [UserDefaults instance].currentUser;
-    id<Favourite> favourite = [user.favourites objectAtIndex:index];
+    id<Favourite> favourite = [user.selectedFavourites objectAtIndex:index];
     if ([favourite isKindOfClass:[User class]]) {
         User* friend = (User *)favourite;
         [self sendLocationToUsers:@[friend] completion:^(BOOL success) {

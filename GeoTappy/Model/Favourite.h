@@ -8,4 +8,6 @@
 
 @protocol Favourite <NSObject>
 
+- (NSString *)displayName;
+
 @end

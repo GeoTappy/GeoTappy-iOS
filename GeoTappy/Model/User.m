@@ -7,8 +7,17 @@
 //
 
 #import "User.h"
+#import "UserDefaults.h"
 
 @implementation User
+
+- (instancetype)init {
+    if (self = [super init]) {
+        self.selectedFavourites = [NSMutableArray array];
+        self.unselectedFavourites = [NSMutableArray array];
+    }
+    return self;
+}
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super init]) {
@@ -17,7 +26,8 @@
         self.profileImage = [aDecoder decodeObjectForKey:@"profileImage"];
         self.coverImage = [aDecoder decodeObjectForKey:@"coverImage"];
         self.friends = [aDecoder decodeObjectForKey:@"friends"];
-        self.favourites = [aDecoder decodeObjectForKey:@"favourites"];
+        self.selectedFavourites = [aDecoder decodeObjectForKey:@"selectedFavourites"];
+        self.unselectedFavourites = [aDecoder decodeObjectForKey:@"unselectedFavourites"];
     }
     return self;
 }
@@ -28,7 +38,16 @@
     [aCoder encodeObject:self.profileImage forKey:@"profileImage"];
     [aCoder encodeObject:self.coverImage forKey:@"coverImage"];
     [aCoder encodeObject:self.friends forKey:@"friends"];
-    [aCoder encodeObject:self.favourites forKey:@"favourites"];
+    [aCoder encodeObject:self.selectedFavourites forKey:@"selectedFavourites"];
+    [aCoder encodeObject:self.unselectedFavourites forKey:@"unselectedFavourites"];
+}
+
+- (NSString *)displayName {
+    return self.name;
+}
+
+- (void)save {
+    [UserDefaults instance].currentUser = self;
 }
 
 @end
