@@ -28,11 +28,7 @@
     [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
     backgroundImage.image = [UIImage imageNamed:@"background"];
     
-    UIBlurEffect* blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView* blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-    blurEffectView.frame = self.view.bounds;
     [self.view addSubview:backgroundImage];
-    [self.view addSubview:blurEffectView];
 //
 //    UIVibrancyEffect* vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffect];
 //    UIVisualEffectView* vibrancyEffectView = [[UIVisualEffectView alloc] initWithEffect:vibrancyEffect];
@@ -99,7 +95,7 @@
 }
 
 - (UIStatusBarStyle) preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 
 @end
