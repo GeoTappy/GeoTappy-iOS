@@ -22,6 +22,8 @@
 		9AA4BB7219E8B44400CC45C8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7119E8B44400CC45C8 /* User.m */; };
 		9AA4BB7519E8B4D100CC45C8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7419E8B4D100CC45C8 /* MainViewController.m */; };
 		9AA4BB7919E8B57900CC45C8 /* UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7819E8B57900CC45C8 /* UserDefaults.m */; };
+		9AA4BB7A19E915BA00CC45C8 /* UserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7819E8B57900CC45C8 /* UserDefaults.m */; };
+		9AA4BB7B19E915C000CC45C8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7119E8B44400CC45C8 /* User.m */; };
 		C79789E5387642FBA3CD3774 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22201F5EB057418A8E6A8508 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -375,6 +377,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AA4BB7B19E915C000CC45C8 /* User.m in Sources */,
+				9AA4BB7A19E915BA00CC45C8 /* UserDefaults.m in Sources */,
 				9AA4BB6B19E8A3BB00CC45C8 /* ProfileView.m in Sources */,
 				9AA4BB5119E894C700CC45C8 /* TodayViewController.m in Sources */,
 				9AA4BB6E19E8ACB200CC45C8 /* HorizontalScroller.m in Sources */,

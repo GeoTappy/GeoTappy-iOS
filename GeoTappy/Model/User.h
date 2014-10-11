@@ -10,8 +10,10 @@
 
 @interface User : NSObject <NSCoding>
 
+@property (nonatomic) NSString* identifier;
 @property (nonatomic) NSString* name;
 @property (nonatomic) UIImage* profileImage;
 @property (nonatomic) UIImage* coverImage;
+@property (nonatomic) NSArray* friends;
 
 @end

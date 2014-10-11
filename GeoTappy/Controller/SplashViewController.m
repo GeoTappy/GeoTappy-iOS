@@ -63,17 +63,30 @@
                                
                                
                                NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                               User* user = [[User alloc] init];
-                               user.coverImage = [self downloadImage:[[json objectForKey:@"profile"] objectForKey:@"cover_photo_url"]];
-                               user.profileImage = [self downloadImage:[[json objectForKey:@"profile"] objectForKey:@"profile_photo_url"]];
+                               NSDictionary* profile = [json objectForKey:@"profile"];
+                               User* user = [self userFromJson:profile];
+                               NSMutableArray* friends = [NSMutableArray array];
+                               for (NSDictionary* friend in [profile objectForKey:@"friends"]) {
+                                   [friends addObject:[self userFromJson:friend]];
+                               }
+                               user.friends = friends;
                                [UserDefaults instance].currentUser = user;
                                self.view.window.rootViewController = [[MainViewController alloc] init];
                                
                            }];
 }
 
+- (User *)userFromJson:(NSDictionary *)json {
+    User* user = [[User alloc] init];
+    user.coverImage = [self downloadImage:[json objectForKey:@"cover_photo_url"]];
+    user.profileImage = [self downloadImage:[json objectForKey:@"profile_photo_url"]];
+    user.name = [json objectForKey:@"name"];
+    user.identifier = [json objectForKey:@"id"];
+    return user;
+}
+
 - (UIImage *)downloadImage:(NSString *)url {
-    if ([url isKindOfClass:[NSNull class]]) {
+    if ([url isKindOfClass:[NSNull class]] || url == nil) {
         return nil;
     }
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
