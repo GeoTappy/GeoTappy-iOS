@@ -11,6 +11,13 @@
 
 @implementation Group
 
+- (instancetype)init {
+    if (self = [super init]) {
+        self.users = [NSMutableArray array];
+    }
+    return self;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super init]) {
         self.name = [aDecoder decodeObjectForKey:@"name"];

@@ -18,7 +18,6 @@
         [self addSubview:tick];
         self.backgroundColor = [UIColor colorWithRed:0.47 green:0.80 blue:0.12 alpha:1.00];
         self.clipsToBounds = YES;
-        self.layer.cornerRadius = self.frame.size.width / 2;
     }
     return self;
 }

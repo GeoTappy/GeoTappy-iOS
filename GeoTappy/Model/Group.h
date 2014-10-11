@@ -14,6 +14,4 @@
 @property (nonatomic) NSString* name;
 @property (nonatomic) NSMutableArray* users;
 
-- (void)save;
-
 @end

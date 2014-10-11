@@ -12,7 +12,6 @@
 
 @implementation ProfileView {
     NSArray* _images;
-    UIImageView* _imageView;
     SuccessView* _successView;
 }
 
@@ -25,27 +24,87 @@
 }
 
 - (void)assembleViews {
-    _imageView = [[UIImageView alloc] initWithImage:[_images firstObject]];
-    _imageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-    _imageView.clipsToBounds = YES;
-    _imageView.layer.cornerRadius = self.frame.size.width / 2;
-    _imageView.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.8].CGColor;
-    _imageView.layer.borderWidth = 2;
-    _imageView.contentMode = UIViewContentModeScaleAspectFill;
-    [self addSubview:_imageView];
+    // this is cool code, not
+    CGFloat padding = 1;
+    if (_images.count == 1) {
+        UIImageView* imageView = [[UIImageView alloc] initWithImage:[_images firstObject]];
+        imageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        [self addSubview:imageView];
+    } else if (_images.count == 2) {
+        UIImageView* left = [[UIImageView alloc] initWithImage:[_images objectAtIndex:0]];
+        left.frame = CGRectMake(0, 0, self.frame.size.width / 2 - padding, self.frame.size.height);
+        left.contentMode = UIViewContentModeScaleAspectFill;
+        left.clipsToBounds = YES;
+        [self addSubview:left];
+        
+        UIImageView* right = [[UIImageView alloc] initWithImage:[_images objectAtIndex:1]];
+        right.frame = CGRectMake(self.frame.size.width / 2 + padding, 0, self.frame.size.width / 2, self.frame.size.height);
+        right.contentMode = UIViewContentModeScaleAspectFill;
+        right.clipsToBounds = YES;
+        [self addSubview:right];
+    } else if (_images.count == 3) {
+        UIImageView* left = [[UIImageView alloc] initWithImage:[_images objectAtIndex:0]];
+        left.frame = CGRectMake(0, 0, self.frame.size.width / 2 - padding, self.frame.size.height);
+        left.contentMode = UIViewContentModeScaleAspectFill;
+        left.clipsToBounds = YES;
+        [self addSubview:left];
+        
+        UIImageView* rightTop = [[UIImageView alloc] initWithImage:[_images objectAtIndex:1]];
+        rightTop.frame = CGRectMake(self.frame.size.width / 2 + padding, 0, self.frame.size.width / 2, self.frame.size.height / 2 - padding);
+        rightTop.contentMode = UIViewContentModeScaleAspectFill;
+        rightTop.clipsToBounds = YES;
+        [self addSubview:rightTop];
+        
+        UIImageView* rightBottom = [[UIImageView alloc] initWithImage:[_images objectAtIndex:2]];
+        rightBottom.frame = CGRectMake(self.frame.size.width / 2 + padding, self.frame.size.height / 2 + padding, self.frame.size.width / 2, self.frame.size.height / 2);
+        rightBottom.contentMode = UIViewContentModeScaleAspectFill;
+        rightBottom.clipsToBounds = YES;
+        [self addSubview:rightBottom];
+    } else if (_images.count >= 4) {
+        UIImageView* leftTop = [[UIImageView alloc] initWithImage:[_images objectAtIndex:0]];
+        leftTop.frame = CGRectMake(0, 0, self.frame.size.width / 2 - padding, self.frame.size.height / 2 - padding);
+        leftTop.contentMode = UIViewContentModeScaleAspectFill;
+        leftTop.clipsToBounds = YES;
+        [self addSubview:leftTop];
+        
+        UIImageView* leftBottom = [[UIImageView alloc] initWithImage:[_images objectAtIndex:1]];
+        leftBottom.frame = CGRectMake(0, self.frame.size.height / 2 + padding, self.frame.size.width / 2 - padding, self.frame.size.height / 2);
+        leftBottom.contentMode = UIViewContentModeScaleAspectFill;
+        leftBottom.clipsToBounds = YES;
+        [self addSubview:leftBottom];
+        
+        UIImageView* rightTop = [[UIImageView alloc] initWithImage:[_images objectAtIndex:2]];
+        rightTop.frame = CGRectMake(self.frame.size.width / 2 + padding, 0, self.frame.size.width / 2, self.frame.size.height / 2 - padding);
+        rightTop.contentMode = UIViewContentModeScaleAspectFill;
+        rightTop.clipsToBounds = YES;
+        [self addSubview:rightTop];
+        
+        UIImageView* rightBottom = [[UIImageView alloc] initWithImage:[_images objectAtIndex:3]];
+        rightBottom.frame = CGRectMake(self.frame.size.width / 2 + padding, self.frame.size.height / 2 + padding, self.frame.size.width / 2, self.frame.size.height / 2);
+        rightBottom.contentMode = UIViewContentModeScaleAspectFill;
+        rightBottom.clipsToBounds = YES;
+        [self addSubview:rightBottom];
+    }
     
     _successView = [[SuccessView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     _successView.alpha = 0;
     [self addSubview:_successView];
+    
+    self.layer.cornerRadius = self.frame.size.width / 2;
+    self.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.8].CGColor;
+    self.layer.borderWidth = 2;
+    self.clipsToBounds = YES;
+    self.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)setLoading:(BOOL)loading {
     if (loading) {
         [self animateLoading];
     } else {
-        [_imageView.layer removeAllAnimations];
-        _imageView.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.8].CGColor;
-        _imageView.layer.borderWidth = 2;
+        [self.layer removeAllAnimations];
+        self.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.8].CGColor;
+        self.layer.borderWidth = 2;
     }
 }
 
@@ -53,21 +112,21 @@
     CABasicAnimation* color = [CABasicAnimation animationWithKeyPath:@"borderColor"];
     color.fromValue = (id)[UIColor colorWithWhite:1.0 alpha:0.8].CGColor;
     color.toValue   = (id)[UIColor colorWithRed:0.20 green:0.58 blue:0.82 alpha:1.00].CGColor;
-    _imageView.layer.backgroundColor = [UIColor colorWithRed:0.20 green:0.58 blue:0.82 alpha:1.00].CGColor;
+    self.layer.borderColor = [UIColor colorWithRed:0.20 green:0.58 blue:0.82 alpha:1.00].CGColor;
     
     CABasicAnimation* width = [CABasicAnimation animationWithKeyPath:@"borderWidth"];
     width.fromValue = @2;
     width.toValue   = @3;
-    _imageView.layer.borderWidth = 2;
+    self.layer.borderWidth = 2;
     
-    CAAnimationGroup *both = [CAAnimationGroup animation];
+    CAAnimationGroup* both = [CAAnimationGroup animation];
     both.duration   = 0.8;
     both.animations = @[color, width];
     both.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     both.repeatCount = HUGE_VALF;
     both.autoreverses = YES;
     
-    [_imageView.layer addAnimation:both forKey:@"color and width"];
+    [self.layer addAnimation:both forKey:@"color and width"];
 }
 
 - (void)showSuccess {

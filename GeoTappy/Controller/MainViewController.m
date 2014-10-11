@@ -10,8 +10,10 @@
 #import "User.h"
 #import "UserDefaults.h"
 #import <CoreLocation/CoreLocation.h>
+#import "Group.h"
+#import "GroupEditViewController.h"
 
-@interface MainViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
 @end
 
@@ -32,6 +34,11 @@
     coverImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, 150);
     coverImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:coverImageView];
+    
+    UIImageView* superbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"superbg"]];
+    superbg.frame = CGRectMake(0, 0, self.view.frame.size.width, 150);
+    superbg.alpha = 0.5;
+    [self.view addSubview:superbg];
     
     UIImage* profileImage = _user.profileImage;
     UIImageView* profileImageView = [[UIImageView alloc] initWithImage:profileImage];
@@ -96,12 +103,36 @@
     [self setNeedsStatusBarAppearanceUpdate];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
 - (void)actionEdit:(id)sender {
     [_tableView setEditing:!_tableView.editing animated:YES];
 }
 
 - (void)actionAdd:(id)sender {
+    UIAlertView* av = [[UIAlertView alloc] initWithTitle:@"New Group" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create", nil];
+    av.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [av textFieldAtIndex:0].placeholder = @"Enter a group name";
+    [av show];
+}
 
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {
+    return [alertView textFieldAtIndex:0].text.length > 0;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        Group* group = [[Group alloc] init];
+        group.name = [alertView textFieldAtIndex:0].text;
+        [_user.unselectedFavourites addObject:group];
+        [_user save];
+        [_tableView reloadData];
+        GroupEditViewController* vc = [[GroupEditViewController alloc] initWithGroup:group user:_user];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -135,7 +166,13 @@
         fav = [_user.unselectedFavourites objectAtIndex:indexPath.row];
     }
     cell.textLabel.text = [fav displayName];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if ([fav isKindOfClass:[Group class]]) {
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     return cell;
 }
 
@@ -190,6 +227,20 @@
         return sourceIndexPath;
     }
     return proposedDestinationIndexPath;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    id<Favourite> fav;
+    if (indexPath.section == 0) {
+        fav = [_user.selectedFavourites objectAtIndex:indexPath.row];
+    } else if (indexPath.section == 1) {
+        fav = [_user.unselectedFavourites objectAtIndex:indexPath.row];
+    }
+    if ([fav isKindOfClass:[Group class]]) {
+        GroupEditViewController* vc = [[GroupEditViewController alloc] initWithGroup:(Group *)fav user:_user];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (UIStatusBarStyle) preferredStatusBarStyle {

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "SplashViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
-#import "MainViewController.h"
+#import "MainNavigationController.h"
 #import "UserDefaults.h"
 
 @interface AppDelegate ()
@@ -55,8 +55,8 @@
 - (void)openApp {
     NSString* token = FBSession.activeSession.accessTokenData.accessToken;
     if (token) {
-        MainViewController* mainViewController = [[MainViewController alloc] init];
-        self.window.rootViewController = mainViewController;
+        MainNavigationController* m = [[MainNavigationController alloc] init];
+        self.window.rootViewController = m;
     } else {
         SplashViewController* splashViewController = [[SplashViewController alloc] init];
         self.window.rootViewController = splashViewController;

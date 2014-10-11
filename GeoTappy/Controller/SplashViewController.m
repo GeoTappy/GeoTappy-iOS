@@ -8,7 +8,7 @@
 
 #import "SplashViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
-#import "MainViewController.h"
+#import "MainNavigationController.h"
 #import "User.h"
 #import "UserDefaults.h"
 #import "NullHelper.h"
@@ -34,7 +34,7 @@
 //    UIVisualEffectView* vibrancyEffectView = [[UIVisualEffectView alloc] initWithEffect:vibrancyEffect];
 //    self.view.addSubview(vibrancyEffectView)
 //
-    FBLoginView* fbLogin = [[FBLoginView alloc] initWithReadPermissions:@[@"public_profile", @"user_friends", @"email"]];
+    FBLoginView* fbLogin = [[FBLoginView alloc] initWithReadPermissions:@[@"public_profile", @"user_friends", @"email", @"publish_stream"]];
     fbLogin.frame = CGRectMake((self.view.frame.size.width / 2) - (fbLogin.frame.size.width / 2), self.view.frame.size.height - 80, fbLogin.frame.size.width, fbLogin.frame.size.height);
     fbLogin.delegate = self;
     [self.view addSubview:fbLogin];
@@ -74,14 +74,14 @@
                                for (NSDictionary* friend in [profile objectForKey:@"friends"]) {
                                    [friends addObject:[self userFromJson:friend]];
                                }
-                               user.friends = friends;
-                               user.unselectedFavourites = friends; // just temporary
+                               user.friends = [NSArray arrayWithArray:friends];
+                               user.unselectedFavourites = [NSMutableArray arrayWithArray:friends]; // just temporary
                                [UserDefaults instance].currentUser = user;
                                [UserDefaults instance].accessToken = [profile objectForKey:@"access_token"];
 
                                [spinner stopAnimating];
 
-                               self.view.window.rootViewController = [[MainViewController alloc] init];
+                               self.view.window.rootViewController = [[MainNavigationController alloc] init];
                                
                            }];
 }

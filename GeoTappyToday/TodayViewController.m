@@ -14,6 +14,7 @@
 #import "User.h"
 #import "RequestHelper.h"
 #import <CoreLocation/CoreLocation.h>
+#import "Group.h"
 
 @interface TodayViewController () <NCWidgetProviding, CLLocationManagerDelegate>
 
@@ -54,6 +55,12 @@
             if (((User *)favourite).profileImage != nil) {
                 [images addObject:((User *)favourite).profileImage];
             }
+        } else if ([favourite isKindOfClass:[Group class]]) {
+            for (User* u in ((Group *)favourite).users) {
+                if (u.profileImage != nil) {
+                    [images addObject:u.profileImage];
+                }
+            }
         }
         ProfileView* pv = [[ProfileView alloc] initWithFrame:CGRectMake(0, 0, 44, 44) images:images];
         [pv addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTap:)]];
@@ -82,6 +89,10 @@
     if ([favourite isKindOfClass:[User class]]) {
         User* friend = (User *)favourite;
         [self sendLocationToUsers:@[friend] completion:^(BOOL success) {
+            [self performSelector:@selector(turnOfLoading:) withObject:view afterDelay:0.5];
+        }];
+    } else if ([favourite isKindOfClass:[Group class]]) {
+        [self sendLocationToUsers:((Group *)favourite).users completion:^(BOOL success) {
             [self performSelector:@selector(turnOfLoading:) withObject:view afterDelay:0.5];
         }];
     }
