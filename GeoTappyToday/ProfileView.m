@@ -28,6 +28,7 @@
     image.layer.cornerRadius = self.frame.size.width / 2;
     image.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.8].CGColor;
     image.layer.borderWidth = 2;
+    image.contentMode = UIViewContentModeScaleAspectFill;
     [self addSubview:image];
 }
 

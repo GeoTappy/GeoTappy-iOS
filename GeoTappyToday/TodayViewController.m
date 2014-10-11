@@ -10,6 +10,8 @@
 #import <NotificationCenter/NotificationCenter.h>
 #import "ProfileView.h"
 #import "HorizontalScroller.h"
+#import "UserDefaults.h"
+#import "User.h"
 
 @interface TodayViewController () <NCWidgetProviding>
 
@@ -25,17 +27,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    UILabel* description = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
-    description.text = @"hello";
-    description.font = [UIFont systemFontOfSize:13];
-    description.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
-    [self.view addSubview:description];
+    User* user = [UserDefaults instance].currentUser;
+    NSMutableArray* profileViews = [NSMutableArray array];
+    for (User* friend in user.friends) {
+        ProfileView* pv = [[ProfileView alloc] initWithFrame:CGRectMake(0, 0, 44, 44) images:@[friend.profileImage]];
+        [profileViews addObject:pv];
+    }
     
-    UIImage* demoImage = [UIImage imageNamed:@"demo-profile"];
-    ProfileView* profileView1 = [[ProfileView alloc] initWithFrame:CGRectMake(0, 0, 44, 44) images:@[demoImage]];
-    ProfileView* profileView2 = [[ProfileView alloc] initWithFrame:CGRectMake(0, 0, 44, 44) images:@[demoImage]];
-    
-    HorizontalScroller* scroller = [[HorizontalScroller alloc] initWithViews:@[profileView1, profileView2]];
+    HorizontalScroller* scroller = [[HorizontalScroller alloc] initWithViews:profileViews];
     scroller.view.frame = CGRectMake(0, 30, 200, 44);
     scroller.padding = UIOffsetMake(10, 0);
     [self addChildViewController:scroller];
