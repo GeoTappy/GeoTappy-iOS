@@ -54,6 +54,13 @@
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:json];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+
+    spinner.center = CGPointMake(160, 240);
+    spinner.hidesWhenStopped = YES;
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
+
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response,
                                                NSData *data,
@@ -71,6 +78,9 @@
                                user.unselectedFavourites = friends; // just temporary
                                [UserDefaults instance].currentUser = user;
                                [UserDefaults instance].accessToken = [profile objectForKey:@"access_token"];
+
+                               [spinner stopAnimating];
+
                                self.view.window.rootViewController = [[MainViewController alloc] init];
                                
                            }];
