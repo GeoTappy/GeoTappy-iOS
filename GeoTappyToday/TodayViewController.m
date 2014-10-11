@@ -13,17 +13,28 @@
 #import "UserDefaults.h"
 #import "User.h"
 #import "RequestHelper.h"
+#import <CoreLocation/CoreLocation.h>
 
-@interface TodayViewController () <NCWidgetProviding>
+@interface TodayViewController () <NCWidgetProviding, CLLocationManagerDelegate>
 
 @end
 
 @implementation TodayViewController {
     NSMutableArray* _profileViews;
+    CLLocationManager* _locationManager;
+    CLLocation* _currentLocation;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.pausesLocationUpdatesAutomatically = NO;
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    [_locationManager requestWhenInUseAuthorization];
+    
     self.preferredContentSize = CGSizeMake(200, 200);
 }
 
@@ -48,6 +59,13 @@
     [self addChildViewController:scroller];
     [self.view addSubview:scroller.view];
     
+    [_locationManager startUpdatingLocation];
+    NSLog(@"start location manager");
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [_locationManager stopUpdatingLocation];
+    NSLog(@"stop location manager");
 }
 
 - (void)profileTap:(UITapGestureRecognizer *)sender {
@@ -79,8 +97,8 @@
     }
     [locationShare setObject:userIds forKey:@"user_ids"];
     NSMutableDictionary* location = [NSMutableDictionary dictionary];
-    [location setObject:@40.7056308 forKey:@"lat"];
-    [location setObject:@-73.9780035 forKey:@"lng"];
+    [location setObject:@(_currentLocation.coordinate.latitude) forKey:@"lat"];
+    [location setObject:@(_currentLocation.coordinate.longitude) forKey:@"lng"];
     [locationShare setObject:location forKey:@"location"];
     [jsonDict setObject:locationShare forKey:@"location_share"];
     
@@ -115,6 +133,16 @@
     completionHandler(NCUpdateResultNewData);
 }
 
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    _currentLocation = [locations lastObject];
+}
 
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"error: %@", error);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    NSLog(@"status: %i", status);
+}
 
 @end

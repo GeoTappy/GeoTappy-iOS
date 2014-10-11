@@ -76,7 +76,7 @@
         _successView.transform = CGAffineTransformIdentity;
         _successView.alpha = 1.0;
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.6 delay:0.6 options:0 animations:^() {
+        [UIView animateWithDuration:0.6 delay:1.0 options:0 animations:^() {
             _successView.alpha = 0.0;
         } completion:nil];
     }];

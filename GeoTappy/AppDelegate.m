@@ -24,17 +24,14 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    
+    //[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
     
-    
-    
-//    [FBSession.activeSession closeAndClearTokenInformation];
-//    [FBSession.activeSession close];
-//    [FBSession setActiveSession:nil];
-//    [[UserDefaults instance] reset];
-    
+    [FBSession.activeSession closeAndClearTokenInformation];
+    [FBSession.activeSession close];
+    [FBSession setActiveSession:nil];
+    [[UserDefaults instance] reset];
     
     return YES;
 }
