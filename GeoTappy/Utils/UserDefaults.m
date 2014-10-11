@@ -26,7 +26,7 @@ static UserDefaults* sharedInstance;
 
 - (id)init {
     if (self = [super init]) {
-        _defaults = [NSUserDefaults standardUserDefaults];
+        _defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.geotappy"];
     }
     return self;
 }

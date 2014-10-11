@@ -88,6 +88,8 @@
 		9AA4BB7419E8B4D100CC45C8 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		9AA4BB7719E8B57900CC45C8 /* UserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaults.h; sourceTree = "<group>"; };
 		9AA4BB7819E8B57900CC45C8 /* UserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaults.m; sourceTree = "<group>"; };
+		9AA4BB7C19E9164100CC45C8 /* GeoTappy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GeoTappy.entitlements; sourceTree = "<group>"; };
+		9AA4BB7D19E9164F00CC45C8 /* GeoTappyToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GeoTappyToday.entitlements; sourceTree = "<group>"; };
 		BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +145,7 @@
 		9A73205119E87299006E8B0C /* GeoTappy */ = {
 			isa = PBXGroup;
 			children = (
+				9AA4BB7C19E9164100CC45C8 /* GeoTappy.entitlements */,
 				9AA4BB6519E8A16800CC45C8 /* Config */,
 				9AA4BB6119E8A14700CC45C8 /* Controller */,
 				9AA4BB6F19E8B43000CC45C8 /* Model */,
@@ -168,6 +171,7 @@
 		9AA4BB4C19E894C700CC45C8 /* GeoTappyToday */ = {
 			isa = PBXGroup;
 			children = (
+				9AA4BB7D19E9164F00CC45C8 /* GeoTappyToday.entitlements */,
 				9AA4BB6919E8A3BB00CC45C8 /* ProfileView.h */,
 				9AA4BB6A19E8A3BB00CC45C8 /* ProfileView.m */,
 				9AA4BB6C19E8ACB200CC45C8 /* HorizontalScroller.h */,
@@ -280,9 +284,21 @@
 				TargetAttributes = {
 					9A73204E19E87299006E8B0C = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 5EFBK52YD3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					9AA4BB4819E894C600CC45C8 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 5EFBK52YD3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -484,9 +500,13 @@
 			baseConfigurationReference = BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GeoTappy/GeoTappy.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GeoTappy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -495,15 +515,22 @@
 			baseConfigurationReference = BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GeoTappy/GeoTappy.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GeoTappy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
 		9AA4BB5A19E894C700CC45C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GeoTappyToday/GeoTappyToday.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -511,6 +538,7 @@
 				INFOPLIST_FILE = GeoTappyToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -518,9 +546,13 @@
 		9AA4BB5B19E894C700CC45C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GeoTappyToday/GeoTappyToday.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GeoTappyToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
