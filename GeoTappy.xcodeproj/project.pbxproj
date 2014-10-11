@@ -17,7 +17,6 @@
 		9AA4BB4B19E894C700CC45C8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA4BB4A19E894C700CC45C8 /* NotificationCenter.framework */; };
 		9AA4BB5119E894C700CC45C8 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB5019E894C700CC45C8 /* TodayViewController.m */; };
 		9AA4BB5619E894C700CC45C8 /* GeoTappyToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9AA4BB4919E894C600CC45C8 /* GeoTappyToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		9AA4BB5E19E8958000CC45C8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AA4BB5D19E8958000CC45C8 /* MainInterface.storyboard */; };
 		9AA4BB6019E8969E00CC45C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AA4BB5F19E8969E00CC45C8 /* Images.xcassets */; };
 		9AA4BB6419E8A14700CC45C8 /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB6319E8A14700CC45C8 /* SplashViewController.m */; };
 		9AA4BB6819E8A18800CC45C8 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB6719E8A18800CC45C8 /* API.m */; };
@@ -84,7 +83,6 @@
 		9AA4BB4E19E894C700CC45C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AA4BB4F19E894C700CC45C8 /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		9AA4BB5019E894C700CC45C8 /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
-		9AA4BB5D19E8958000CC45C8 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainInterface.storyboard; path = "../../BitStore-iOS/BitStoreToday/MainInterface.storyboard"; sourceTree = "<group>"; };
 		9AA4BB5F19E8969E00CC45C8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9AA4BB6219E8A14700CC45C8 /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		9AA4BB6319E8A14700CC45C8 /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 				9A5D882A19E94C7B00E4EC3D /* SuccessView.m */,
 				9AA4BB4F19E894C700CC45C8 /* TodayViewController.h */,
 				9AA4BB5019E894C700CC45C8 /* TodayViewController.m */,
-				9AA4BB5D19E8958000CC45C8 /* MainInterface.storyboard */,
 				9AA4BB4D19E894C700CC45C8 /* Supporting Files */,
 				9AA4BB5F19E8969E00CC45C8 /* Images.xcassets */,
 			);
@@ -310,7 +307,7 @@
 				TargetAttributes = {
 					9A73204E19E87299006E8B0C = {
 						CreatedOnToolsVersion = 6.0.1;
-						DevelopmentTeam = 5EFBK52YD3;
+						DevelopmentTeam = 98275V3F4J;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -361,7 +358,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AA4BB5E19E8958000CC45C8 /* MainInterface.storyboard in Resources */,
 				9AA4BB6019E8969E00CC45C8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,13 +539,14 @@
 			baseConfigurationReference = BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = GeoTappy/GeoTappy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GeoTappy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6297e090-5c2e-42c2-bf1c-f1017626daa1";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -558,13 +555,14 @@
 			baseConfigurationReference = BDBF062B73B4443BB32A2D7C /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = GeoTappy/GeoTappy.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GeoTappy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6297e090-5c2e-42c2-bf1c-f1017626daa1";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
