@@ -552,7 +552,7 @@
 				INFOPLIST_FILE = GeoTappy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6297e090-5c2e-42c2-bf1c-f1017626daa1";
 			};
 			name = Debug;
 		};
@@ -568,7 +568,7 @@
 				INFOPLIST_FILE = GeoTappy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6297e090-5c2e-42c2-bf1c-f1017626daa1";
 			};
 			name = Release;
 		};

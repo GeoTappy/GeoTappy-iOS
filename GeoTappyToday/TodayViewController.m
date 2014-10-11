@@ -28,14 +28,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    _locationManager = [[CLLocationManager alloc] init];
-//    _locationManager.delegate = self;
-//    _locationManager.pausesLocationUpdatesAutomatically = NO;
-//    _locationManager.distanceFilter = kCLDistanceFilterNone;
-//    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-//    [_locationManager requestWhenInUseAuthorization];
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.pausesLocationUpdatesAutomatically = NO;
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    [_locationManager requestWhenInUseAuthorization];
     
-    self.preferredContentSize = CGSizeMake(200, 200);
+    self.preferredContentSize = CGSizeMake(200, 105);
+}
+
+- (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets {
+    UIEdgeInsets newInsets = UIEdgeInsetsMake(0, 18, 0, 18);
+    return newInsets;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,13 +66,11 @@
     [self addChildViewController:scroller];
     [self.view addSubview:scroller.view];
     
-    //[_locationManager startUpdatingLocation];
-    NSLog(@"start location manager");
+    [_locationManager startUpdatingLocation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [_locationManager stopUpdatingLocation];
-    NSLog(@"stop location manager");
 }
 
 - (void)profileTap:(UITapGestureRecognizer *)sender {
@@ -132,6 +135,7 @@
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
 
+    NSLog(@"widgetPerformUpdateWithCompletionHandler");
     completionHandler(NCUpdateResultNoData);
 }
 
