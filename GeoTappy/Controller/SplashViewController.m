@@ -83,7 +83,16 @@
                                    [friends addObject:[self userFromJson:friend]];
                                }
                                user.friends = [NSArray arrayWithArray:friends];
-                               user.unselectedFavourites = [NSMutableArray arrayWithArray:friends]; // just temporary
+                               
+                               int i = 0;
+                               for (User* u in friends) {
+                                   if (i < 3) {
+                                       [user.selectedFavourites addObject:u];
+                                   } else {
+                                       [user.unselectedFavourites addObject:u];
+                                   }
+                                   i++;
+                               }
                                [UserDefaults instance].currentUser = user;
                                [UserDefaults instance].accessToken = [profile objectForKey:@"access_token"];
 
