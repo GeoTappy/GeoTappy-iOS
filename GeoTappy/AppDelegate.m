@@ -27,11 +27,6 @@
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
-    
-//    [FBSession.activeSession closeAndClearTokenInformation];
-//    [FBSession.activeSession close];
-//    [FBSession setActiveSession:nil];
-//    [[UserDefaults instance] reset];
    
     return YES;
 }
@@ -54,13 +49,12 @@
 
 - (void)openApp {
     NSString* token = FBSession.activeSession.accessTokenData.accessToken;
-    if (token) {
-        MainNavigationController* m = [[MainNavigationController alloc] init];
-        self.window.rootViewController = m;
-    } else {
-        SplashViewController* splashViewController = [[SplashViewController alloc] init];
-        self.window.rootViewController = splashViewController;
+    MainNavigationController* m = [[MainNavigationController alloc] init];
+    if (!token) {
+        SplashViewController* vc = [[SplashViewController alloc] init];
+        [m presentViewController:vc animated:NO completion:nil];
     }
+    self.window.rootViewController = m;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {

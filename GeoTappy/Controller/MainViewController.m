@@ -12,6 +12,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Group.h"
 #import "GroupEditViewController.h"
+#import <FacebookSDK/FacebookSDK.h>
+#import "SplashViewController.h"
 
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
@@ -48,6 +50,8 @@
     profileImageView.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.8].CGColor;
     profileImageView.layer.borderWidth = 4;
     profileImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [profileImageView setUserInteractionEnabled:YES];
+    [profileImageView addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(logout:)]];
     [self.view addSubview:profileImageView];
     
     UILabel* nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, profileImageView.frame.origin.y + profileImageView.frame.size.height + 12, self.view.frame.size.width, 20)];
@@ -117,6 +121,15 @@
     av.alertViewStyle = UIAlertViewStylePlainTextInput;
     [av textFieldAtIndex:0].placeholder = @"Enter a group name";
     [av show];
+}
+
+- (void)logout:(id)sender {
+    [FBSession.activeSession closeAndClearTokenInformation];
+    [FBSession.activeSession close];
+    [FBSession setActiveSession:nil];
+    [[UserDefaults instance] reset];
+    SplashViewController* vc = [[SplashViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {

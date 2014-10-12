@@ -8,7 +8,6 @@
 
 #import "SplashViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
-#import "MainNavigationController.h"
 #import "User.h"
 #import "UserDefaults.h"
 #import "NullHelper.h"
@@ -60,6 +59,10 @@
     spinner.hidesWhenStopped = YES;
     [self.view addSubview:spinner];
     [spinner startAnimating];
+    
+    [UIView animateWithDuration:0.3 animations:^() {
+        loginView.alpha = 0.0;
+    }];
 
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response,
@@ -81,7 +84,7 @@
 
                                [spinner stopAnimating];
 
-                               self.view.window.rootViewController = [[MainNavigationController alloc] init];
+                               [self dismissViewControllerAnimated:YES completion:nil];
                                
                            }];
 }
