@@ -36,11 +36,11 @@
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     [_locationManager requestWhenInUseAuthorization];
     
-    self.preferredContentSize = CGSizeMake(200, 125);
+    self.preferredContentSize = CGSizeMake(320, 125);
 }
 
 - (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets {
-    UIEdgeInsets newInsets = UIEdgeInsetsMake(0, 18, 0, 18);
+    UIEdgeInsets newInsets = UIEdgeInsetsMake(0, 10, 0, 10);
     return newInsets;
 }
 
@@ -49,6 +49,7 @@
     
     User* user = [UserDefaults instance].currentUser;
     _profileViews = [NSMutableArray array];
+    NSMutableArray* displayViews = [NSMutableArray array];
     for (id<Favourite> favourite in user.selectedFavourites) {
         NSMutableArray* images = [NSMutableArray array];
         if ([favourite isKindOfClass:[User class]]) {
@@ -63,23 +64,24 @@
             }
         }
         
-        UIView* wrapper = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 54, 74)];
-        ProfileView* pv = [[ProfileView alloc] initWithFrame:CGRectMake(5, 0, 44, 44) images:images];
+        UIView* wrapper = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 74)];
+        ProfileView* pv = [[ProfileView alloc] initWithFrame:CGRectMake(3, 0, 44, 44) images:images];
         [pv addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTap:)]];
         [wrapper addSubview:pv];
         
-        UILabel* name = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 54, 20)];
+        UILabel* name = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 50, 20)];
         name.font = [UIFont systemFontOfSize:11];
         name.textColor = [UIColor whiteColor];
         name.textAlignment = NSTextAlignmentCenter;
         name.text = [favourite shortDisplayName];
         [wrapper addSubview:name];
         
-        [_profileViews addObject:wrapper];
+        [_profileViews addObject:pv];
+        [displayViews addObject:wrapper];
     }
     
-    HorizontalScroller* scroller = [[HorizontalScroller alloc] initWithViews:_profileViews];
-    scroller.view.frame = CGRectMake(0, 30, 200, 44);
+    HorizontalScroller* scroller = [[HorizontalScroller alloc] initWithViews:displayViews];
+    scroller.view.frame = CGRectMake(0, 30, self.view.bounds.size.width, 44);
     scroller.padding = UIOffsetMake(10, 0);
     [self addChildViewController:scroller];
     [self.view addSubview:scroller.view];
@@ -158,7 +160,7 @@
     // If there's an update, use NCUpdateResultNewData
 
     NSLog(@"widgetPerformUpdateWithCompletionHandler");
-    completionHandler(NCUpdateResultNoData);
+    completionHandler(NCUpdateResultNewData);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
