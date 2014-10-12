@@ -29,6 +29,7 @@
         self.title = _group.name;
         UIBarButtonItem* addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
         self.navigationItem.rightBarButtonItem = addItem;
+        self.tableView.backgroundColor = [UIColor colorWithWhite:0.92 alpha:1.0];
     }
     return self;
 }
@@ -60,5 +61,19 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [_group.users removeObjectAtIndex:indexPath.row];
+        [_user save];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 
 @end
