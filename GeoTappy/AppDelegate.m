@@ -11,6 +11,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "MainNavigationController.h"
 #import "UserDefaults.h"
+#import "MapNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -24,10 +25,21 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
-   
+    NSString* token = FBSession.activeSession.accessTokenData.accessToken;
+    if (token) {
+        MainNavigationController* m = [[MainNavigationController alloc] init];
+        self.window.rootViewController = m;
+    } else {
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    }
+    
+    UILocalNotification* notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (notification) {
+        [self application:application didReceiveRemoteNotification:(NSDictionary*)notification];
+    }
+
     return YES;
 }
 
@@ -50,11 +62,11 @@
 - (void)openApp {
     NSString* token = FBSession.activeSession.accessTokenData.accessToken;
     MainNavigationController* m = [[MainNavigationController alloc] init];
+    self.window.rootViewController = m;
     if (!token) {
         SplashViewController* vc = [[SplashViewController alloc] init];
         [m presentViewController:vc animated:NO completion:nil];
     }
-    self.window.rootViewController = m;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -64,6 +76,9 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"got push: %@", userInfo);
+    NSDictionary* location = [[userInfo objectForKey:@"info"] objectForKey:@"location"];
+    MapNavigationController* vc = [[MapNavigationController alloc] initWithLocation:CLLocationCoordinate2DMake([[location objectForKey:@"lat"] doubleValue], [[location objectForKey:@"lng"] doubleValue]) name:[[[userInfo objectForKey:@"info"] objectForKey:@"sender"] objectForKey:@"name"]];
+    [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
 }
 
 @end
