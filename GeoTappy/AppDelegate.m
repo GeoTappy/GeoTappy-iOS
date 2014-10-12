@@ -32,7 +32,7 @@
 //    [FBSession.activeSession close];
 //    [FBSession setActiveSession:nil];
 //    [[UserDefaults instance] reset];
-    
+   
     return YES;
 }
 
@@ -66,6 +66,10 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
     return wasHandled;
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"got push: %@", userInfo);
 }
 
 @end

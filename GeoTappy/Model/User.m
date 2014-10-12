@@ -50,4 +50,8 @@
     [UserDefaults instance].currentUser = self;
 }
 
+- (BOOL)isEqual:(id)object {
+    return self.identifier == ((User *)object).identifier;
+}
+
 @end

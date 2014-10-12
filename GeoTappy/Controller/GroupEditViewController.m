@@ -39,7 +39,7 @@
 }
 
 - (void)add:(id)sender {
-    SelectUserViewController* vc = [[SelectUserViewController alloc] initWithDelegate:self];
+    SelectUserViewController* vc = [[SelectUserViewController alloc] initWithDelegate:self group:_group];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

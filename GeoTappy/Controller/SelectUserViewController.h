@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class User;
+@class Group;
 
 @protocol SelectUserDelegate <NSObject>
 
@@ -18,6 +19,6 @@
 
 @interface SelectUserViewController : UITableViewController
 
-- (instancetype)initWithDelegate:(id<SelectUserDelegate>)delegate;
+- (instancetype)initWithDelegate:(id<SelectUserDelegate>)delegate group:(Group *)group;
 
 @end
