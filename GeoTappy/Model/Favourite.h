@@ -9,5 +9,6 @@
 @protocol Favourite <NSObject>
 
 - (NSString *)displayName;
+- (NSString *)shortDisplayName;
 
 @end

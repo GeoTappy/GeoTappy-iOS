@@ -128,8 +128,7 @@
     [FBSession.activeSession close];
     [FBSession setActiveSession:nil];
     [[UserDefaults instance] reset];
-    SplashViewController* vc = [[SplashViewController alloc] init];
-    [self presentViewController:vc animated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {

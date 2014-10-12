@@ -35,4 +35,8 @@
     return self.name;
 }
 
+- (NSString *)shortDisplayName {
+    return self.name;
+}
+
 @end

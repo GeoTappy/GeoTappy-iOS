@@ -27,8 +27,11 @@
     
     NSString* token = FBSession.activeSession.accessTokenData.accessToken;
     if (token) {
+        SplashViewController* vc = [[SplashViewController alloc] init];
+        self.window.rootViewController = vc;
         MainNavigationController* m = [[MainNavigationController alloc] init];
-        self.window.rootViewController = m;
+        m.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [vc presentViewController:m animated:NO completion:nil];
     } else {
         [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -61,11 +64,15 @@
 
 - (void)openApp {
     NSString* token = FBSession.activeSession.accessTokenData.accessToken;
-    MainNavigationController* m = [[MainNavigationController alloc] init];
-    self.window.rootViewController = m;
     if (!token) {
         SplashViewController* vc = [[SplashViewController alloc] init];
-        [m presentViewController:vc animated:NO completion:nil];
+        self.window.rootViewController = vc;
+    } else {
+        SplashViewController* vc = [[SplashViewController alloc] init];
+        self.window.rootViewController = vc;
+        MainNavigationController* m = [[MainNavigationController alloc] init];
+        m.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [vc presentViewController:m animated:NO completion:nil];
     }
 }
 

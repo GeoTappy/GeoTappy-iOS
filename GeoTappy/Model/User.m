@@ -46,6 +46,10 @@
     return self.name;
 }
 
+- (NSString *)shortDisplayName {
+    return [[self.name componentsSeparatedByString:@" "] objectAtIndex:0];
+}
+
 - (void)save {
     [UserDefaults instance].currentUser = self;
 }

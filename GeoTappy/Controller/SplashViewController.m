@@ -11,6 +11,7 @@
 #import "User.h"
 #import "UserDefaults.h"
 #import "NullHelper.h"
+#import "MainNavigationController.h"
 
 @interface SplashViewController () <FBLoginViewDelegate>
 
@@ -37,6 +38,10 @@
     fbLogin.frame = CGRectMake((self.view.frame.size.width / 2) - (fbLogin.frame.size.width / 2), self.view.frame.size.height - 80, fbLogin.frame.size.width, fbLogin.frame.size.height);
     fbLogin.delegate = self;
     [self.view addSubview:fbLogin];
+}
+
+- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+    loginView.alpha = 1.0;
 }
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
@@ -84,7 +89,10 @@
 
                                [spinner stopAnimating];
 
-                               [self dismissViewControllerAnimated:YES completion:nil];
+                               
+                               MainNavigationController* vc = [[MainNavigationController alloc] init];
+                               vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                               [self presentViewController:vc animated:YES completion:nil];
                                
                            }];
 }

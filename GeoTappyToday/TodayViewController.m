@@ -36,7 +36,7 @@
     _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     [_locationManager requestWhenInUseAuthorization];
     
-    self.preferredContentSize = CGSizeMake(200, 105);
+    self.preferredContentSize = CGSizeMake(200, 125);
 }
 
 - (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets {
@@ -62,9 +62,20 @@
                 }
             }
         }
-        ProfileView* pv = [[ProfileView alloc] initWithFrame:CGRectMake(0, 0, 44, 44) images:images];
+        
+        UIView* wrapper = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 54, 74)];
+        ProfileView* pv = [[ProfileView alloc] initWithFrame:CGRectMake(5, 0, 44, 44) images:images];
         [pv addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileTap:)]];
-        [_profileViews addObject:pv];
+        [wrapper addSubview:pv];
+        
+        UILabel* name = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 54, 20)];
+        name.font = [UIFont systemFontOfSize:11];
+        name.textColor = [UIColor whiteColor];
+        name.textAlignment = NSTextAlignmentCenter;
+        name.text = [favourite shortDisplayName];
+        [wrapper addSubview:name];
+        
+        [_profileViews addObject:wrapper];
     }
     
     HorizontalScroller* scroller = [[HorizontalScroller alloc] initWithViews:_profileViews];
