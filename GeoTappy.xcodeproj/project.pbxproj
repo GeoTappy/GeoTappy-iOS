@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9A2D9AA819E9A3EB00397285 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D9AA719E9A3EB00397285 /* Group.m */; };
 		9A5D882B19E94C7B00E4EC3D /* SuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D882A19E94C7B00E4EC3D /* SuccessView.m */; };
+		9A62D7F719EA649000B0D1D1 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62D7F619EA649000B0D1D1 /* CustomCell.m */; };
 		9A73205519E87299006E8B0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73205419E87299006E8B0C /* main.m */; };
 		9A73205819E87299006E8B0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A73205719E87299006E8B0C /* AppDelegate.m */; };
 		9A73206019E87299006E8B0C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A73205F19E87299006E8B0C /* Images.xcassets */; };
@@ -77,6 +78,8 @@
 		9A2D9AA719E9A3EB00397285 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		9A5D882919E94C7B00E4EC3D /* SuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessView.h; sourceTree = "<group>"; };
 		9A5D882A19E94C7B00E4EC3D /* SuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessView.m; sourceTree = "<group>"; };
+		9A62D7F519EA649000B0D1D1 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		9A62D7F619EA649000B0D1D1 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		9A73204F19E87299006E8B0C /* GeoTappy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoTappy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A73205319E87299006E8B0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A73205419E87299006E8B0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -157,6 +160,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9A62D7F419EA647F00B0D1D1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A62D7F519EA649000B0D1D1 /* CustomCell.h */,
+				9A62D7F619EA649000B0D1D1 /* CustomCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9A73204619E87299006E8B0C = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +197,7 @@
 				9AA4BB6119E8A14700CC45C8 /* Controller */,
 				9AA4BB6F19E8B43000CC45C8 /* Model */,
 				9AA4BB7619E8B56000CC45C8 /* Utils */,
+				9A62D7F419EA647F00B0D1D1 /* View */,
 				9A73205619E87299006E8B0C /* AppDelegate.h */,
 				9A73205719E87299006E8B0C /* AppDelegate.m */,
 				9AA4BB4419E8891100CC45C8 /* GeoTappy-Prefix.pch */,
@@ -435,6 +448,7 @@
 			files = (
 				9AAD957A19E9D874002450D1 /* GroupEditViewController.m in Sources */,
 				9A917D2919E98C630008448A /* User.m in Sources */,
+				9A62D7F719EA649000B0D1D1 /* CustomCell.m in Sources */,
 				9AAD957D19E9D89F002450D1 /* MainNavigationController.m in Sources */,
 				9AAD958019E9E163002450D1 /* SelectUserViewController.m in Sources */,
 				9AA4BB7519E8B4D100CC45C8 /* MainViewController.m in Sources */,

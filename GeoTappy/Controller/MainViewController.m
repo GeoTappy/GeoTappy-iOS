@@ -14,6 +14,7 @@
 #import "GroupEditViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "SplashViewController.h"
+#import "CustomCell.h"
 
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
@@ -170,14 +171,17 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell* cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     id<Favourite> fav;
     if (indexPath.section == 0) {
         fav = [_user.selectedFavourites objectAtIndex:indexPath.row];
     } else if (indexPath.section == 1) {
         fav = [_user.unselectedFavourites objectAtIndex:indexPath.row];
     }
-    cell.textLabel.text = [fav displayName];
+    UIImage* img;
+    if ([fav isKindOfClass:[User class]]) {
+        img = ((User *)fav).profileImage;
+    }
+    CustomCell* cell = [[CustomCell alloc] initWithName:[fav displayName] image:img];
     if ([fav isKindOfClass:[Group class]]) {
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -186,6 +190,10 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {

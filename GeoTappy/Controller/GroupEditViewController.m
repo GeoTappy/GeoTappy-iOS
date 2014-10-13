@@ -11,6 +11,7 @@
 #import "User.h"
 #import "SelectUserViewController.h"
 #import "UserDefaults.h"
+#import "CustomCell.h"
 
 @interface GroupEditViewController () <SelectUserDelegate>
 
@@ -55,11 +56,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell* cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     User* user = [_group.users objectAtIndex:indexPath.row];
-    cell.textLabel.text = user.name;
+    CustomCell* cell = [[CustomCell alloc] initWithName:user.name image:user.profileImage];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

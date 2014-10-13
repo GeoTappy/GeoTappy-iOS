@@ -10,6 +10,7 @@
 #import "User.h"
 #import "UserDefaults.h"
 #import "Group.h"
+#import "CustomCell.h"
 
 @implementation SelectUserViewController {
     User* _user;
@@ -39,9 +40,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     User* friend = [_friends objectAtIndex:indexPath.row];
-    UITableViewCell* cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.textLabel.text = friend.name;
+    CustomCell* cell = [[CustomCell alloc] initWithName:friend.name image:friend.profileImage];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
