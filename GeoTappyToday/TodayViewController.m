@@ -150,10 +150,9 @@
                                                NSError *error) {
                                if (data && !error) {
                                    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                   NSLog(@"result: %@", json);
+                                   // TODO handle response
                                    completion(YES);
                                } else {
-                                   NSLog(@"error: %@", error);
                                    completion(NO);
                                }
                                
@@ -167,7 +166,6 @@
     // If there's no update required, use NCUpdateResultNoData
     // If there's an update, use NCUpdateResultNewData
 
-    NSLog(@"widgetPerformUpdateWithCompletionHandler");
     completionHandler(NCUpdateResultNewData);
 }
 
@@ -176,11 +174,9 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"error: %@", error);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-    NSLog(@"status: %i", status);
 }
 
 @end
