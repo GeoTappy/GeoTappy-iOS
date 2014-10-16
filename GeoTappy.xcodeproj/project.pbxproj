@@ -647,7 +647,7 @@
 				INFOPLIST_FILE = GeoTappy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "34d2b9ac-5e29-46aa-a28a-b0ee669caa8f";
+				PROVISIONING_PROFILE = "8b842279-61d8-4614-baa0-e34705e8ad4f";
 			};
 			name = Debug;
 		};
@@ -663,7 +663,7 @@
 				INFOPLIST_FILE = GeoTappy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "34d2b9ac-5e29-46aa-a28a-b0ee669caa8f";
+				PROVISIONING_PROFILE = "8b842279-61d8-4614-baa0-e34705e8ad4f";
 			};
 			name = Release;
 		};
@@ -680,7 +680,7 @@
 				INFOPLIST_FILE = GeoTappyToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8d8c7032-cf86-4ba0-999d-e8f356fd6c57";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -695,7 +695,7 @@
 				INFOPLIST_FILE = GeoTappyToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8d8c7032-cf86-4ba0-999d-e8f356fd6c57";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
