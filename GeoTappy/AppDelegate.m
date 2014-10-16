@@ -12,7 +12,7 @@
 #import "MainNavigationController.h"
 #import "UserDefaults.h"
 #import "MapNavigationController.h"
- #import <HockeySDK/HockeySDK.h>
+#import <HockeySDK/HockeySDK.h>
 
 @interface AppDelegate ()
 

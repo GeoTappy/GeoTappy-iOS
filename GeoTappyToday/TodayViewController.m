@@ -15,6 +15,7 @@
 #import "RequestHelper.h"
 #import <CoreLocation/CoreLocation.h>
 #import "Group.h"
+#import <HockeySDK/HockeySDK.h>
 
 @interface TodayViewController () <NCWidgetProviding, CLLocationManagerDelegate>
 
@@ -24,10 +25,17 @@
     NSMutableArray* _profileViews;
     CLLocationManager* _locationManager;
     CLLocation* _currentLocation;
+    BOOL _didSetupHockeySDK;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (!_didSetupHockeySDK) {
+        [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"df1ffbdc02950279fd07f57c2202f762"];
+        [[BITHockeyManager sharedHockeyManager] startManager];
+        _didSetupHockeySDK = YES;
+    }
     
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
