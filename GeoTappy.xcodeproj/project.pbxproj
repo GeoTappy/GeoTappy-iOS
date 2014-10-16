@@ -16,6 +16,7 @@
 		9A917D2019E972CD0008448A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9A917D2219E972CD0008448A /* Localizable.strings */; };
 		9A917D2919E98C630008448A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A917D2819E98C630008448A /* User.m */; };
 		9A917D2A19E98C630008448A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A917D2819E98C630008448A /* User.m */; };
+		9A9999BA19F06E780028416E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A9999B919F06E780028416E /* MainInterface.storyboard */; };
 		9AA4BB4B19E894C700CC45C8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA4BB4A19E894C700CC45C8 /* NotificationCenter.framework */; };
 		9AA4BB5119E894C700CC45C8 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB5019E894C700CC45C8 /* TodayViewController.m */; };
 		9AA4BB5619E894C700CC45C8 /* GeoTappyToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9AA4BB4919E894C600CC45C8 /* GeoTappyToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -92,6 +93,7 @@
 		9A917D2119E972CD0008448A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9A917D2719E98C630008448A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		9A917D2819E98C630008448A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		9A9999B919F06E780028416E /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		9AA4BB4419E8891100CC45C8 /* GeoTappy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GeoTappy-Prefix.pch"; sourceTree = "<group>"; };
 		9AA4BB4919E894C600CC45C8 /* GeoTappyToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GeoTappyToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AA4BB4A19E894C700CC45C8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -250,6 +252,7 @@
 		9AA4BB4D19E894C700CC45C8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9A9999B919F06E780028416E /* MainInterface.storyboard */,
 				9AA4BB4E19E894C700CC45C8 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -417,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AA4BB6019E8969E00CC45C8 /* Images.xcassets in Resources */,
+				9A9999BA19F06E780028416E /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
