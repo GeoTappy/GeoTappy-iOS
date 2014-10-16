@@ -1,1 +1,0 @@
-../../Mapbox-iOS-SDK/MapView/Map/RMTileImage.h
