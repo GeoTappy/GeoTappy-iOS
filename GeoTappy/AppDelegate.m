@@ -12,6 +12,7 @@
 #import "MainNavigationController.h"
 #import "UserDefaults.h"
 #import "MapNavigationController.h"
+ #import <HockeySDK/HockeySDK.h>
 
 @interface AppDelegate ()
 
@@ -40,6 +41,10 @@
         [self application:application didReceiveRemoteNotification:(NSDictionary*)notification];
     }
 
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"df1ffbdc02950279fd07f57c2202f762"];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+    
     return YES;
 }
 
