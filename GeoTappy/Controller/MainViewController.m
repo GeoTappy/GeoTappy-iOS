@@ -203,7 +203,10 @@
     return NO;
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!tableView.editing) {
+        return UITableViewCellEditingStyleNone;
+    }
     if (indexPath.section == 0) {
         return UITableViewCellEditingStyleDelete;
     } else {
