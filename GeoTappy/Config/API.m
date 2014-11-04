@@ -10,18 +10,30 @@
 
 @implementation API
 
-static NSString* BASE_URL = @"http://geo-tappy.herokuapp.com/api/v1/";
+static NSString* BASE_URL = @"http://geotappy.com/";
 
-+ (NSString *)facebookRegisterUrl {
-    return [self urlWithSuffix:@"token"];
++ (NSString *)tokenUrl {
+    return [self baseUrlWithSuffix:@"oauth/token.json"];
+}
+
++ (NSString *)profileUrl {
+    return [self urlWithSuffix:@"profile.json"];
+}
+
++ (NSString *)pushTokenUrl {
+    return [self urlWithSuffix:@"profile/token.json"];
 }
 
 + (NSString *)shareLocationUrl {
     return [self urlWithSuffix:@"location_shares"];
 }
 
-+ (NSString *)urlWithSuffix:(NSString *)suffix {
++ (NSString *)baseUrlWithSuffix:(NSString *)suffix {
     return [NSString stringWithFormat:@"%@%@", BASE_URL, suffix];
+}
+
++ (NSString *)urlWithSuffix:(NSString *)suffix {
+    return [NSString stringWithFormat:@"%@api/v1/%@", BASE_URL, suffix];
 }
 
 @end

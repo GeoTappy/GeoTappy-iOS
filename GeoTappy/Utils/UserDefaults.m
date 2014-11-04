@@ -8,6 +8,7 @@
 
 #import "UserDefaults.h"
 #import "User.h"
+#import "Authentication.h"
 
 @implementation UserDefaults {
     NSUserDefaults* _defaults;
@@ -40,20 +41,12 @@ static UserDefaults* sharedInstance;
     [self setCodableObject:currentUser forKey:@"currentUser"];
 }
 
-- (NSString *)pushToken {
-    return (NSString *)[self codableObjectForKey:@"pushToken"];
+- (Authentication *)authentication {
+    return (Authentication *)[self codableObjectForKey:@"authentication"];
 }
 
-- (void)setPushToken:(NSString *)pushToken {
-    [self setCodableObject:pushToken forKey:@"pushToken"];
-}
-
-- (NSString *)accessToken {
-    return (NSString *)[self codableObjectForKey:@"accessToken"];
-}
-
-- (void)setAccessToken:(NSString *)accessToken {
-    [self setCodableObject:accessToken forKey:@"accessToken"];
+- (void)setAuthentication:(Authentication *)authentication {
+    [self setCodableObject:authentication forKey:@"authentication"];
 }
 
 #pragma mark -

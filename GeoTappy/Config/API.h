@@ -10,7 +10,9 @@
 
 @interface API : NSObject
 
-+ (NSString *)facebookRegisterUrl;
++ (NSString *)tokenUrl;
++ (NSString *)profileUrl;
++ (NSString *)pushTokenUrl;
 + (NSString *)shareLocationUrl;
 
 @end

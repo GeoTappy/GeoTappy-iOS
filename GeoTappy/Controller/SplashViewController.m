@@ -12,6 +12,8 @@
 #import "UserDefaults.h"
 #import "NullHelper.h"
 #import "MainNavigationController.h"
+#import "Authentication.h"
+#import "RequestHelper.h"
 
 @interface SplashViewController () <FBLoginViewDelegate>
 
@@ -45,19 +47,6 @@
 }
 
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
-    NSString* token = FBSession.activeSession.accessTokenData.accessToken;
-    NSMutableDictionary* jsonDict = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary* auth = [[NSMutableDictionary alloc] init];
-    [auth setObject:@"facebook" forKey:@"provider"];
-    [auth setObject:token forKey:@"token"];
-    [jsonDict setObject:auth forKey:@"auth"];
-    [jsonDict setObject:[NullHelper nullOrObject:[UserDefaults instance].pushToken] forKey:@"push_token"];
-    NSData* json = [NSJSONSerialization dataWithJSONObject:jsonDict options:NSJSONWritingPrettyPrinted error:nil];
-
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[API facebookRegisterUrl]]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:json];
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 
     spinner.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height / 2.0);
@@ -69,41 +58,44 @@
         loginView.alpha = 0.0;
     }];
 
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response,
-                                               NSData *data,
-                                               NSError *error) {
-                               
-                               
-                               NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                               NSDictionary* profile = [json objectForKey:@"profile"];
-                               User* user = [self userFromJson:profile];
-                               NSMutableArray* friends = [NSMutableArray array];
-                               for (NSDictionary* friend in [profile objectForKey:@"friends"]) {
-                                   [friends addObject:[self userFromJson:friend]];
-                               }
-                               user.friends = [NSArray arrayWithArray:friends];
-                               
-                               int i = 0;
-                               for (User* u in friends) {
-                                   if (i < 3) {
-                                       [user.selectedFavourites addObject:u];
-                                   } else {
-                                       [user.unselectedFavourites addObject:u];
-                                   }
-                                   i++;
-                               }
-                               [UserDefaults instance].currentUser = user;
-                               [UserDefaults instance].accessToken = [profile objectForKey:@"access_token"];
-
-                               [spinner stopAnimating];
-
-                               
-                               MainNavigationController* vc = [[MainNavigationController alloc] init];
-                               vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-                               [self presentViewController:vc animated:YES completion:nil];
-                               
-                           }];
+    [RequestHelper createAccessTokenWithCompletion:^(BOOL sucess) {
+        if (sucess) {
+            NSString* url = [NSString stringWithFormat:@"%@?access_token=%@", [API profileUrl], [UserDefaults instance].authentication.accessToken];
+            NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+            [RequestHelper startRequest:request completion:^(BOOL success, NSData* data) {
+                NSError* jsonError;
+                //NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                NSDictionary* profile = [json objectForKey:@"profile"];
+                User* user = [self userFromJson:profile];
+                NSMutableArray* friends = [NSMutableArray array];
+                for (NSDictionary* friend in [profile objectForKey:@"friends"]) {
+                    [friends addObject:[self userFromJson:friend]];
+                }
+                user.friends = [NSArray arrayWithArray:friends];
+                
+                int i = 0;
+                for (User* u in friends) {
+                    if (i < 3) {
+                        [user.selectedFavourites addObject:u];
+                    } else {
+                        [user.unselectedFavourites addObject:u];
+                    }
+                    i++;
+                }
+                [UserDefaults instance].currentUser = user;
+                
+                [spinner stopAnimating];
+                
+                
+                MainNavigationController* vc = [[MainNavigationController alloc] init];
+                vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                [self presentViewController:vc animated:YES completion:nil];
+            }];
+        } else {
+            // handle error
+        }
+    }];
 }
 
 - (User *)userFromJson:(NSDictionary *)json {

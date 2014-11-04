@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class Authentication;
 @class User;
 
 @interface UserDefaults : NSObject
 
 @property (nonatomic) User* currentUser;
-@property (nonatomic) NSString* pushToken;
-@property (nonatomic) NSString* accessToken;
+@property (nonatomic) Authentication* authentication;
 
 + (UserDefaults *)instance;
 - (void)reset;

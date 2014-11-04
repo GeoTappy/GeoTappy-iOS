@@ -13,6 +13,8 @@
 #import "UserDefaults.h"
 #import "MapNavigationController.h"
 #import <HockeySDK/HockeySDK.h>
+#import <DMJobManager/DMJobManager.h>
+#import "PushTokenJob.h"
 
 @interface AppDelegate ()
 
@@ -56,7 +58,9 @@
     NSString* token = [deviceToken description];
     token = [token stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [UserDefaults instance].pushToken = token;
+    [DMJobManager startManager];
+    PushTokenJob* job = [[PushTokenJob alloc] initWithToken:token];
+    [DMJobManager postJob:job];
     [self openApp];
 }
 
