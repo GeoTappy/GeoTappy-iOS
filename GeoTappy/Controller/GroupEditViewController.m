@@ -38,6 +38,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
+    [self updateButtons];
+}
+
+- (void)updateButtons {
+    NSMutableArray* notSelected = [NSMutableArray array];
+    for (User* f in _user.friends) {
+        if (![_group.users containsObject:f]) {
+            [notSelected addObject:f];
+        }
+    }
+    self.navigationItem.rightBarButtonItem.enabled = notSelected.count > 0;
 }
 
 - (void)add:(id)sender {
@@ -76,6 +87,7 @@
         [_group.users removeObjectAtIndex:indexPath.row];
         [_user save];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self updateButtons];
     }
 }
 
