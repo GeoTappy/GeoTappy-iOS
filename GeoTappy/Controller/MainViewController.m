@@ -16,6 +16,8 @@
 #import "SplashViewController.h"
 #import "CustomCell.h"
 
+static const NSUInteger MAX_FAVS = 5;
+
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 
 @end
@@ -147,7 +149,11 @@
     if (buttonIndex == 1) {
         Group* group = [[Group alloc] init];
         group.name = [alertView textFieldAtIndex:0].text;
-        [_user.unselectedFavourites addObject:group];
+        if (_user.selectedFavourites.count < MAX_FAVS) {
+            [_user.selectedFavourites addObject:group];
+        } else {
+            [_user.unselectedFavourites addObject:group];
+        }
         [_user save];
         [_tableView reloadData];
         GroupEditViewController* vc = [[GroupEditViewController alloc] initWithGroup:group user:_user];
@@ -217,7 +223,7 @@
     if (indexPath.section == 0) {
         return UITableViewCellEditingStyleDelete;
     } else {
-        if (_user.selectedFavourites.count < 5) {
+        if (_user.selectedFavourites.count < MAX_FAVS) {
             return UITableViewCellEditingStyleInsert;
         } else {
             return UITableViewCellEditingStyleNone;
