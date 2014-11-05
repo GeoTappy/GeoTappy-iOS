@@ -16,6 +16,7 @@
 #import "SplashViewController.h"
 #import "CustomCell.h"
 #import "FavouriteListener.h"
+#import "AppDelegate.h"
 
 static const NSUInteger MAX_FAVS = 5;
 
@@ -33,6 +34,7 @@ static const NSUInteger MAX_FAVS = 5;
     [super viewDidLoad];
     
     _user = [UserDefaults instance].currentUser;
+    [_user addFavouriteListener:self];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     UIImage* coverImage = _user.coverImage;
@@ -130,20 +132,19 @@ static const NSUInteger MAX_FAVS = 5;
 }
 
 - (void)logout:(UILongPressGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateEnded) {
+    if (sender.state == UIGestureRecognizerStateBegan) {
         [FBSession.activeSession closeAndClearTokenInformation];
         [FBSession.activeSession close];
         [FBSession setActiveSession:nil];
         [[UserDefaults instance] reset];
         
         SplashViewController* vc = [[SplashViewController alloc] init];
-        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:vc animated:YES completion:nil];
+        ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController = vc;
     }
 }
 
-#pragma mark - UserListener
-- (void)userChanged:(User *)user {
+#pragma mark - FavouriteListener
+- (void)favouriteChanged:(id<Favourite>)favourite {
     [_tableView reloadData];
 }
 
@@ -219,8 +220,13 @@ static const NSUInteger MAX_FAVS = 5;
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         return YES;
+    } else {
+        if (_user.selectedFavourites.count < MAX_FAVS) {
+            return YES;
+        } else {
+            return NO;
+        }
     }
-    return NO;
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -259,18 +265,28 @@ static const NSUInteger MAX_FAVS = 5;
 
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    id obj = [_user.selectedFavourites objectAtIndex:sourceIndexPath.row];
-    [_user.selectedFavourites removeObjectAtIndex:sourceIndexPath.row];
-    [_user.selectedFavourites insertObject:obj atIndex:destinationIndexPath.row];
+    id obj;
+    if (sourceIndexPath.section == 0) {
+        obj = [_user.selectedFavourites objectAtIndex:sourceIndexPath.row];
+        [_user.selectedFavourites removeObjectAtIndex:sourceIndexPath.row];
+    } else if (sourceIndexPath.section == 1) {
+        obj = [_user.unselectedFavourites objectAtIndex:sourceIndexPath.row];
+        [_user.unselectedFavourites removeObjectAtIndex:sourceIndexPath.row];
+    }
+    if (destinationIndexPath.section == 0) {
+        [_user.selectedFavourites insertObject:obj atIndex:destinationIndexPath.row];
+    } else if (destinationIndexPath.section == 1) {
+        [_user.unselectedFavourites insertObject:obj atIndex:destinationIndexPath.row];
+    }
     [_user save];
 }
-
-- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
-    if (proposedDestinationIndexPath.section != sourceIndexPath.section) {
-        return sourceIndexPath;
-    }
-    return proposedDestinationIndexPath;
-}
+//
+//- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+//    if (proposedDestinationIndexPath.section == 0 && sourceIndexPath.section == 1 && _user.selectedFavourites.count >= MAX_FAVS) {
+//        return sourceIndexPath;
+//    }
+//    return proposedDestinationIndexPath;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

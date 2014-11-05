@@ -87,14 +87,9 @@
                 
                 [spinner stopAnimating];
                 
-                if ([self presentingViewController] == nil) {
-                    MainNavigationController* vc = [[MainNavigationController alloc] init];
-                    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-                    self.view.window.rootViewController = vc;
-                } else {
-                    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                }
+                MainNavigationController* vc = [[MainNavigationController alloc] init];
+                vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                self.view.window.rootViewController = vc;
             }];
         } else {
             // handle error
