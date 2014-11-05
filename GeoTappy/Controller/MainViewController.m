@@ -126,12 +126,17 @@
     [av show];
 }
 
-- (void)logout:(id)sender {
-    [FBSession.activeSession closeAndClearTokenInformation];
-    [FBSession.activeSession close];
-    [FBSession setActiveSession:nil];
-    [[UserDefaults instance] reset];
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)logout:(UILongPressGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        [FBSession.activeSession closeAndClearTokenInformation];
+        [FBSession.activeSession close];
+        [FBSession setActiveSession:nil];
+        [[UserDefaults instance] reset];
+        
+        SplashViewController* vc = [[SplashViewController alloc] init];
+        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:vc animated:YES completion:nil];
+    }
 }
 
 - (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {

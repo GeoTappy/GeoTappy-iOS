@@ -28,14 +28,11 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
     NSString* token = FBSession.activeSession.accessTokenData.accessToken;
     if (token) {
-        MainNavigationController* m = [[MainNavigationController alloc] init];
-        self.window.rootViewController = m;
     } else {
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
     }
     
     UILocalNotification* notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -46,6 +43,17 @@
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"df1ffbdc02950279fd07f57c2202f762"];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+    
+    if (token) {
+        MainNavigationController* mainNavigationController = [[MainNavigationController alloc] init];
+        self.window.rootViewController = mainNavigationController;
+        
+        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    } else {
+        SplashViewController* splashViewController = [[SplashViewController alloc] init];
+        self.window.rootViewController = splashViewController;
+    }
     
     return YES;
 }
@@ -61,22 +69,9 @@
     [DMJobManager startManager];
     PushTokenJob* job = [[PushTokenJob alloc] initWithToken:token];
     [DMJobManager postJob:job];
-    [self openApp];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error {
-    [self openApp];
-}
-
-- (void)openApp {
-    NSString* token = FBSession.activeSession.accessTokenData.accessToken;
-    if (!token) {
-        SplashViewController* vc = [[SplashViewController alloc] init];
-        self.window.rootViewController = vc;
-    } else {
-        MainNavigationController* m = [[MainNavigationController alloc] init];
-        self.window.rootViewController = m;
-    }
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
