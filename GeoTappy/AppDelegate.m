@@ -16,12 +16,7 @@
 #import <DMJobManager/DMJobManager.h>
 #import "PushTokenJob.h"
 
-@interface AppDelegate ()
-
-@end
-
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
