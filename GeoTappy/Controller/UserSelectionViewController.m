@@ -1,25 +1,25 @@
 //
-//  SelectUserViewController.m
+//  UserSelectionViewController.m
 //  GeoTappy
 //
 //  Created by Dylan Marriott on 12/10/14.
 //  Copyright (c) 2014 Dylan Marriott. All rights reserved.
 //
 
-#import "SelectUserViewController.h"
+#import "UserSelectionViewController.h"
 #import "User.h"
 #import "UserDefaults.h"
 #import "Group.h"
 #import "CustomCell.h"
 
-@implementation SelectUserViewController {
+@implementation UserSelectionViewController {
     User* _user;
     Group* _group;
-    __weak id<SelectUserDelegate> _delegate;
+    __weak id<UserSelectionDelegate> _delegate;
     NSMutableArray* _friends;
 }
 
-- (instancetype)initWithDelegate:(id<SelectUserDelegate>)delegate group:(id)group {
+- (instancetype)initWithDelegate:(id<UserSelectionDelegate>)delegate group:(id)group {
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         _delegate = delegate;
         _group = group;

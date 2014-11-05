@@ -9,11 +9,11 @@
 #import "GroupEditViewController.h"
 #import "Group.h"
 #import "User.h"
-#import "SelectUserViewController.h"
+#import "UserSelectionViewController.h"
 #import "UserDefaults.h"
 #import "CustomCell.h"
 
-@interface GroupEditViewController () <SelectUserDelegate>
+@interface GroupEditViewController () <UserSelectionDelegate>
 
 @end
 
@@ -52,7 +52,7 @@
 }
 
 - (void)add:(id)sender {
-    SelectUserViewController* vc = [[SelectUserViewController alloc] initWithDelegate:self group:_group];
+    UserSelectionViewController* vc = [[UserSelectionViewController alloc] initWithDelegate:self group:_group];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

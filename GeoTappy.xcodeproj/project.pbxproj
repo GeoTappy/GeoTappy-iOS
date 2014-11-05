@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9A0A4FE319FFDCCD002F62FE /* Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A4FE219FFDCCD002F62FE /* Authentication.m */; };
 		9A0A4FE419FFDD96002F62FE /* Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A4FE219FFDCCD002F62FE /* Authentication.m */; };
+		9A29819C1A0A891500151F0B /* UserSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A29819B1A0A891500151F0B /* UserSelectionViewController.m */; };
 		9A2D9AA819E9A3EB00397285 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D9AA719E9A3EB00397285 /* Group.m */; };
 		9A2EF6271A086E5E00BC17F2 /* PushTokenJob.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2EF6261A086E5E00BC17F2 /* PushTokenJob.m */; };
 		9A5D882B19E94C7B00E4EC3D /* SuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D882A19E94C7B00E4EC3D /* SuccessView.m */; };
@@ -41,7 +42,6 @@
 		9AAA33D11A003443003C5131 /* NullHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA4BB7F19E92D2300CC45C8 /* NullHelper.m */; };
 		9AAD957A19E9D874002450D1 /* GroupEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD957919E9D874002450D1 /* GroupEditViewController.m */; };
 		9AAD957D19E9D89F002450D1 /* MainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD957C19E9D89F002450D1 /* MainNavigationController.m */; };
-		9AAD958019E9E163002450D1 /* SelectUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD957F19E9E163002450D1 /* SelectUserViewController.m */; };
 		9AAD958119E9E5C8002450D1 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D9AA719E9A3EB00397285 /* Group.m */; };
 		9AAD958419EA034C002450D1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD958319EA034C002450D1 /* MapViewController.m */; };
 		9AAD958719EA035A002450D1 /* MapNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD958619EA035A002450D1 /* MapNavigationController.m */; };
@@ -86,6 +86,8 @@
 		8E09EF52CE76DC7BA1996295 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9A0A4FE119FFDCCD002F62FE /* Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Authentication.h; sourceTree = "<group>"; };
 		9A0A4FE219FFDCCD002F62FE /* Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Authentication.m; sourceTree = "<group>"; };
+		9A29819A1A0A891500151F0B /* UserSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSelectionViewController.h; sourceTree = "<group>"; };
+		9A29819B1A0A891500151F0B /* UserSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSelectionViewController.m; sourceTree = "<group>"; };
 		9A2D9AA619E9A3EB00397285 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
 		9A2D9AA719E9A3EB00397285 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		9A2EF6251A086E5E00BC17F2 /* PushTokenJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushTokenJob.h; sourceTree = "<group>"; };
@@ -137,8 +139,6 @@
 		9AAD957919E9D874002450D1 /* GroupEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupEditViewController.m; sourceTree = "<group>"; };
 		9AAD957B19E9D89F002450D1 /* MainNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainNavigationController.h; sourceTree = "<group>"; };
 		9AAD957C19E9D89F002450D1 /* MainNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainNavigationController.m; sourceTree = "<group>"; };
-		9AAD957E19E9E163002450D1 /* SelectUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectUserViewController.h; sourceTree = "<group>"; };
-		9AAD957F19E9E163002450D1 /* SelectUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectUserViewController.m; sourceTree = "<group>"; };
 		9AAD958219EA034C002450D1 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		9AAD958319EA034C002450D1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		9AAD958519EA035A002450D1 /* MapNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapNavigationController.h; sourceTree = "<group>"; };
@@ -287,8 +287,8 @@
 				9AAD958319EA034C002450D1 /* MapViewController.m */,
 				9AA4BB6219E8A14700CC45C8 /* SplashViewController.h */,
 				9AA4BB6319E8A14700CC45C8 /* SplashViewController.m */,
-				9AAD957E19E9E163002450D1 /* SelectUserViewController.h */,
-				9AAD957F19E9E163002450D1 /* SelectUserViewController.m */,
+				9A29819A1A0A891500151F0B /* UserSelectionViewController.h */,
+				9A29819B1A0A891500151F0B /* UserSelectionViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -516,7 +516,7 @@
 				9A917D2919E98C630008448A /* User.m in Sources */,
 				9A62D7F719EA649000B0D1D1 /* CustomCell.m in Sources */,
 				9AAD957D19E9D89F002450D1 /* MainNavigationController.m in Sources */,
-				9AAD958019E9E163002450D1 /* SelectUserViewController.m in Sources */,
+				9A29819C1A0A891500151F0B /* UserSelectionViewController.m in Sources */,
 				9A2EF6271A086E5E00BC17F2 /* PushTokenJob.m in Sources */,
 				9AA4BB7519E8B4D100CC45C8 /* MainViewController.m in Sources */,
 				9AA4BB8019E92D2300CC45C8 /* NullHelper.m in Sources */,

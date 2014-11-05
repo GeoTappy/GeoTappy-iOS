@@ -1,5 +1,5 @@
 //
-//  SelectUserViewController.h
+//  UserSelectionViewController.h
 //  GeoTappy
 //
 //  Created by Dylan Marriott on 12/10/14.
@@ -11,14 +11,14 @@
 @class User;
 @class Group;
 
-@protocol SelectUserDelegate <NSObject>
+@protocol UserSelectionDelegate <NSObject>
 
 - (void)selectedUser:(User *)user;
 
 @end
 
-@interface SelectUserViewController : UITableViewController
+@interface UserSelectionViewController : UITableViewController
 
-- (instancetype)initWithDelegate:(id<SelectUserDelegate>)delegate group:(Group *)group;
+- (instancetype)initWithDelegate:(id<UserSelectionDelegate>)delegate group:(Group *)group;
 
 @end
