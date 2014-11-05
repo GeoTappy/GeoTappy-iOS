@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol Favourite;
+
 @interface CustomCell : UITableViewCell
 
-- (instancetype)initWithName:(NSString *)name image:(UIImage *)image;
+- (instancetype)initWithName:(NSString *)name favourite:(id<Favourite>)favourite;
 
 @end

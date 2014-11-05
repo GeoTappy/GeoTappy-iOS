@@ -8,11 +8,16 @@
 
 #import "User.h"
 #import "UserDefaults.h"
+#import <DMListener/DMListener.h>
+#import "FavouriteListener.h"
 
-@implementation User
+@implementation User {
+    DMListeners* _listeners;
+}
 
 - (instancetype)init {
     if (self = [super init]) {
+        _listeners = [[DMListeners alloc] init];
         self.selectedFavourites = [NSMutableArray array];
         self.unselectedFavourites = [NSMutableArray array];
     }
@@ -20,7 +25,7 @@
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super init]) {
+    if (self = [self init]) {
         self.identifier = [aDecoder decodeObjectForKey:@"identifier"];
         self.name = [aDecoder decodeObjectForKey:@"name"];
         self.profileImage = [aDecoder decodeObjectForKey:@"profileImage"];
@@ -52,6 +57,13 @@
 
 - (void)save {
     [UserDefaults instance].currentUser = self;
+    [_listeners notifyListeners:^(id<FavouriteListener> listener) {
+        [listener favouriteChanged:self];
+    }];
+}
+
+- (void)addFavouriteListener:(id<Favourite>)favourite {
+    [_listeners addListener:favourite];
 }
 
 - (BOOL)isEqual:(id)object {

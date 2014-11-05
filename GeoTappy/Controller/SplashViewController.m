@@ -83,7 +83,7 @@
                     }
                     i++;
                 }
-                [UserDefaults instance].currentUser = user;
+                [user save];
                 
                 [spinner stopAnimating];
                 

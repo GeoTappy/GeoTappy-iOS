@@ -14,19 +14,17 @@
 
 @implementation UserSelectionViewController {
     User* _user;
-    Group* _group;
     __weak id<UserSelectionDelegate> _delegate;
     NSMutableArray* _friends;
 }
 
-- (instancetype)initWithDelegate:(id<UserSelectionDelegate>)delegate group:(id)group {
+- (instancetype)initWithDelegate:(id<UserSelectionDelegate>)delegate group:(Group *)group {
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         _delegate = delegate;
-        _group = group;
         _user = [UserDefaults instance].currentUser;
         _friends = [NSMutableArray array];
         for (User* f in _user.friends) {
-            if (![_group.users containsObject:f]) {
+            if (![group.users containsObject:f]) {
                 [_friends addObject:f];
             }
         }
@@ -40,7 +38,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     User* friend = [_friends objectAtIndex:indexPath.row];
-    CustomCell* cell = [[CustomCell alloc] initWithName:friend.name image:friend.profileImage];
+    CustomCell* cell = [[CustomCell alloc] initWithName:friend.name favourite:friend];
     return cell;
 }
 

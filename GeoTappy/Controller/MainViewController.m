@@ -15,10 +15,11 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "SplashViewController.h"
 #import "CustomCell.h"
+#import "FavouriteListener.h"
 
 static const NSUInteger MAX_FAVS = 5;
 
-@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
+@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, FavouriteListener>
 
 @end
 
@@ -141,6 +142,12 @@ static const NSUInteger MAX_FAVS = 5;
     }
 }
 
+#pragma mark - UserListener
+- (void)userChanged:(User *)user {
+    [_tableView reloadData];
+}
+
+#pragma mark - UIAlertViewDelegate
 - (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {
     return [alertView textFieldAtIndex:0].text.length > 0;
 }
@@ -155,12 +162,12 @@ static const NSUInteger MAX_FAVS = 5;
             [_user.unselectedFavourites addObject:group];
         }
         [_user save];
-        [_tableView reloadData];
         GroupEditViewController* vc = [[GroupEditViewController alloc] initWithGroup:group user:_user];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
+#pragma mark - UITableView
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
@@ -194,7 +201,7 @@ static const NSUInteger MAX_FAVS = 5;
     if ([fav isKindOfClass:[User class]]) {
         img = ((User *)fav).profileImage;
     }
-    CustomCell* cell = [[CustomCell alloc] initWithName:[fav displayName] image:img];
+    CustomCell* cell = [[CustomCell alloc] initWithName:[fav displayName] favourite:fav];
     if ([fav isKindOfClass:[Group class]]) {
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

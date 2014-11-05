@@ -57,7 +57,7 @@
 }
 
 - (void)selectedUser:(User *)user {
-    [_group.users addObject:user];
+    [_group addUser:user];
     [_user save];
     [self.tableView reloadData];
 }
@@ -68,7 +68,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     User* user = [_group.users objectAtIndex:indexPath.row];
-    CustomCell* cell = [[CustomCell alloc] initWithName:user.name image:user.profileImage];
+    CustomCell* cell = [[CustomCell alloc] initWithName:user.name favourite:user];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -84,7 +84,7 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_group.users removeObjectAtIndex:indexPath.row];
+        [_group removeUserAtIndex:indexPath.row];
         [_user save];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self updateButtons];

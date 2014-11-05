@@ -9,9 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "Favourite.h"
 
+@class User;
+
 @interface Group : NSObject <NSCoding, Favourite>
 
 @property (nonatomic) NSString* name;
-@property (nonatomic) NSMutableArray* users;
+
+- (NSArray *)users;
+- (void)addUser:(User *)user;
+- (void)removeUser:(User *)user;
+- (void)removeUserAtIndex:(NSUInteger)index;
 
 @end

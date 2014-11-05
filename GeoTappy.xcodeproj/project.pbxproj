@@ -88,6 +88,7 @@
 		9A0A4FE219FFDCCD002F62FE /* Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Authentication.m; sourceTree = "<group>"; };
 		9A29819A1A0A891500151F0B /* UserSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSelectionViewController.h; sourceTree = "<group>"; };
 		9A29819B1A0A891500151F0B /* UserSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSelectionViewController.m; sourceTree = "<group>"; };
+		9A29819D1A0AC99100151F0B /* FavouriteListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavouriteListener.h; sourceTree = "<group>"; };
 		9A2D9AA619E9A3EB00397285 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
 		9A2D9AA719E9A3EB00397285 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		9A2EF6251A086E5E00BC17F2 /* PushTokenJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushTokenJob.h; sourceTree = "<group>"; };
@@ -308,6 +309,7 @@
 				9A0A4FE119FFDCCD002F62FE /* Authentication.h */,
 				9A0A4FE219FFDCCD002F62FE /* Authentication.m */,
 				9AA4BB8119E9317800CC45C8 /* Favourite.h */,
+				9A29819D1A0AC99100151F0B /* FavouriteListener.h */,
 				9A2D9AA619E9A3EB00397285 /* Group.h */,
 				9A2D9AA719E9A3EB00397285 /* Group.m */,
 				9A2EF6251A086E5E00BC17F2 /* PushTokenJob.h */,

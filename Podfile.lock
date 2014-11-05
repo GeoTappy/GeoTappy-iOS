@@ -1,6 +1,7 @@
 PODS:
   - Bolts (1.1.3)
   - DMJobManager (1.0.0)
+  - DMListener (1.0.0)
   - Facebook-iOS-SDK (3.19.0):
     - Bolts (~> 1.0)
   - FMDB (2.3):
@@ -20,6 +21,7 @@ PODS:
 
 DEPENDENCIES:
   - DMJobManager
+  - DMListener
   - Facebook-iOS-SDK
   - HockeySDK
   - Mapbox-iOS-SDK
@@ -27,6 +29,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   DMJobManager: ea312f6809a181f4e78dccd4b268ad89634e174d
+  DMListener: 305bf297d907eb6f3ef305a698f04aa22d7650dc
   Facebook-iOS-SDK: cb7d74759d0b1ba546e6e6f1dde407b0d4e448d6
   FMDB: 31ec26773c7f7b7890a6038235a1f2bbd933a7cb
   GRMustache: ab96109b7ba4b9568425bea40d6cd2cdc7582b6c
