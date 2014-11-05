@@ -10,6 +10,7 @@
 		9A0A4FE319FFDCCD002F62FE /* Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A4FE219FFDCCD002F62FE /* Authentication.m */; };
 		9A0A4FE419FFDD96002F62FE /* Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A4FE219FFDCCD002F62FE /* Authentication.m */; };
 		9A29819C1A0A891500151F0B /* UserSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A29819B1A0A891500151F0B /* UserSelectionViewController.m */; };
+		9A2981A21A0AD7D200151F0B /* UIBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2981A11A0AD7D200151F0B /* UIBAlertView.m */; };
 		9A2D9AA819E9A3EB00397285 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D9AA719E9A3EB00397285 /* Group.m */; };
 		9A2EF6271A086E5E00BC17F2 /* PushTokenJob.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2EF6261A086E5E00BC17F2 /* PushTokenJob.m */; };
 		9A5D882B19E94C7B00E4EC3D /* SuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D882A19E94C7B00E4EC3D /* SuccessView.m */; };
@@ -89,6 +90,8 @@
 		9A29819A1A0A891500151F0B /* UserSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSelectionViewController.h; sourceTree = "<group>"; };
 		9A29819B1A0A891500151F0B /* UserSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSelectionViewController.m; sourceTree = "<group>"; };
 		9A29819D1A0AC99100151F0B /* FavouriteListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavouriteListener.h; sourceTree = "<group>"; };
+		9A2981A01A0AD7D200151F0B /* UIBAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBAlertView.h; sourceTree = "<group>"; };
+		9A2981A11A0AD7D200151F0B /* UIBAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBAlertView.m; sourceTree = "<group>"; };
 		9A2D9AA619E9A3EB00397285 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
 		9A2D9AA719E9A3EB00397285 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		9A2EF6251A086E5E00BC17F2 /* PushTokenJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushTokenJob.h; sourceTree = "<group>"; };
@@ -187,6 +190,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9A29819E1A0AD7D200151F0B /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				9A29819F1A0AD7D200151F0B /* UIBAlertView */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		9A29819F1A0AD7D200151F0B /* UIBAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				9A2981A01A0AD7D200151F0B /* UIBAlertView.h */,
+				9A2981A11A0AD7D200151F0B /* UIBAlertView.m */,
+			);
+			path = UIBAlertView;
+			sourceTree = "<group>";
+		};
 		9A62D7F419EA647F00B0D1D1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +244,7 @@
 				9AA4BB7C19E9164100CC45C8 /* GeoTappy.entitlements */,
 				9AA4BB6519E8A16800CC45C8 /* Config */,
 				9AA4BB6119E8A14700CC45C8 /* Controller */,
+				9A29819E1A0AD7D200151F0B /* Libs */,
 				9AA4BB6F19E8B43000CC45C8 /* Model */,
 				9AA4BB7619E8B56000CC45C8 /* Utils */,
 				9A62D7F419EA647F00B0D1D1 /* View */,
@@ -530,6 +551,7 @@
 				9A2D9AA819E9A3EB00397285 /* Group.m in Sources */,
 				9AA4BB8419E935CA00CC45C8 /* RequestHelper.m in Sources */,
 				9AA4BB7919E8B57900CC45C8 /* UserDefaults.m in Sources */,
+				9A2981A21A0AD7D200151F0B /* UIBAlertView.m in Sources */,
 				9AAD958719EA035A002450D1 /* MapNavigationController.m in Sources */,
 				9A6FD1D519F85DED00BE90D2 /* ProfileImageView.m in Sources */,
 				9AAD958419EA034C002450D1 /* MapViewController.m in Sources */,

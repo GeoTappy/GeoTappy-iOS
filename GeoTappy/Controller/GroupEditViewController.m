@@ -12,6 +12,7 @@
 #import "UserSelectionViewController.h"
 #import "UserDefaults.h"
 #import "CustomCell.h"
+#import "UIBAlertView.h"
 
 @interface GroupEditViewController () <UserSelectionDelegate>
 
@@ -88,6 +89,18 @@
         [_user save];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self updateButtons];
+        
+        if (_group.users.count == 0) {
+            UIBAlertView* av = [[UIBAlertView alloc] initWithTitle:@"Delete Group" message:@"Do you want to delete this group?" cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
+            [av showWithDismissHandler:^(NSInteger selectedIndex, NSString *selectedTitle, BOOL didCancel) {
+                if (!didCancel) {
+                    [_user.selectedFavourites removeObject:_group];
+                    [_user.unselectedFavourites removeObject:_group];
+                    [_user save];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+            }];
+        }
     }
 }
 
