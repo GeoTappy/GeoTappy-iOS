@@ -13,6 +13,7 @@
 		9A2981A21A0AD7D200151F0B /* UIBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2981A11A0AD7D200151F0B /* UIBAlertView.m */; };
 		9A2D9AA819E9A3EB00397285 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D9AA719E9A3EB00397285 /* Group.m */; };
 		9A2EF6271A086E5E00BC17F2 /* PushTokenJob.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2EF6261A086E5E00BC17F2 /* PushTokenJob.m */; };
+		9A5781DB1A0BFA7E001A1997 /* PreferencesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5781DA1A0BFA7E001A1997 /* PreferencesView.m */; };
 		9A5D882B19E94C7B00E4EC3D /* SuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D882A19E94C7B00E4EC3D /* SuccessView.m */; };
 		9A62D7F719EA649000B0D1D1 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A62D7F619EA649000B0D1D1 /* CustomCell.m */; };
 		9A6FD1D519F85DED00BE90D2 /* ProfileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6FD1D419F85DED00BE90D2 /* ProfileImageView.m */; };
@@ -96,6 +97,8 @@
 		9A2D9AA719E9A3EB00397285 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		9A2EF6251A086E5E00BC17F2 /* PushTokenJob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushTokenJob.h; sourceTree = "<group>"; };
 		9A2EF6261A086E5E00BC17F2 /* PushTokenJob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushTokenJob.m; sourceTree = "<group>"; };
+		9A5781D91A0BFA7E001A1997 /* PreferencesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesView.h; sourceTree = "<group>"; };
+		9A5781DA1A0BFA7E001A1997 /* PreferencesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesView.m; sourceTree = "<group>"; };
 		9A5D882919E94C7B00E4EC3D /* SuccessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessView.h; sourceTree = "<group>"; };
 		9A5D882A19E94C7B00E4EC3D /* SuccessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessView.m; sourceTree = "<group>"; };
 		9A62D7F519EA649000B0D1D1 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
@@ -212,6 +215,8 @@
 			children = (
 				9A62D7F519EA649000B0D1D1 /* CustomCell.h */,
 				9A62D7F619EA649000B0D1D1 /* CustomCell.m */,
+				9A5781D91A0BFA7E001A1997 /* PreferencesView.h */,
+				9A5781DA1A0BFA7E001A1997 /* PreferencesView.m */,
 				9A6FD1D319F85DED00BE90D2 /* ProfileImageView.h */,
 				9A6FD1D419F85DED00BE90D2 /* ProfileImageView.m */,
 			);
@@ -549,6 +554,7 @@
 				9AA4BB6819E8A18800CC45C8 /* API.m in Sources */,
 				9AA4BB6419E8A14700CC45C8 /* SplashViewController.m in Sources */,
 				9A2D9AA819E9A3EB00397285 /* Group.m in Sources */,
+				9A5781DB1A0BFA7E001A1997 /* PreferencesView.m in Sources */,
 				9AA4BB8419E935CA00CC45C8 /* RequestHelper.m in Sources */,
 				9AA4BB7919E8B57900CC45C8 /* UserDefaults.m in Sources */,
 				9A2981A21A0AD7D200151F0B /* UIBAlertView.m in Sources */,

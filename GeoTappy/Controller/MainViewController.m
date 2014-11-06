@@ -17,6 +17,8 @@
 #import "CustomCell.h"
 #import "FavouriteListener.h"
 #import "AppDelegate.h"
+#import "PreferencesView.h"
+#import <KLCPopup/KLCPopup.h>
 
 static const NSUInteger MAX_FAVS = 5;
 
@@ -58,7 +60,7 @@ static const NSUInteger MAX_FAVS = 5;
     profileImageView.contentMode = UIViewContentModeScaleAspectFill;
 #ifdef DEBUG
     [profileImageView setUserInteractionEnabled:YES];
-    [profileImageView addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(logout:)]];
+    [profileImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionPreferences:)]];
 #endif
     [self.view addSubview:profileImageView];
     
@@ -131,17 +133,23 @@ static const NSUInteger MAX_FAVS = 5;
     [av show];
 }
 
-- (void)logout:(UILongPressGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateBegan) {
-        [FBSession.activeSession closeAndClearTokenInformation];
-        [FBSession.activeSession close];
-        [FBSession setActiveSession:nil];
-        [[UserDefaults instance] reset];
-        
-        SplashViewController* vc = [[SplashViewController alloc] init];
-        ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController = vc;
-    }
+- (void)actionPreferences:(id)sender {
+    PreferencesView* preferencesView = [[PreferencesView alloc] initWithFrame:CGRectMake(0, 0, 240, 280)];
+    KLCPopup* popup = [KLCPopup popupWithContentView:preferencesView showType:KLCPopupShowTypeBounceInFromTop dismissType:KLCPopupDismissTypeShrinkOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:NO];
+    [popup show];
 }
+
+//- (void)logout:(UILongPressGestureRecognizer *)sender {
+//    if (sender.state == UIGestureRecognizerStateBegan) {
+//        [FBSession.activeSession closeAndClearTokenInformation];
+//        [FBSession.activeSession close];
+//        [FBSession setActiveSession:nil];
+//        [[UserDefaults instance] reset];
+//        
+//        SplashViewController* vc = [[SplashViewController alloc] init];
+//        ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController = vc;
+//    }
+//}
 
 #pragma mark - FavouriteListener
 - (void)favouriteChanged:(id<Favourite>)favourite {
