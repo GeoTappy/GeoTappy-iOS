@@ -27,7 +27,6 @@
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         _group = group;
         _user = user;
-        self.view.backgroundColor = [UIColor whiteColor];
         self.title = _group.name;
         UIBarButtonItem* addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
         self.navigationItem.rightBarButtonItem = addItem;

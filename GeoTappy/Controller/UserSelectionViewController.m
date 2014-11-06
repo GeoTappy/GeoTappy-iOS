@@ -28,6 +28,7 @@
                 [_friends addObject:f];
             }
         }
+        self.tableView.backgroundColor = [UIColor colorWithWhite:0.92 alpha:1.0];
     }
     return self;
 }

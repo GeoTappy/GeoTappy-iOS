@@ -153,7 +153,7 @@ static const NSUInteger MAX_FAVS = 5;
     return [alertView textFieldAtIndex:0].text.length > 0;
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         Group* group = [[Group alloc] init];
         group.name = [alertView textFieldAtIndex:0].text;
