@@ -95,7 +95,7 @@
 }
 
 + (void)refreshAccessTokenWithCompletion:(CompletionBlock)completion {
-
+    completion(NO);
 }
 
 @end

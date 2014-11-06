@@ -110,18 +110,31 @@
     if ([favourite isKindOfClass:[User class]]) {
         User* friend = (User *)favourite;
         [self sendLocationToUsers:@[friend] completion:^(BOOL success) {
-            [self performSelector:@selector(turnOfLoading:) withObject:view afterDelay:0.5];
+            [self handleResponse:success view:view];
         }];
     } else if ([favourite isKindOfClass:[Group class]]) {
         [self sendLocationToUsers:((Group *)favourite).users completion:^(BOOL success) {
-            [self performSelector:@selector(turnOfLoading:) withObject:view afterDelay:0.5];
+            [self handleResponse:success view:view];
         }];
     }
 }
 
-- (void)turnOfLoading:(ProfileView *)view {
+- (void)handleResponse:(BOOL)success view:(ProfileView *)view {
+    if (success) {
+        [self performSelector:@selector(showSuccess:) withObject:view afterDelay:0.5];
+    } else {
+        [self performSelector:@selector(showError:) withObject:view afterDelay:0.5];
+    }
+}
+
+- (void)showSuccess:(ProfileView *)view {
     [view setLoading:NO];
     [view showSuccess];
+}
+
+- (void)showError:(ProfileView *)view {
+    [view setLoading:NO];
+    [view showError];
 }
 
 - (void)sendLocationToUsers:(NSArray *)users completion:(void (^)(BOOL))completion {

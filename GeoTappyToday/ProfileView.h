@@ -16,5 +16,6 @@
 
 - (void)setLoading:(BOOL)loading;
 - (void)showSuccess;
+- (void)showError;
 
 @end

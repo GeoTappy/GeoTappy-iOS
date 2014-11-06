@@ -9,11 +9,13 @@
 #import "ProfileView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SuccessView.h"
+#import "ErrorView.h"
 #import "ProfileImageView.h"
 
 @implementation ProfileView {
     NSArray* _images;
     SuccessView* _successView;
+    ErrorView* _errorView;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame images:(NSArray *)images {
@@ -31,6 +33,10 @@
     _successView = [[SuccessView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     _successView.alpha = 0;
     [self addSubview:_successView];
+    
+    _errorView = [[ErrorView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    _errorView.alpha = 0;
+    [self addSubview:_errorView];
     
     self.layer.cornerRadius = self.frame.size.width / 2;
     self.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.8].CGColor;
@@ -78,6 +84,18 @@
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.6 delay:1.0 options:0 animations:^() {
             _successView.alpha = 0.0;
+        } completion:nil];
+    }];
+}
+
+- (void)showError {
+    _errorView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+    [UIView animateWithDuration:0.25 animations:^() {
+        _errorView.transform = CGAffineTransformIdentity;
+        _errorView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.6 delay:1.0 options:0 animations:^() {
+            _errorView.alpha = 0.0;
         } completion:nil];
     }];
 }
