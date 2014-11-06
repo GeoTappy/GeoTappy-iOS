@@ -45,7 +45,7 @@
         NSData* json = [NSJSONSerialization dataWithJSONObject:jsonDict options:NSJSONWritingPrettyPrinted error:nil];
         
         NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[API pushTokenUrl]]];
-        [request setHTTPMethod:@"POST"];
+        [request setHTTPMethod:@"PUT"];
         [request setHTTPBody:json];
         
         [RequestHelper startRequest:request completion:^(BOOL success, NSData* response) {
