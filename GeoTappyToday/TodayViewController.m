@@ -144,19 +144,10 @@
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:json];
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response,
-                                               NSData *data,
-                                               NSError *error) {
-                               if (data && !error) {
-                                   NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                                   // TODO handle response
-                                   completion(YES);
-                               } else {
-                                   completion(NO);
-                               }
-                               
-                           }];
+    
+    [RequestHelper startRequest:request completion:^(BOOL success, NSData* data) {
+        completion(success);
+    }];
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
