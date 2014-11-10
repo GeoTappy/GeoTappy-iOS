@@ -58,12 +58,27 @@
 
 + (void)createAccessTokenWithCompletion:(CompletionBlock)completion {
     NSString* token = FBSession.activeSession.accessTokenData.accessToken;
+    [self doAuthRequestWithGrantType:@"password" token:token completion:completion];
+}
+
++ (void)refreshAccessTokenWithCompletion:(CompletionBlock)completion {
+    NSString* token = [UserDefaults instance].authentication.refreshToken;
+    [self doAuthRequestWithGrantType:@"refresh_token" token:token completion:completion];
+}
+
++ (void)doAuthRequestWithGrantType:(NSString *)grantType token:(NSString *)token completion:(CompletionBlock)completion {
     NSMutableDictionary* jsonDict = [[NSMutableDictionary alloc] init];
     [jsonDict setObject:@"8a29d0a7d2a0738fd25398f4f5d79c126055c0ebe98e68da455875b95c9bec53" forKey:@"client_id"];
     [jsonDict setObject:@"95285bce939a16d57de005bc1ec690357c10191bc71b1f4cb996427c421eb6b9" forKey:@"client_secret"];
-    [jsonDict setObject:@"password" forKey:@"grant_type"];
-    [jsonDict setObject:@"facebook" forKey:@"provider"];
-    [jsonDict setObject:token forKey:@"token"];
+    [jsonDict setObject:grantType forKey:@"grant_type"];
+    if ([grantType isEqualToString:@"password"]) {
+        [jsonDict setObject:@"facebook" forKey:@"provider"];
+        [jsonDict setObject:token forKey:@"token"];
+    } else if ([grantType isEqualToString:@"refresh_token"]) {
+        [jsonDict setObject:token forKey:@"refresh_token"];
+    } else {
+        NSAssert(NO, @"Unknown grant type");
+    }
     NSData* json = [NSJSONSerialization dataWithJSONObject:jsonDict options:NSJSONWritingPrettyPrinted error:nil];
     
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[API tokenUrl]]];
@@ -92,10 +107,6 @@
                                    completion(NO);
                                }
                            }];
-}
-
-+ (void)refreshAccessTokenWithCompletion:(CompletionBlock)completion {
-    completion(NO);
 }
 
 @end
