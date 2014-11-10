@@ -12,11 +12,9 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Group.h"
 #import "GroupEditViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
 #import "SplashViewController.h"
 #import "CustomCell.h"
 #import "FavouriteListener.h"
-#import "AppDelegate.h"
 #import "PreferencesView.h"
 #import <KLCPopup/KLCPopup.h>
 
@@ -138,18 +136,6 @@ static const NSUInteger MAX_FAVS = 5;
     KLCPopup* popup = [KLCPopup popupWithContentView:preferencesView showType:KLCPopupShowTypeBounceInFromTop dismissType:KLCPopupDismissTypeShrinkOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:NO];
     [popup show];
 }
-
-//- (void)logout:(UILongPressGestureRecognizer *)sender {
-//    if (sender.state == UIGestureRecognizerStateBegan) {
-//        [FBSession.activeSession closeAndClearTokenInformation];
-//        [FBSession.activeSession close];
-//        [FBSession setActiveSession:nil];
-//        [[UserDefaults instance] reset];
-//        
-//        SplashViewController* vc = [[SplashViewController alloc] init];
-//        ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController = vc;
-//    }
-//}
 
 #pragma mark - FavouriteListener
 - (void)favouriteChanged:(id<Favourite>)favourite {

@@ -9,6 +9,9 @@
 #import "PreferencesView.h"
 #import "User.h"
 #import "UserDefaults.h"
+#import <FacebookSDK/FacebookSDK.h>
+#import "SplashViewController.h"
+#import "AppDelegate.h"
 
 @interface PreferencesView () <UITableViewDataSource, UITableViewDelegate>
 @end
@@ -81,6 +84,20 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 55;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/926746350"]];
+    } else if (indexPath.row == 1) {
+        [FBSession.activeSession closeAndClearTokenInformation];
+        [FBSession.activeSession close];
+        [FBSession setActiveSession:nil];
+        [[UserDefaults instance] reset];
+        SplashViewController* vc = [[SplashViewController alloc] init];
+        ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController = vc;
+    }
 }
 
 @end
