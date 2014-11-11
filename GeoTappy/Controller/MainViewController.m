@@ -56,10 +56,8 @@ static const NSUInteger MAX_FAVS = 5;
     profileImageView.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.8].CGColor;
     profileImageView.layer.borderWidth = 4;
     profileImageView.contentMode = UIViewContentModeScaleAspectFill;
-#ifdef DEBUG
     [profileImageView setUserInteractionEnabled:YES];
     [profileImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionPreferences:)]];
-#endif
     [self.view addSubview:profileImageView];
     
     UILabel* nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, profileImageView.frame.origin.y + profileImageView.frame.size.height + 12, self.view.frame.size.width, 20)];
