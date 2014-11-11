@@ -8,18 +8,21 @@
 
 #import "API.h"
 
+static NSString* CLIENT_ID = @"";
+static NSString* CLIENT_SECRET = @"";
+
 @implementation API
 
 static NSString* BASE_URL = @"http://api.geotappy.com/";
 
 + (NSString *)clientId {
-    NSString* ret = @"";
+    NSString* ret = CLIENT_ID;
     NSAssert(ret.length > 0, @"No client id set.");
     return ret;
 }
 
-+ (NSString *)clientSecret {
-    NSString* ret = @"";
++ (NSString *) clientSecret {
+    NSString* ret = CLIENT_SECRET;
     NSAssert(ret.length > 0, @"No client secret set.");
     return ret;
 }
