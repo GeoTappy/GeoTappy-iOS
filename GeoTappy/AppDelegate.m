@@ -42,9 +42,6 @@
     if (token) {
         MainNavigationController* mainNavigationController = [[MainNavigationController alloc] init];
         self.window.rootViewController = mainNavigationController;
-        
-        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
     } else {
         SplashViewController* splashViewController = [[SplashViewController alloc] init];
         self.window.rootViewController = splashViewController;

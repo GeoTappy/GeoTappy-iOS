@@ -113,6 +113,10 @@ static const NSUInteger MAX_FAVS = 5;
     [_locationManager requestWhenInUseAuthorization];
     
     [self setNeedsStatusBarAppearanceUpdate];
+    
+    
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -36,11 +36,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>I need location</string>
+	<string>Your location will only be shared when you want to.</string>
 	<key>NSLocationUsageDescription</key>
-	<string>I need location</string>
+	<string>Your location will only be shared when you want to.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>I need location</string>
+	<string>Your location will only be shared when you want to.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
