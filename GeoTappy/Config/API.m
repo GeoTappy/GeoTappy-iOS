@@ -10,7 +10,7 @@
 
 @implementation API
 
-static NSString* BASE_URL = @"http://geotappy.com/";
+static NSString* BASE_URL = @"http://api.geotappy.com/";
 
 + (NSString *)tokenUrl {
     return [self baseUrlWithSuffix:@"oauth/token.json"];
