@@ -10,6 +10,8 @@
 
 @interface API : NSObject
 
++ (NSString *)clientId;
++ (NSString *)clientSecret;
 + (NSString *)tokenUrl;
 + (NSString *)profileUrl;
 + (NSString *)pushTokenUrl;

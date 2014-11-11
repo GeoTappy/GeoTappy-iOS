@@ -68,8 +68,8 @@
 
 + (void)doAuthRequestWithGrantType:(NSString *)grantType token:(NSString *)token completion:(CompletionBlock)completion {
     NSMutableDictionary* jsonDict = [[NSMutableDictionary alloc] init];
-    [jsonDict setObject:@"8a29d0a7d2a0738fd25398f4f5d79c126055c0ebe98e68da455875b95c9bec53" forKey:@"client_id"];
-    [jsonDict setObject:@"95285bce939a16d57de005bc1ec690357c10191bc71b1f4cb996427c421eb6b9" forKey:@"client_secret"];
+    [jsonDict setObject:[API clientId] forKey:@"client_id"];
+    [jsonDict setObject:[API clientSecret] forKey:@"client_secret"];
     [jsonDict setObject:grantType forKey:@"grant_type"];
     if ([grantType isEqualToString:@"password"]) {
         [jsonDict setObject:@"facebook" forKey:@"provider"];

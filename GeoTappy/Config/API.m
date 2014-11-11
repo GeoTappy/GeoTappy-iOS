@@ -12,6 +12,18 @@
 
 static NSString* BASE_URL = @"http://api.geotappy.com/";
 
++ (NSString *)clientId {
+    NSString* ret = @"";
+    NSAssert(ret.length > 0, @"No client id set.");
+    return ret;
+}
+
++ (NSString *)clientSecret {
+    NSString* ret = @"";
+    NSAssert(ret.length > 0, @"No client secret set.");
+    return ret;
+}
+
 + (NSString *)tokenUrl {
     return [self baseUrlWithSuffix:@"oauth/token.json"];
 }
