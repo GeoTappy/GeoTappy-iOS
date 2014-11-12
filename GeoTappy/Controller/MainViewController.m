@@ -113,8 +113,10 @@ static const NSUInteger MAX_FAVS = 5;
     [self setNeedsStatusBarAppearanceUpdate];
     
     
-    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
-    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    if (![UserDefaults instance].pushToken) {
+        UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

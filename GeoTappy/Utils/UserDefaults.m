@@ -49,6 +49,15 @@ static UserDefaults* sharedInstance;
     [self setCodableObject:authentication forKey:@"authentication"];
 }
 
+- (NSString *)pushToken {
+    return (NSString *)[_defaults objectForKey:@"pushToken"];
+}
+
+- (void)setPushToken:(NSString *)pushToken {
+    [_defaults setObject:pushToken forKey:@"pushToken"];
+    [_defaults synchronize];
+}
+
 #pragma mark -
 - (void)reset {
     NSString* domain = [[NSBundle mainBundle] bundleIdentifier];

@@ -60,6 +60,7 @@
     NSString* token = [deviceToken description];
     token = [token stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [UserDefaults instance].pushToken = token;
     PushTokenJob* job = [[PushTokenJob alloc] initWithToken:token];
     [DMJobManager postJob:job];
 }

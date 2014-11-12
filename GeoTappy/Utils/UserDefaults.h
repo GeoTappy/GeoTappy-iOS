@@ -15,6 +15,7 @@
 
 @property (nonatomic) User* currentUser;
 @property (nonatomic) Authentication* authentication;
+@property (nonatomic) NSString* pushToken;
 
 + (UserDefaults *)instance;
 - (void)reset;
