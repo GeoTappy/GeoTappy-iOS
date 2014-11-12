@@ -44,12 +44,14 @@
         [self addSubview:headerView];
         
         
-        UIView* footerView = [[UIView alloc] initWithFrame:CGRectMake(0, frame.size.height - 50, frame.size.width, 50)];
+        UIView* footerView = [[UIView alloc] initWithFrame:CGRectMake(0, frame.size.height - 60, frame.size.width, 60)];
         footerView.backgroundColor = [UIColor colorWithWhite:0.94 alpha:1.0];
         UILabel* creditLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, footerView.frame.size.width, footerView.frame.size.height)];
         creditLabel.font = [UIFont systemFontOfSize:11];
         creditLabel.textColor = [UIColor colorWithWhite:0.65 alpha:1.0];
-        creditLabel.text = @"Created by Dylan Marriott\nand Konrad Oleksiuk";
+        NSString* version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+        NSString* build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+        creditLabel.text = [NSString stringWithFormat:@"Version %@ (%@)\nCreated by Dylan Marriott\nand Konrad Oleksiuk", version, build];
         creditLabel.numberOfLines = 0;
         creditLabel.textAlignment = NSTextAlignmentCenter;
         [footerView addSubview:creditLabel];
