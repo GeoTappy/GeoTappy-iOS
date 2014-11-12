@@ -16,12 +16,20 @@
 #import <DMJobManager/DMJobManager.h>
 #import "PushTokenJob.h"
 
+#ifdef DEBUG
+#import "SDStatusBarManager.h"
+#endif
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+
+#ifdef DEBUG
+    [[SDStatusBarManager sharedInstance] enableOverrides];
+#endif
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     

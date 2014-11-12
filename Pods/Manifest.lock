@@ -18,6 +18,7 @@ PODS:
     - FMDB (= 2.3)
     - GRMustache (= 6.8.3)
     - SMCalloutView (= 2.0)
+  - SimulatorStatusMagic (1.2)
   - SMCalloutView (2.0)
 
 DEPENDENCIES:
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - HockeySDK
   - KLCPopup
   - Mapbox-iOS-SDK
+  - SimulatorStatusMagic
 
 SPEC CHECKSUMS:
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
@@ -39,6 +41,7 @@ SPEC CHECKSUMS:
   JRSwizzle: 30da7a2c539a4ebf954b16d15f6dd8221c9f6fa5
   KLCPopup: 23548d0454ca156b0eb684f791f234b9c2134369
   Mapbox-iOS-SDK: f3c46afe1af0d8ea7863b33ba9e96d94606d4784
+  SimulatorStatusMagic: ea1871b0e7119bc189ec3fb127bd56c54b937eed
   SMCalloutView: c1906604d47c058400ade5c9d52ab98aa77b7e76
 
 COCOAPODS: 0.34.4
