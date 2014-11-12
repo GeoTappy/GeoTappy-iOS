@@ -35,6 +35,8 @@
         [self application:application didReceiveRemoteNotification:(NSDictionary*)notification];
     }
 
+    [DMJobManager startManager];
+    
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"df1ffbdc02950279fd07f57c2202f762"];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
@@ -58,7 +60,6 @@
     NSString* token = [deviceToken description];
     token = [token stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
-    [DMJobManager startManager];
     PushTokenJob* job = [[PushTokenJob alloc] initWithToken:token];
     [DMJobManager postJob:job];
 }

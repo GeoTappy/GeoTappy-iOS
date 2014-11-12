@@ -31,11 +31,7 @@
     backgroundImage.image = [UIImage imageNamed:@"background"];
     
     [self.view addSubview:backgroundImage];
-//
-//    UIVibrancyEffect* vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:blurEffect];
-//    UIVisualEffectView* vibrancyEffectView = [[UIVisualEffectView alloc] initWithEffect:vibrancyEffect];
-//    self.view.addSubview(vibrancyEffectView)
-//
+
     FBLoginView* fbLogin = [[FBLoginView alloc] initWithReadPermissions:@[@"public_profile", @"user_friends", @"email", @"publish_stream"]];
     fbLogin.frame = CGRectMake((self.view.frame.size.width / 2) - (fbLogin.frame.size.width / 2), self.view.frame.size.height - 80, fbLogin.frame.size.width, fbLogin.frame.size.height);
     fbLogin.delegate = self;
