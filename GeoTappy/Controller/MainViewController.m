@@ -20,7 +20,7 @@
 
 static const NSUInteger MAX_FAVS = 5;
 
-@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, FavouriteListener>
+@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, FavouriteListener>
 
 @end
 
@@ -129,10 +129,43 @@ static const NSUInteger MAX_FAVS = 5;
 }
 
 - (void)actionAdd:(id)sender {
-    UIAlertView* av = [[UIAlertView alloc] initWithTitle:@"New Group" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Create", nil];
-    av.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [av textFieldAtIndex:0].placeholder = @"Enter a group name";
-    [av show];
+    UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"New Group" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField* textField) {
+        textField.placeholder = @"Enter a group name";
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alertTextFieldDidChange:) name:UITextFieldTextDidChangeNotification object:textField];
+    }];
+    
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    [alertController addAction:cancelAction];
+    
+    UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction* action) {
+                                   [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
+                                   Group* group = [[Group alloc] init];
+                                   UITextField* firstField = alertController.textFields.firstObject;
+                                   group.name = firstField.text;
+                                   if (_user.selectedFavourites.count < MAX_FAVS) {
+                                       [_user.selectedFavourites addObject:group];
+                                   } else {
+                                       [_user.unselectedFavourites addObject:group];
+                                   }
+                                   [_user save];
+                                   GroupEditViewController* vc = [[GroupEditViewController alloc] initWithGroup:group user:_user];
+                                   [self.navigationController pushViewController:vc animated:YES];
+                               }];
+    okAction.enabled = NO;
+    [alertController addAction:okAction];
+
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)alertTextFieldDidChange:(NSNotification *)notification {
+    UIAlertController* alertController = (UIAlertController *)self.presentedViewController;
+    if (alertController) {
+        UITextField* firstField = alertController.textFields.firstObject;
+        UIAlertAction* okAction = alertController.actions.lastObject;
+        okAction.enabled = firstField.text.length > 0;
+    }
 }
 
 - (void)actionPreferences:(id)sender {
@@ -149,21 +182,6 @@ static const NSUInteger MAX_FAVS = 5;
 #pragma mark - UIAlertViewDelegate
 - (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {
     return [alertView textFieldAtIndex:0].text.length > 0;
-}
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        Group* group = [[Group alloc] init];
-        group.name = [alertView textFieldAtIndex:0].text;
-        if (_user.selectedFavourites.count < MAX_FAVS) {
-            [_user.selectedFavourites addObject:group];
-        } else {
-            [_user.unselectedFavourites addObject:group];
-        }
-        [_user save];
-        GroupEditViewController* vc = [[GroupEditViewController alloc] initWithGroup:group user:_user];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
 }
 
 #pragma mark - UITableView
