@@ -42,17 +42,22 @@
     loginView.alpha = 1.0;
 }
 
+- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+    loginView.alpha = 0.0;
+}
+
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
 
     spinner.center = CGPointMake(self.view.frame.size.width / 2.0, 370);
     spinner.hidesWhenStopped = YES;
+    spinner.alpha = 0.0;
     [self.view addSubview:spinner];
     [spinner startAnimating];
     
-    [UIView animateWithDuration:0.3 animations:^() {
-        loginView.alpha = 0.0;
-    }];
+    [UIView animateWithDuration:0.5 delay:0.1 options:0 animations:^() {
+        spinner.alpha = 1.0;
+    } completion:nil];
 
     [RequestHelper createAccessTokenWithCompletion:^(BOOL sucess) {
         if (sucess) {
