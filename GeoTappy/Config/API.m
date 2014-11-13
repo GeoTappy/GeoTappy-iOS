@@ -13,7 +13,7 @@ static NSString* CLIENT_SECRET = @"";
 
 @implementation API
 
-static NSString* BASE_URL = @"http://api.geotappy.com/";
+static NSString* BASE_URL = @"https://api.geotappy.com/";
 
 + (NSString *)clientId {
     NSString* ret = CLIENT_ID;
