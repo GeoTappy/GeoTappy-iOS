@@ -48,6 +48,8 @@
 		9AAD958119E9E5C8002450D1 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D9AA719E9A3EB00397285 /* Group.m */; };
 		9AAD958419EA034C002450D1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD958319EA034C002450D1 /* MapViewController.m */; };
 		9AAD958719EA035A002450D1 /* MapNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD958619EA035A002450D1 /* MapNavigationController.m */; };
+		9AD1837D1A14EAEF00EC35A2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD1837C1A14EAEF00EC35A2 /* MapKit.framework */; };
+		9AD183801A14EB6900EC35A2 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1837F1A14EB6900EC35A2 /* MapAnnotation.m */; };
 		B7882ED03E7382A5108B9197 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22201F5EB057418A8E6A8508 /* libPods.a */; };
 		C79789E5387642FBA3CD3774 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22201F5EB057418A8E6A8508 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -153,6 +155,9 @@
 		9AAD958319EA034C002450D1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		9AAD958519EA035A002450D1 /* MapNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapNavigationController.h; sourceTree = "<group>"; };
 		9AAD958619EA035A002450D1 /* MapNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapNavigationController.m; sourceTree = "<group>"; };
+		9AD1837C1A14EAEF00EC35A2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9AD1837E1A14EB6900EC35A2 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotation.h; sourceTree = "<group>"; };
+		9AD1837F1A14EB6900EC35A2 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AD1837D1A14EAEF00EC35A2 /* MapKit.framework in Frameworks */,
 				C79789E5387642FBA3CD3774 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,6 +195,7 @@
 		82C618A20F38451B8FD82E92 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AD1837C1A14EAEF00EC35A2 /* MapKit.framework */,
 				9AA62EFB19E9582F00A24DAF /* CoreLocation.framework */,
 				22201F5EB057418A8E6A8508 /* libPods.a */,
 				9AA4BB4A19E894C700CC45C8 /* NotificationCenter.framework */,
@@ -313,6 +320,8 @@
 				9AAD957C19E9D89F002450D1 /* MainNavigationController.m */,
 				9AA4BB7319E8B4D100CC45C8 /* MainViewController.h */,
 				9AA4BB7419E8B4D100CC45C8 /* MainViewController.m */,
+				9AD1837E1A14EB6900EC35A2 /* MapAnnotation.h */,
+				9AD1837F1A14EB6900EC35A2 /* MapAnnotation.m */,
 				9AAD958519EA035A002450D1 /* MapNavigationController.h */,
 				9AAD958619EA035A002450D1 /* MapNavigationController.m */,
 				9AAD958219EA034C002450D1 /* MapViewController.h */,
@@ -552,6 +561,7 @@
 				9A29819C1A0A891500151F0B /* UserSelectionViewController.m in Sources */,
 				9A2EF6271A086E5E00BC17F2 /* PushTokenJob.m in Sources */,
 				9AA4BB7519E8B4D100CC45C8 /* MainViewController.m in Sources */,
+				9AD183801A14EB6900EC35A2 /* MapAnnotation.m in Sources */,
 				9AA4BB8019E92D2300CC45C8 /* NullHelper.m in Sources */,
 				9A0A4FE319FFDCCD002F62FE /* Authentication.m in Sources */,
 				9A73205819E87299006E8B0C /* AppDelegate.m in Sources */,

@@ -7,7 +7,8 @@
 //
 
 #import "MapViewController.h"
-#import <Mapbox-iOS-SDK/Mapbox.h>
+#import <MapKit/MapKit.h>
+#import "MapAnnotation.h"
 
 @implementation MapViewController {
     CLLocationCoordinate2D _location;
@@ -30,17 +31,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    RMMapboxSource* mapSource = [[RMMapboxSource alloc] initWithMapID:@"d-32.jo11kh4m"];
-    RMMapView* mapView = [[RMMapView alloc] initWithFrame:self.view.bounds andTilesource:mapSource];
+    MKMapView* mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     mapView.centerCoordinate = _location;
-    RMPointAnnotation* annotation = [[RMPointAnnotation alloc] initWithMapView:mapView
-                                                                    coordinate:_location
-                                                                      andTitle:_name];
-    
+    MapAnnotation* annotation = [[MapAnnotation alloc] initWithCoordinate:_location title:_name];
     [mapView addAnnotation:annotation];
     [mapView selectAnnotation:annotation animated:YES];
-    
     [self.view addSubview:mapView];
 }
 
