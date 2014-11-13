@@ -49,12 +49,18 @@
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
     
-    if (token) {
+    if ([UserDefaults instance].currentUser) {
         MainNavigationController* mainNavigationController = [[MainNavigationController alloc] init];
         self.window.rootViewController = mainNavigationController;
     } else {
         SplashViewController* splashViewController = [[SplashViewController alloc] init];
         self.window.rootViewController = splashViewController;
+    }
+    
+    NSString* pushToken = [UserDefaults instance].pushToken;
+    if (pushToken) {
+        PushTokenJob* job = [[PushTokenJob alloc] initWithToken:pushToken];
+        [DMJobManager postJob:job];
     }
     
     return YES;

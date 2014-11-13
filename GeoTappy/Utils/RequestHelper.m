@@ -25,11 +25,13 @@
     // check if access token is still valid
     if ([[UserDefaults instance].authentication.expiration timeIntervalSinceReferenceDate] >= [[NSDate date] timeIntervalSinceReferenceDate]) {
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        NSLog(@"Calling: %@", request.URL);
         [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
                                completionHandler:^(NSURLResponse* response,
                                                    NSData* data,
                                                    NSError* error) {
                                    if (!error && data) {
+                                       NSLog(@"Response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                        completion(YES, data);
                                    } else {
                                        // check if token expired etc
@@ -86,11 +88,13 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:json];
     
+    NSLog(@"Doing auth: %@", grantType);
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse* response,
                                                NSData* data,
                                                NSError* error) {
                                if (!error && data) {
+                                   NSLog(@"Auth response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                    NSError* jsonError;
                                    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
                                    if (!jsonError) {

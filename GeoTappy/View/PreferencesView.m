@@ -96,7 +96,8 @@
         [FBSession.activeSession closeAndClearTokenInformation];
         [FBSession.activeSession close];
         [FBSession setActiveSession:nil];
-        [[UserDefaults instance] reset];
+        [UserDefaults instance].currentUser = nil;
+        [UserDefaults instance].authentication = nil;
         SplashViewController* vc = [[SplashViewController alloc] init];
         ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController = vc;
     }

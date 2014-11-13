@@ -49,7 +49,6 @@
         [request setHTTPBody:json];
         
         [RequestHelper startRequest:request completion:^(BOOL success, NSData* response) {
-            NSLog(@"PushToken response: %@", [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding]);
             completion(success);
         }];
     }

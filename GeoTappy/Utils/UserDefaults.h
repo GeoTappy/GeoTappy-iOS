@@ -18,6 +18,5 @@
 @property (nonatomic) NSString* pushToken;
 
 + (UserDefaults *)instance;
-- (void)reset;
 
 @end
