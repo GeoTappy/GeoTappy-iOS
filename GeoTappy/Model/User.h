@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Favourite.h"
 
+typedef void (^UserCompletionBlock)();
+
 @interface User : NSObject <NSCoding, Favourite>
 
 @property (nonatomic) NSString* identifier;
@@ -19,6 +21,8 @@
 @property (nonatomic) NSMutableArray* selectedFavourites; // id<Favourite>
 @property (nonatomic) NSMutableArray* unselectedFavourites; // id<Favourite>
 
+- (BOOL)isComplete;
 - (void)save;
+- (void)refreshWithCompletion:(UserCompletionBlock)completion;
 
 @end

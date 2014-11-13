@@ -61,59 +61,24 @@
 
     [RequestHelper createAccessTokenWithCompletion:^(BOOL sucess) {
         if (sucess) {
-            NSString* url = [NSString stringWithFormat:@"%@?access_token=%@", [API profileUrl], [UserDefaults instance].authentication.accessToken];
-            NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-            [RequestHelper startRequest:request completion:^(BOOL success, NSData* data) {
-                NSError* jsonError;
-                //NSString* jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-                NSDictionary* profile = [json objectForKey:@"profile"];
-                User* user = [self userFromJson:profile];
-                NSMutableArray* friends = [NSMutableArray array];
-                for (NSDictionary* friend in [profile objectForKey:@"friends"]) {
-                    [friends addObject:[self userFromJson:friend]];
-                }
-                user.friends = [NSArray arrayWithArray:friends];
-                
-                int i = 0;
-                for (User* u in friends) {
-                    if (i < 3) {
-                        [user.selectedFavourites addObject:u];
-                    } else {
-                        [user.unselectedFavourites addObject:u];
-                    }
-                    i++;
-                }
-                [user save];
-                
+            
+            User* user = [UserDefaults instance].currentUser;
+            if (user == nil) {
+                user = [[User alloc] init];
+                [UserDefaults instance].currentUser = user;
+            }
+            
+            [user refreshWithCompletion:^() {
                 [spinner stopAnimating];
-                
                 MainNavigationController* vc = [[MainNavigationController alloc] init];
                 vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
                 self.view.window.rootViewController = vc;
             }];
+            
         } else {
             // handle error
         }
     }];
-}
-
-- (User *)userFromJson:(NSDictionary *)json {
-    User* user = [[User alloc] init];
-    user.coverImage = [self downloadImage:[json objectForKey:@"cover_photo_url"]];
-    user.profileImage = [self downloadImage:[json objectForKey:@"profile_photo_url"]];
-    user.name = [json objectForKey:@"name"];
-    user.identifier = [json objectForKey:@"id"];
-    return user;
-}
-
-- (UIImage *)downloadImage:(NSString *)url {
-    if ([url isKindOfClass:[NSNull class]] || url == nil) {
-        return nil;
-    }
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    return [[UIImage alloc] initWithData:data];
 }
 
 - (UIStatusBarStyle) preferredStatusBarStyle {

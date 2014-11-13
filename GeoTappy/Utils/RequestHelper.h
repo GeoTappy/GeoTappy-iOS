@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void (^CompletionBlock)(BOOL);
-typedef void (^CompletionBlockWithData)(BOOL, NSData *);
+typedef void (^RequestHelperCompletionBlock)(BOOL);
+typedef void (^RequestHelperCompletionBlockWithData)(BOOL, NSData *);
 
 @interface RequestHelper : NSObject
 
 + (NSMutableDictionary *)emptyJsonRequest;
-+ (void)startRequest:(NSMutableURLRequest *)request completion:(CompletionBlockWithData)completion;
-+ (void)createAccessTokenWithCompletion:(CompletionBlock)completion;
++ (void)startRequest:(NSMutableURLRequest *)request completion:(RequestHelperCompletionBlockWithData)completion;
++ (void)createAccessTokenWithCompletion:(RequestHelperCompletionBlock)completion;
 
 @end

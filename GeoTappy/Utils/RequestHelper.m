@@ -20,7 +20,8 @@
     return dict;
 }
 
-+ (void)startRequest:(NSMutableURLRequest *)request completion:(CompletionBlockWithData)completion {
++ (void)startRequest:(NSMutableURLRequest *)request completion:(RequestHelperCompletionBlockWithData)completion {
+    __block int count = 0;
     
     // check if access token is still valid
     if ([[UserDefaults instance].authentication.expiration timeIntervalSinceReferenceDate] >= [[NSDate date] timeIntervalSinceReferenceDate]) {
@@ -38,7 +39,12 @@
                                        [RequestHelper refreshAccessTokenWithCompletion:^(BOOL success) {
                                            if (success) {
                                                // do the request again
-                                               [RequestHelper startRequest:request completion:completion];
+                                               count++;
+                                               if (count > 1) {
+                                                   completion(NO, nil);
+                                               } else {
+                                                   [RequestHelper startRequest:request completion:completion];
+                                               }
                                            } else {
                                                completion(NO, nil);
                                            }
@@ -58,17 +64,17 @@
     
 }
 
-+ (void)createAccessTokenWithCompletion:(CompletionBlock)completion {
++ (void)createAccessTokenWithCompletion:(RequestHelperCompletionBlock)completion {
     NSString* token = FBSession.activeSession.accessTokenData.accessToken;
     [self doAuthRequestWithGrantType:@"password" token:token completion:completion];
 }
 
-+ (void)refreshAccessTokenWithCompletion:(CompletionBlock)completion {
++ (void)refreshAccessTokenWithCompletion:(RequestHelperCompletionBlock)completion {
     NSString* token = [UserDefaults instance].authentication.refreshToken;
     [self doAuthRequestWithGrantType:@"refresh_token" token:token completion:completion];
 }
 
-+ (void)doAuthRequestWithGrantType:(NSString *)grantType token:(NSString *)token completion:(CompletionBlock)completion {
++ (void)doAuthRequestWithGrantType:(NSString *)grantType token:(NSString *)token completion:(RequestHelperCompletionBlock)completion {
     NSMutableDictionary* jsonDict = [[NSMutableDictionary alloc] init];
     [jsonDict setObject:[API clientId] forKey:@"client_id"];
     [jsonDict setObject:[API clientSecret] forKey:@"client_secret"];

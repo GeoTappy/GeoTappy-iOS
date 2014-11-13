@@ -15,6 +15,7 @@
 #import <HockeySDK/HockeySDK.h>
 #import <DMJobManager/DMJobManager.h>
 #import "PushTokenJob.h"
+#import "User.h"
 
 #ifdef DEBUG
 #import "SDStatusBarManager.h"
@@ -49,7 +50,7 @@
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
     
-    if ([UserDefaults instance].currentUser) {
+    if ([[UserDefaults instance].currentUser isComplete]) {
         MainNavigationController* mainNavigationController = [[MainNavigationController alloc] init];
         self.window.rootViewController = mainNavigationController;
     } else {
