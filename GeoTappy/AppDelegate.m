@@ -24,6 +24,14 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//    [FBSession.activeSession closeAndClearTokenInformation];
+//    [FBSession.activeSession close];
+//    [FBSession setActiveSession:nil];
+//    [UserDefaults instance].currentUser = nil;
+//    [UserDefaults instance].authentication = nil;
+//    [UserDefaults instance].pushToken = nil;
+//    [application unregisterForRemoteNotifications];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -31,8 +39,6 @@
 #ifdef DEBUG
     [[SDStatusBarManager sharedInstance] enableOverrides];
 #endif
-    
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     NSString* token = FBSession.activeSession.accessTokenData.accessToken;
     if (token) {
@@ -67,6 +73,10 @@
     return YES;
 }
 
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+}
+
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings NS_AVAILABLE_IOS(8_0) {
     [application registerForRemoteNotifications];
 }
@@ -89,7 +99,6 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    NSLog(@"got push: %@", userInfo);
     NSDictionary* location = [[userInfo objectForKey:@"info"] objectForKey:@"location"];
     MapNavigationController* vc = [[MapNavigationController alloc] initWithLocation:CLLocationCoordinate2DMake([[location objectForKey:@"lat"] doubleValue], [[location objectForKey:@"lng"] doubleValue]) name:[[[userInfo objectForKey:@"info"] objectForKey:@"sender"] objectForKey:@"name"]];
     [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
