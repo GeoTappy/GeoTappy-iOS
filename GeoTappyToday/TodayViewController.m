@@ -17,6 +17,7 @@
 #import "Group.h"
 #import <HockeySDK/HockeySDK.h>
 #import "Friend.h"
+#import "LocationPostmaster.h"
 
 @interface TodayViewController () <NCWidgetProviding, CLLocationManagerDelegate>
 
@@ -112,11 +113,11 @@
     id<Favourite> favourite = [user.selectedFavourites objectAtIndex:index];
     if ([favourite isKindOfClass:[Friend class]]) {
         Friend* friend = (Friend *)favourite;
-        [self sendLocationToFriends:@[friend] completion:^(BOOL success) {
+        [LocationPostmaster shareLocation:_currentLocation toFriends:@[friend] completion:^(BOOL success) {
             [self handleResponse:success view:view];
         }];
     } else if ([favourite isKindOfClass:[Group class]]) {
-        [self sendLocationToFriends:((Group *)favourite).friends completion:^(BOOL success) {
+        [LocationPostmaster shareLocation:_currentLocation toFriends:((Group *)favourite).friends completion:^(BOOL success) {
             [self handleResponse:success view:view];
         }];
     }
@@ -138,32 +139,6 @@
 - (void)showError:(ProfileView *)view {
     [view setLoading:NO];
     [view showError];
-}
-
-- (void)sendLocationToFriends:(NSArray *)friends completion:(void (^)(BOOL))completion {
-    NSMutableDictionary* jsonDict = [RequestHelper emptyJsonRequest];
-    NSMutableDictionary* locationShare = [NSMutableDictionary dictionary];
-    [locationShare setObject:@"" forKey:@"title"];
-    NSMutableArray* userIds = [NSMutableArray array];
-    for (Friend* friend in friends) {
-        [userIds addObject:friend.identifier];
-    }
-    [locationShare setObject:userIds forKey:@"user_ids"];
-    NSMutableDictionary* location = [NSMutableDictionary dictionary];
-    [location setObject:@(_currentLocation.coordinate.latitude) forKey:@"lat"];
-    [location setObject:@(_currentLocation.coordinate.longitude) forKey:@"lng"];
-    [locationShare setObject:location forKey:@"location"];
-    [jsonDict setObject:locationShare forKey:@"location_share"];
-    
-    NSData* json = [NSJSONSerialization dataWithJSONObject:jsonDict options:NSJSONWritingPrettyPrinted error:nil];
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:[API shareLocationUrl]]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:json];
-    
-    [RequestHelper startRequest:request completion:^(BOOL success, NSData* data) {
-        completion(success);
-    }];
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {

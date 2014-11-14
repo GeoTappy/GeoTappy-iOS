@@ -19,6 +19,8 @@
 #import <KLCPopup/KLCPopup.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import <DragAndDropTableView/DragAndDropTableView.h>
+#import "Friend.h"
+#import "LocationPostmaster.h"
 
 static const NSUInteger MAX_FAVS = 5;
 
@@ -257,10 +259,42 @@ static const NSUInteger MAX_FAVS = 5;
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Share" icon:[UIImage imageNamed:@"share"] backgroundColor:[UIColor colorWithRed:0.07 green:0.49 blue:0.97 alpha:1.00] callback:^BOOL(MGSwipeTableCell* cell) {
-        return YES;
+        
+        if ([fav isKindOfClass:[Friend class]]) {
+            Friend* friend = (Friend *)fav;
+            [LocationPostmaster shareLocation:_locationManager.location toFriends:@[friend] completion:^(BOOL success) {
+                [self showStatus:success cell:cell];
+            }];
+        } else if ([fav isKindOfClass:[Group class]]) {
+            [LocationPostmaster shareLocation:_locationManager.location toFriends:((Group *)fav).friends completion:^(BOOL success) {
+                [self showStatus:success cell:cell];
+            }];
+        }
+        
+        return NO;
     }]];
     cell.rightSwipeSettings.transition = MGSwipeTransitionStatic;
     return cell;
+}
+
+- (void)showStatus:(BOOL)success cell:(MGSwipeTableCell *)cell {
+    MGSwipeButton* button = [cell.rightButtons objectAtIndex:0];
+    if (success) {
+        button.backgroundColor = [UIColor colorWithRed:0.47 green:0.80 blue:0.12 alpha:1.00];
+    } else {
+        button.backgroundColor = [UIColor colorWithRed:0.64 green:0.00 blue:0.00 alpha:1.00];
+    }
+    [self performSelector:@selector(hideButtonForCell:) withObject:cell afterDelay:0.3];
+}
+
+- (void)hideButtonForCell:(MGSwipeTableCell *)cell {
+    [cell hideSwipeAnimated:YES];
+    MGSwipeButton* button = [cell.rightButtons objectAtIndex:0];
+    [self performSelector:@selector(resetColor:) withObject:button afterDelay:0.5];
+}
+
+- (void)resetColor:(MGSwipeButton *)button {
+    button.backgroundColor = [UIColor colorWithRed:0.07 green:0.49 blue:0.97 alpha:1.00];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
