@@ -215,10 +215,6 @@ static const NSUInteger MAX_FAVS = 5;
     } else if (indexPath.section == 1) {
         fav = [_user.unselectedFavourites objectAtIndex:indexPath.row];
     }
-    UIImage* img;
-    if ([fav isKindOfClass:[User class]]) {
-        img = ((User *)fav).profileImage;
-    }
     CustomCell* cell = [[CustomCell alloc] initWithName:[fav displayName] favourite:fav];
     if ([fav isKindOfClass:[Group class]]) {
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
