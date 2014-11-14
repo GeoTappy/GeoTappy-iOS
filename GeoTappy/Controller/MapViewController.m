@@ -36,6 +36,12 @@
     MapAnnotation* annotation = [[MapAnnotation alloc] initWithCoordinate:_location title:_name];
     [mapView addAnnotation:annotation];
     [mapView selectAnnotation:annotation animated:YES];
+    
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(_location, 1200, 1200);
+    MKCoordinateRegion adjustedRegion = [mapView regionThatFits:viewRegion];
+    [mapView setRegion:adjustedRegion animated:YES];
+    mapView.showsUserLocation = YES;
+    
     [self.view addSubview:mapView];
 }
 
