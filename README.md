@@ -4,7 +4,7 @@
 
 [![Build Status](https://img.shields.io/travis/GeoTappy/GeoTappy-iOS/master.svg?style=flat)](https://travis-ci.org/GeoTappy/GeoTappy-iOS)
 
-**AppStore:** [https://itunes.apple.com/us/app/bitstore/id926746350?ls=1&mt=8](https://itunes.apple.com/us/app/bitstore/id926746350?ls=1&mt=8)  
+**AppStore:** [https://itunes.apple.com/us/app/bitstore/id941578877?ls=1&mt=8](https://itunes.apple.com/us/app/bitstore/id926746350?ls=1&mt=8)  
 **Website:**: [http://geotappy.com](http://geotappy.com)
 
 <hr />
