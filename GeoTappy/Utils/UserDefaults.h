@@ -18,5 +18,6 @@
 @property (nonatomic) NSString* pushToken;
 
 + (UserDefaults *)instance;
++ (void)emptyCache; // super ugly code
 
 @end

@@ -56,6 +56,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [UserDefaults emptyCache];
+    
     User* user = [UserDefaults instance].currentUser;
     _profileViews = [NSMutableArray array];
     NSMutableArray* displayViews = [NSMutableArray array];
