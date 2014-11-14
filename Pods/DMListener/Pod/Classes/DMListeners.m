@@ -27,13 +27,15 @@
 
 - (void)notifyListeners:(NotifyBlock)notifyBlock {
     NSArray* copy = [NSArray arrayWithArray:_listeners];
-    for (DMWeakRef* ref in copy) {
-        id obj = ref.ref;
-        if (obj == nil) {
-            [_listeners removeObject:ref];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for (DMWeakRef* ref in copy) {
+            id obj = ref.ref;
+            if (obj == nil) {
+                [_listeners removeObject:ref];
+            }
+            notifyBlock(obj);
         }
-        notifyBlock(obj);
-    }
+    });
 }
 
 - (NSArray *)listeners {

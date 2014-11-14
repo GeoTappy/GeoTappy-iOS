@@ -22,7 +22,13 @@
 #define COCOAPODS_POD_AVAILABLE_DMListener
 #define COCOAPODS_VERSION_MAJOR_DMListener 1
 #define COCOAPODS_VERSION_MINOR_DMListener 0
-#define COCOAPODS_VERSION_PATCH_DMListener 0
+#define COCOAPODS_VERSION_PATCH_DMListener 1
+
+// DragAndDropTableView
+#define COCOAPODS_POD_AVAILABLE_DragAndDropTableView
+#define COCOAPODS_VERSION_MAJOR_DragAndDropTableView 0
+#define COCOAPODS_VERSION_MINOR_DragAndDropTableView 1
+#define COCOAPODS_VERSION_PATCH_DragAndDropTableView 8
 
 // Facebook-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK
@@ -41,6 +47,12 @@
 #define COCOAPODS_VERSION_MAJOR_KLCPopup 1
 #define COCOAPODS_VERSION_MINOR_KLCPopup 0
 #define COCOAPODS_VERSION_PATCH_KLCPopup 0
+
+// MGSwipeTableCell
+#define COCOAPODS_POD_AVAILABLE_MGSwipeTableCell
+#define COCOAPODS_VERSION_MAJOR_MGSwipeTableCell 1
+#define COCOAPODS_VERSION_MINOR_MGSwipeTableCell 3
+#define COCOAPODS_VERSION_PATCH_MGSwipeTableCell 1
 
 // Debug build configuration
 #ifdef DEBUG

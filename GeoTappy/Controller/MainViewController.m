@@ -18,17 +18,18 @@
 #import "PreferencesView.h"
 #import <KLCPopup/KLCPopup.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import <DragAndDropTableView/DragAndDropTableView.h>
 
 static const NSUInteger MAX_FAVS = 5;
 
-@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, FavouriteListener, PreferencesViewDelegate, MFMailComposeViewControllerDelegate>
+@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, FavouriteListener, PreferencesViewDelegate, MFMailComposeViewControllerDelegate, DragAndDropTableViewDataSource, DragAndDropTableViewDelegate>
 
 @end
 
 @implementation MainViewController {
     CLLocationManager* _locationManager;
     User* _user;
-    UITableView* _tableView;
+    DragAndDropTableView* _tableView;
     UIImageView* _profileImageView;
     UIImageView* _coverImageView;
     KLCPopup* _popup;
@@ -85,7 +86,7 @@ static const NSUInteger MAX_FAVS = 5;
     editButton.layer.shadowOpacity = 0.5;
     editButton.layer.masksToBounds = NO;
     [editButton addTarget:self action:@selector(actionEdit:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:editButton];
+    //[self.view addSubview:editButton];
     
     
     UIButton* addButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 25 - 10, 115, 25, 25)];
@@ -100,7 +101,7 @@ static const NSUInteger MAX_FAVS = 5;
     [self.view addSubview:addButton];
     
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, self.view.frame.size.width, self.view.frame.size.height - 150) style:UITableViewStyleGrouped];
+    _tableView = [[DragAndDropTableView alloc] initWithFrame:CGRectMake(0, 150, self.view.frame.size.width, self.view.frame.size.height - 150)];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
@@ -244,6 +245,10 @@ static const NSUInteger MAX_FAVS = 5;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
+    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Share" icon:[UIImage imageNamed:@"share"] backgroundColor:[UIColor colorWithRed:0.07 green:0.49 blue:0.97 alpha:1.00] callback:^BOOL(MGSwipeTableCell* cell) {
+        return YES;
+    }]];
+    cell.rightSwipeSettings.transition = MGSwipeTransitionStatic;
     return cell;
 }
 
@@ -278,26 +283,6 @@ static const NSUInteger MAX_FAVS = 5;
     }
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        id obj = [_user.selectedFavourites objectAtIndex:indexPath.row];
-        [_user.selectedFavourites removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [_user.unselectedFavourites addObject:obj];
-        NSIndexPath* newIndexPath = [NSIndexPath indexPathForRow:_user.unselectedFavourites.count - 1 inSection:1];
-        [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (indexPath.section == 1 && editingStyle == UITableViewCellEditingStyleInsert) {
-        id obj = [_user.unselectedFavourites objectAtIndex:indexPath.row];
-        [_user.unselectedFavourites removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [_user.selectedFavourites addObject:obj];
-        NSIndexPath* newIndexPath = [NSIndexPath indexPathForRow:_user.selectedFavourites.count - 1 inSection:0];
-        [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    [_user save];
-}
-
-
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     id obj;
     if (sourceIndexPath.section == 0) {
@@ -312,15 +297,7 @@ static const NSUInteger MAX_FAVS = 5;
     } else if (destinationIndexPath.section == 1) {
         [_user.unselectedFavourites insertObject:obj atIndex:destinationIndexPath.row];
     }
-    [_user save];
 }
-//
-//- (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
-//    if (proposedDestinationIndexPath.section == 0 && sourceIndexPath.section == 1 && _user.selectedFavourites.count >= MAX_FAVS) {
-//        return sourceIndexPath;
-//    }
-//    return proposedDestinationIndexPath;
-//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -334,6 +311,18 @@ static const NSUInteger MAX_FAVS = 5;
         GroupEditViewController* vc = [[GroupEditViewController alloc] initWithGroup:(Group *)fav user:_user];
         [self.navigationController pushViewController:vc animated:YES];
     }
+}
+
+-(void)tableView:(UITableView *)tableView willBeginDraggingCellAtIndexPath:(NSIndexPath *)indexPath placeholderImageView:(UIImageView *)placeHolderImageView {
+    placeHolderImageView.layer.shadowOpacity = 0.1;
+    placeHolderImageView.layer.shadowRadius = 0.5;
+    placeHolderImageView.layer.shadowOffset = CGSizeMake(1, 1);
+}
+
+- (void)tableView:(DragAndDropTableView *)tableView didEndDraggingCellAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)toIndexPath placeHolderView:(UIImageView *)placeholderImageView {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [_user save];
+    });
 }
 
 - (UIStatusBarStyle) preferredStatusBarStyle {

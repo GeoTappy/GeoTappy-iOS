@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MGSwipeTableCell/MGSwipeTableCell.h>
+#import <MGSwipeTableCell/MGSwipeButton.h>
 
 @protocol Favourite;
 
-@interface CustomCell : UITableViewCell
+@interface CustomCell : MGSwipeTableCell
 
 - (instancetype)initWithName:(NSString *)name favourite:(id<Favourite>)favourite;
 
