@@ -17,10 +17,11 @@
 #import "FavouriteListener.h"
 #import "PreferencesView.h"
 #import <KLCPopup/KLCPopup.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 static const NSUInteger MAX_FAVS = 5;
 
-@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, FavouriteListener>
+@interface MainViewController () <UITableViewDataSource, UITableViewDelegate, FavouriteListener, PreferencesViewDelegate, MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -30,6 +31,7 @@ static const NSUInteger MAX_FAVS = 5;
     UITableView* _tableView;
     UIImageView* _profileImageView;
     UIImageView* _coverImageView;
+    KLCPopup* _popup;
 }
 
 - (void)viewDidLoad {
@@ -168,9 +170,9 @@ static const NSUInteger MAX_FAVS = 5;
 }
 
 - (void)actionPreferences:(id)sender {
-    PreferencesView* preferencesView = [[PreferencesView alloc] initWithFrame:CGRectMake(0, 0, 240, 280)];
-    KLCPopup* popup = [KLCPopup popupWithContentView:preferencesView showType:KLCPopupShowTypeBounceInFromTop dismissType:KLCPopupDismissTypeShrinkOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:NO];
-    [popup show];
+    PreferencesView* preferencesView = [[PreferencesView alloc] initWithFrame:CGRectMake(0, 0, 240, 280) delegate:self];
+    _popup = [KLCPopup popupWithContentView:preferencesView showType:KLCPopupShowTypeBounceInFromTop dismissType:KLCPopupDismissTypeShrinkOut maskType:KLCPopupMaskTypeDimmed dismissOnBackgroundTouch:YES dismissOnContentTouch:NO];
+    [_popup show];
 }
 
 #pragma mark - FavouriteListener
@@ -178,6 +180,25 @@ static const NSUInteger MAX_FAVS = 5;
     [_tableView reloadData];
     _profileImageView.image = _user.profileImage;
     _coverImageView.image = _user.coverImage;
+}
+
+#pragma mark - PreferencesViewDelegate
+- (void)openMail {
+    if ([MFMailComposeViewController canSendMail]) {
+        [_popup dismissPresentingPopup];
+        MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+        [controller setToRecipients:@[@"info@d-32.com"]];
+        [controller setSubject:@"GeoTappy"];
+        controller.mailComposeDelegate = self;
+        if (controller) [self presentViewController:controller animated:YES completion:nil];
+    }
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UIAlertViewDelegate

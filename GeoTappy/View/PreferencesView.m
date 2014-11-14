@@ -16,10 +16,13 @@
 @interface PreferencesView () <UITableViewDataSource, UITableViewDelegate>
 @end
 
-@implementation PreferencesView
+@implementation PreferencesView {
+    __weak id<PreferencesViewDelegate> _delegate;
+}
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame delegate:(id<PreferencesViewDelegate>)delegate {
     if (self = [super initWithFrame:frame]) {
+        _delegate = delegate;
         self.layer.cornerRadius = 6;
         self.layer.masksToBounds = YES;
         
@@ -68,7 +71,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,6 +80,9 @@
         cell.textLabel.text = @"Rate App";
         cell.imageView.image = [UIImage imageNamed:@"rate"];
     } else if (indexPath.row == 1) {
+        cell.textLabel.text = @"Contact";
+        cell.imageView.image = [UIImage imageNamed:@"mail"];
+    } else if (indexPath.row == 2) {
         cell.textLabel.text = @"Logout";
         cell.imageView.image = [UIImage imageNamed:@"logout"];
     }
@@ -93,6 +99,8 @@
     if (indexPath.row == 0) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/926746350"]];
     } else if (indexPath.row == 1) {
+        [_delegate openMail];
+    } else if (indexPath.row == 2) {
         [FBSession.activeSession closeAndClearTokenInformation];
         [FBSession.activeSession close];
         [FBSession setActiveSession:nil];
