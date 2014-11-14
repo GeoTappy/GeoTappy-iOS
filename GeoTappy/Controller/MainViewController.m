@@ -33,6 +33,7 @@ static const NSUInteger MAX_FAVS = 5;
     UIImageView* _profileImageView;
     UIImageView* _coverImageView;
     KLCPopup* _popup;
+    UIRefreshControl* _refreshControl;
 }
 
 - (void)viewDidLoad {
@@ -106,6 +107,10 @@ static const NSUInteger MAX_FAVS = 5;
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
     
+    _refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [_tableView addSubview:_refreshControl];
+    
     // this is just to get the permission here in the app
     // has to be an instance var, otherwise it will get released, an the alert view disappears
     // a reason to <3 apple
@@ -124,6 +129,12 @@ static const NSUInteger MAX_FAVS = 5;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
+}
+
+- (void)refresh:(id)sender {
+    [_user refreshWithCompletion:^() {
+        [_refreshControl endRefreshing];
+    }];
 }
 
 - (void)actionEdit:(id)sender {
