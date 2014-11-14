@@ -54,4 +54,8 @@
     }
 }
 
+- (BOOL)isEqual:(id)object {
+    return [object isKindOfClass:[PushTokenJob class]];
+}
+
 @end

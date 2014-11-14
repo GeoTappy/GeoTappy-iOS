@@ -9,12 +9,13 @@
 #import "GroupEditViewController.h"
 #import "Group.h"
 #import "User.h"
-#import "UserSelectionViewController.h"
+#import "FriendSelectionViewController.h"
 #import "UserDefaults.h"
 #import "CustomCell.h"
 #import "UIBAlertView.h"
+#import "Friend.h"
 
-@interface GroupEditViewController () <UserSelectionDelegate>
+@interface GroupEditViewController () <FriendSelectionDelegate>
 
 @end
 
@@ -43,8 +44,8 @@
 
 - (void)updateButtons {
     NSMutableArray* notSelected = [NSMutableArray array];
-    for (User* f in _user.friends) {
-        if (![_group.users containsObject:f]) {
+    for (Friend* f in _user.friends) {
+        if (![_group.friends containsObject:f]) {
             [notSelected addObject:f];
         }
     }
@@ -56,19 +57,20 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)selectedUser:(User *)user {
-    [_group addUser:user];
+#pragma mark - FriendSelectionDelegate
+- (void)selectedFriend:(Friend *)friend {
+    [_group addFriend:friend];
     [_user save];
     [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _group.users.count;
+    return _group.friends.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    User* user = [_group.users objectAtIndex:indexPath.row];
-    CustomCell* cell = [[CustomCell alloc] initWithName:user.name favourite:user];
+    Friend* friend = [_group.friends objectAtIndex:indexPath.row];
+    CustomCell* cell = [[CustomCell alloc] initWithName:friend.name favourite:friend];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -84,12 +86,12 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_group removeUserAtIndex:indexPath.row];
+        [_group removeFriendAtIndex:indexPath.row];
         [_user save];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self updateButtons];
         
-        if (_group.users.count == 0) {
+        if (_group.friends.count == 0) {
             UIBAlertView* av = [[UIBAlertView alloc] initWithTitle:@"Delete Group" message:@"Do you want to delete this group?" cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
             [av showWithDismissHandler:^(NSInteger selectedIndex, NSString *selectedTitle, BOOL didCancel) {
                 if (!didCancel) {

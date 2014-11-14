@@ -28,6 +28,8 @@ static const NSUInteger MAX_FAVS = 5;
     CLLocationManager* _locationManager;
     User* _user;
     UITableView* _tableView;
+    UIImageView* _profileImageView;
+    UIImageView* _coverImageView;
 }
 
 - (void)viewDidLoad {
@@ -37,30 +39,28 @@ static const NSUInteger MAX_FAVS = 5;
     [_user addFavouriteListener:self];
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    UIImage* coverImage = _user.coverImage;
-    UIImageView* coverImageView = [[UIImageView alloc] initWithImage:coverImage];
-    coverImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, 150);
-    coverImageView.contentMode = UIViewContentModeScaleAspectFill;
-    [self.view addSubview:coverImageView];
+    _coverImageView = [[UIImageView alloc] initWithImage:_user.coverImage];
+    _coverImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, 150);
+    _coverImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:_coverImageView];
     
     UIImageView* superbg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"superbg"]];
     superbg.frame = CGRectMake(0, 0, self.view.frame.size.width, 150);
     superbg.alpha = 0.5;
     [self.view addSubview:superbg];
     
-    UIImage* profileImage = _user.profileImage;
-    UIImageView* profileImageView = [[UIImageView alloc] initWithImage:profileImage];
-    profileImageView.frame = CGRectMake(self.view.frame.size.width / 2 - 35, 34, 70, 70);
-    profileImageView.clipsToBounds = YES;
-    profileImageView.layer.cornerRadius = 35;
-    profileImageView.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.8].CGColor;
-    profileImageView.layer.borderWidth = 4;
-    profileImageView.contentMode = UIViewContentModeScaleAspectFill;
-    [profileImageView setUserInteractionEnabled:YES];
-    [profileImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionPreferences:)]];
-    [self.view addSubview:profileImageView];
+    _profileImageView = [[UIImageView alloc] initWithImage:_user.profileImage];
+    _profileImageView.frame = CGRectMake(self.view.frame.size.width / 2 - 35, 34, 70, 70);
+    _profileImageView.clipsToBounds = YES;
+    _profileImageView.layer.cornerRadius = 35;
+    _profileImageView.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:0.8].CGColor;
+    _profileImageView.layer.borderWidth = 4;
+    _profileImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [_profileImageView setUserInteractionEnabled:YES];
+    [_profileImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionPreferences:)]];
+    [self.view addSubview:_profileImageView];
     
-    UILabel* nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, profileImageView.frame.origin.y + profileImageView.frame.size.height + 12, self.view.frame.size.width, 20)];
+    UILabel* nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, _profileImageView.frame.origin.y + _profileImageView.frame.size.height + 12, self.view.frame.size.width, 20)];
     nameLabel.textColor = [UIColor whiteColor];
     nameLabel.layer.shadowColor = [UIColor blackColor].CGColor;
     nameLabel.layer.shadowRadius = 1;
@@ -72,7 +72,6 @@ static const NSUInteger MAX_FAVS = 5;
     nameLabel.textAlignment = NSTextAlignmentCenter;
     nameLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:nameLabel];
-    
     
     
     UIButton* editButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 110, 35, 35)];
@@ -177,6 +176,8 @@ static const NSUInteger MAX_FAVS = 5;
 #pragma mark - FavouriteListener
 - (void)favouriteChanged:(id<Favourite>)favourite {
     [_tableView reloadData];
+    _profileImageView.image = _user.profileImage;
+    _coverImageView.image = _user.coverImage;
 }
 
 #pragma mark - UIAlertViewDelegate

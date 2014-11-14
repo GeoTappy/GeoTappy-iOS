@@ -13,13 +13,13 @@
 
 @implementation Group {
     DMListeners* _listeners;
-    NSMutableArray* _users;
+    NSMutableArray* _friends;
 }
 
 - (instancetype)init {
     if (self = [super init]) {
         _listeners = [[DMListeners alloc] init];
-        _users = [NSMutableArray array];
+        _friends = [NSMutableArray array];
     }
     return self;
 }
@@ -27,14 +27,14 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [self init]) {
         self.name = [aDecoder decodeObjectForKey:@"name"];
-        _users = [aDecoder decodeObjectForKey:@"users"];
+        _friends = [aDecoder decodeObjectForKey:@"friends"];
     }
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.name forKey:@"name"];
-    [aCoder encodeObject:_users forKey:@"users"];
+    [aCoder encodeObject:_friends forKey:@"friends"];
 }
 
 - (NSString *)displayName {
@@ -49,22 +49,22 @@
     [_listeners addListener:favourite];
 }
 
-- (NSArray *)users {
-    return _users;
+- (NSArray *)friends {
+    return _friends;
 }
 
-- (void)addUser:(id)user {
-    [_users addObject:user];
+- (void)addFriend:(Friend *)friend {
+    [_friends addObject:friend];
     [self notifyListeners];
 }
 
-- (void)removeUser:(id)user {
-    [_users removeObject:user];
+- (void)removeFriend:(id)friend {
+    [_friends removeObject:friend];
     [self notifyListeners];
 }
 
-- (void)removeUserAtIndex:(NSUInteger)index {
-    [_users removeObjectAtIndex:index];
+- (void)removeFriendAtIndex:(NSUInteger)index {
+    [_friends removeObjectAtIndex:index];
     [self notifyListeners];
 }
 

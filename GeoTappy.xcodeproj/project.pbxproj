@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		9A0A4FE319FFDCCD002F62FE /* Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A4FE219FFDCCD002F62FE /* Authentication.m */; };
 		9A0A4FE419FFDD96002F62FE /* Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A4FE219FFDCCD002F62FE /* Authentication.m */; };
-		9A29819C1A0A891500151F0B /* UserSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A29819B1A0A891500151F0B /* UserSelectionViewController.m */; };
+		9A29819C1A0A891500151F0B /* FriendSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A29819B1A0A891500151F0B /* FriendSelectionViewController.m */; };
 		9A2981A21A0AD7D200151F0B /* UIBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2981A11A0AD7D200151F0B /* UIBAlertView.m */; };
 		9A2D9AA819E9A3EB00397285 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D9AA719E9A3EB00397285 /* Group.m */; };
 		9A2EF6271A086E5E00BC17F2 /* PushTokenJob.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2EF6261A086E5E00BC17F2 /* PushTokenJob.m */; };
+		9A49A9FE1A157D6900EF32FB /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB1F3FE1A15744D00F280C1 /* Friend.m */; };
 		9A5781DB1A0BFA7E001A1997 /* PreferencesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5781DA1A0BFA7E001A1997 /* PreferencesView.m */; };
 		9A5781DE1A0C3A3E001A1997 /* ErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5781DD1A0C3A3E001A1997 /* ErrorView.m */; };
 		9A5D882B19E94C7B00E4EC3D /* SuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5D882A19E94C7B00E4EC3D /* SuccessView.m */; };
@@ -48,6 +49,9 @@
 		9AAD958119E9E5C8002450D1 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2D9AA719E9A3EB00397285 /* Group.m */; };
 		9AAD958419EA034C002450D1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD958319EA034C002450D1 /* MapViewController.m */; };
 		9AAD958719EA035A002450D1 /* MapNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAD958619EA035A002450D1 /* MapNavigationController.m */; };
+		9AB1F3FC1A1573D100F280C1 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB1F3FB1A1573D100F280C1 /* Person.m */; };
+		9AB1F3FF1A15744D00F280C1 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB1F3FE1A15744D00F280C1 /* Friend.m */; };
+		9AB1F4001A1575F500F280C1 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB1F3FB1A1573D100F280C1 /* Person.m */; };
 		9AD1837D1A14EAEF00EC35A2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD1837C1A14EAEF00EC35A2 /* MapKit.framework */; };
 		9AD183801A14EB6900EC35A2 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AD1837F1A14EB6900EC35A2 /* MapAnnotation.m */; };
 		B7882ED03E7382A5108B9197 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22201F5EB057418A8E6A8508 /* libPods.a */; };
@@ -91,8 +95,8 @@
 		8E09EF52CE76DC7BA1996295 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9A0A4FE119FFDCCD002F62FE /* Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Authentication.h; sourceTree = "<group>"; };
 		9A0A4FE219FFDCCD002F62FE /* Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Authentication.m; sourceTree = "<group>"; };
-		9A29819A1A0A891500151F0B /* UserSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSelectionViewController.h; sourceTree = "<group>"; };
-		9A29819B1A0A891500151F0B /* UserSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSelectionViewController.m; sourceTree = "<group>"; };
+		9A29819A1A0A891500151F0B /* FriendSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendSelectionViewController.h; sourceTree = "<group>"; };
+		9A29819B1A0A891500151F0B /* FriendSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendSelectionViewController.m; sourceTree = "<group>"; };
 		9A29819D1A0AC99100151F0B /* FavouriteListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavouriteListener.h; sourceTree = "<group>"; };
 		9A2981A01A0AD7D200151F0B /* UIBAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBAlertView.h; sourceTree = "<group>"; };
 		9A2981A11A0AD7D200151F0B /* UIBAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBAlertView.m; sourceTree = "<group>"; };
@@ -155,6 +159,10 @@
 		9AAD958319EA034C002450D1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		9AAD958519EA035A002450D1 /* MapNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapNavigationController.h; sourceTree = "<group>"; };
 		9AAD958619EA035A002450D1 /* MapNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapNavigationController.m; sourceTree = "<group>"; };
+		9AB1F3FA1A1573D100F280C1 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		9AB1F3FB1A1573D100F280C1 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		9AB1F3FD1A15744D00F280C1 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		9AB1F3FE1A15744D00F280C1 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		9AD1837C1A14EAEF00EC35A2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		9AD1837E1A14EB6900EC35A2 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapAnnotation.h; sourceTree = "<group>"; };
 		9AD1837F1A14EB6900EC35A2 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapAnnotation.m; sourceTree = "<group>"; };
@@ -328,8 +336,8 @@
 				9AAD958319EA034C002450D1 /* MapViewController.m */,
 				9AA4BB6219E8A14700CC45C8 /* SplashViewController.h */,
 				9AA4BB6319E8A14700CC45C8 /* SplashViewController.m */,
-				9A29819A1A0A891500151F0B /* UserSelectionViewController.h */,
-				9A29819B1A0A891500151F0B /* UserSelectionViewController.m */,
+				9A29819A1A0A891500151F0B /* FriendSelectionViewController.h */,
+				9A29819B1A0A891500151F0B /* FriendSelectionViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -350,8 +358,12 @@
 				9A0A4FE219FFDCCD002F62FE /* Authentication.m */,
 				9AA4BB8119E9317800CC45C8 /* Favourite.h */,
 				9A29819D1A0AC99100151F0B /* FavouriteListener.h */,
+				9AB1F3FD1A15744D00F280C1 /* Friend.h */,
+				9AB1F3FE1A15744D00F280C1 /* Friend.m */,
 				9A2D9AA619E9A3EB00397285 /* Group.h */,
 				9A2D9AA719E9A3EB00397285 /* Group.m */,
+				9AB1F3FA1A1573D100F280C1 /* Person.h */,
+				9AB1F3FB1A1573D100F280C1 /* Person.m */,
 				9A2EF6251A086E5E00BC17F2 /* PushTokenJob.h */,
 				9A2EF6261A086E5E00BC17F2 /* PushTokenJob.m */,
 				9A917D2719E98C630008448A /* User.h */,
@@ -557,8 +569,9 @@
 				9AAD957A19E9D874002450D1 /* GroupEditViewController.m in Sources */,
 				9A917D2919E98C630008448A /* User.m in Sources */,
 				9A62D7F719EA649000B0D1D1 /* CustomCell.m in Sources */,
+				9AB1F3FF1A15744D00F280C1 /* Friend.m in Sources */,
 				9AAD957D19E9D89F002450D1 /* MainNavigationController.m in Sources */,
-				9A29819C1A0A891500151F0B /* UserSelectionViewController.m in Sources */,
+				9A29819C1A0A891500151F0B /* FriendSelectionViewController.m in Sources */,
 				9A2EF6271A086E5E00BC17F2 /* PushTokenJob.m in Sources */,
 				9AA4BB7519E8B4D100CC45C8 /* MainViewController.m in Sources */,
 				9AD183801A14EB6900EC35A2 /* MapAnnotation.m in Sources */,
@@ -575,6 +588,7 @@
 				9A2981A21A0AD7D200151F0B /* UIBAlertView.m in Sources */,
 				9AAD958719EA035A002450D1 /* MapNavigationController.m in Sources */,
 				9A6FD1D519F85DED00BE90D2 /* ProfileImageView.m in Sources */,
+				9AB1F3FC1A1573D100F280C1 /* Person.m in Sources */,
 				9AAD958419EA034C002450D1 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,9 +599,11 @@
 			files = (
 				9AAD958119E9E5C8002450D1 /* Group.m in Sources */,
 				9AA4BB8519E938AA00CC45C8 /* API.m in Sources */,
+				9AB1F4001A1575F500F280C1 /* Person.m in Sources */,
 				9A6FD1D619F85DF000BE90D2 /* ProfileImageView.m in Sources */,
 				9AA4BB7A19E915BA00CC45C8 /* UserDefaults.m in Sources */,
 				9A0A4FE419FFDD96002F62FE /* Authentication.m in Sources */,
+				9A49A9FE1A157D6900EF32FB /* Friend.m in Sources */,
 				9A917D2A19E98C630008448A /* User.m in Sources */,
 				9AAA33D11A003443003C5131 /* NullHelper.m in Sources */,
 				9AA4BB6B19E8A3BB00CC45C8 /* ProfileView.m in Sources */,

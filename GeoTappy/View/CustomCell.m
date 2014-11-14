@@ -10,7 +10,7 @@
 #import "Favourite.h"
 #import "ProfileImageView.h"
 #import "Group.h"
-#import "User.h"
+#import "Friend.h"
 #import "FavouriteListener.h"
 
 @interface CustomCell () <FavouriteListener>
@@ -43,14 +43,14 @@
 - (void)favouriteChanged:(id<Favourite>)favourite {
     [_imageView removeFromSuperview]; // bit hacky, refactor this maybe one day :D
     NSMutableArray* images = [NSMutableArray array];
-    if ([favourite isKindOfClass:[User class]]) {
-        if (((User *)favourite).profileImage != nil) {
-            [images addObject:((User *)favourite).profileImage];
+    if ([favourite isKindOfClass:[Friend class]]) {
+        if (((Friend *)favourite).profileImage != nil) {
+            [images addObject:((Friend *)favourite).profileImage];
         }
     } else if ([favourite isKindOfClass:[Group class]]) {
-        for (User* u in ((Group *)favourite).users) {
-            if (u.profileImage != nil) {
-                [images addObject:u.profileImage];
+        for (Friend* f in ((Group *)favourite).friends) {
+            if (f.profileImage != nil) {
+                [images addObject:f.profileImage];
             }
         }
     }

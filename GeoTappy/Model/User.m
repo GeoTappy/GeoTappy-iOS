@@ -12,14 +12,14 @@
 #import "FavouriteListener.h"
 #import "Authentication.h"
 #import "RequestHelper.h"
+#import "Group.h"
+#import "Friend.h"
 
-@implementation User {
-    DMListeners* _listeners;
-}
+@implementation User
 
 - (instancetype)init {
     if (self = [super init]) {
-        _listeners = [[DMListeners alloc] init];
+        self.friends = [NSArray array];
         self.selectedFavourites = [NSMutableArray array];
         self.unselectedFavourites = [NSMutableArray array];
     }
@@ -27,11 +27,7 @@
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [self init]) {
-        self.identifier = [aDecoder decodeObjectForKey:@"identifier"];
-        self.name = [aDecoder decodeObjectForKey:@"name"];
-        self.profileImage = [aDecoder decodeObjectForKey:@"profileImage"];
-        self.coverImage = [aDecoder decodeObjectForKey:@"coverImage"];
+    if (self = [super initWithCoder:aDecoder]) {
         self.friends = [aDecoder decodeObjectForKey:@"friends"];
         self.selectedFavourites = [aDecoder decodeObjectForKey:@"selectedFavourites"];
         self.unselectedFavourites = [aDecoder decodeObjectForKey:@"unselectedFavourites"];
@@ -40,25 +36,10 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.identifier forKey:@"identifier"];
-    [aCoder encodeObject:self.name forKey:@"name"];
-    [aCoder encodeObject:self.profileImage forKey:@"profileImage"];
-    [aCoder encodeObject:self.coverImage forKey:@"coverImage"];
+    [super encodeWithCoder:aCoder];
     [aCoder encodeObject:self.friends forKey:@"friends"];
     [aCoder encodeObject:self.selectedFavourites forKey:@"selectedFavourites"];
     [aCoder encodeObject:self.unselectedFavourites forKey:@"unselectedFavourites"];
-}
-
-- (NSString *)displayName {
-    return self.name;
-}
-
-- (NSString *)shortDisplayName {
-    return [[self.name componentsSeparatedByString:@" "] objectAtIndex:0];
-}
-
-- (void)addFavouriteListener:(id<Favourite>)favourite {
-    [_listeners addListener:favourite];
 }
 
 - (BOOL)isComplete {
@@ -67,70 +48,103 @@
 
 - (void)save {
     [UserDefaults instance].currentUser = self;
-    [_listeners notifyListeners:^(id<FavouriteListener> listener) {
-        [listener favouriteChanged:self];
-    }];
+    [super notifyListeners];
 }
 
 - (void)refreshWithCompletion:(UserCompletionBlock)completion {
     NSString* url = [NSString stringWithFormat:@"%@?access_token=%@", [API profileUrl], [UserDefaults instance].authentication.accessToken];
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     [RequestHelper startRequest:request completion:^(BOOL success, NSData* data) {
-        NSError* jsonError;
-        NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-        NSDictionary* profile = [json objectForKey:@"profile"];
-        
-        [self completeUser:self withJson:profile];
-        
-        NSMutableDictionary* oldFriends = [NSMutableDictionary dictionary];
-        for (User* u in self.friends) {
-            [oldFriends setObject:u forKey:u.identifier];
-        }
-        
-        NSMutableArray* friends = [NSMutableArray array];
-        for (NSDictionary* jsonFriend in [profile objectForKey:@"friends"]) {
-            User* friend = [oldFriends objectForKey:[jsonFriend objectForKey:@"id"]];
-            if (friend == nil) {
-                friend = [[User alloc] init];
+        if (success) {
+            NSError* jsonError;
+            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+            NSDictionary* profile = [json objectForKey:@"profile"];
+            
+            [self completePerson:self withJson:profile];
+            
+            NSMutableSet* oldFriends = [NSMutableSet set];
+            for (Friend* u in self.friends) {
+                [oldFriends addObject:u];
             }
-            [self completeUser:friend withJson:jsonFriend];
-            [friends addObject:friend];
-        }
-        self.friends = [NSArray arrayWithArray:friends];
-        
-        int i = 0;
-        for (User* u in friends) {
-            if (i < 3) {
-                [self.selectedFavourites addObject:u];
-            } else {
-                [self.unselectedFavourites addObject:u];
+            NSSet* oldFriendsCopy = [NSSet setWithSet:oldFriends];
+            NSMutableSet* newFriends = [NSMutableSet set];
+            for (NSDictionary* jsonFriend in [profile objectForKey:@"friends"]) {
+                Friend* friend = [[Friend alloc] init];
+                [self completePerson:friend withJson:jsonFriend];
+                [newFriends addObject:friend];
             }
-            i++;
+            
+            NSMutableSet* sameFriendsOld = [NSMutableSet setWithSet:oldFriends];
+            NSMutableSet* sameFriendsNew = [NSMutableSet setWithSet:newFriends];
+
+            [oldFriends minusSet:newFriends];
+            [newFriends minusSet:oldFriendsCopy];
+            
+            [self.selectedFavourites removeObjectsInArray:[oldFriends allObjects]];
+            [self.unselectedFavourites removeObjectsInArray:[oldFriends allObjects]];
+            
+            NSMutableArray* allFavs = [NSMutableArray array];
+            [allFavs addObjectsFromArray:self.selectedFavourites];
+            [allFavs addObjectsFromArray:self.unselectedFavourites];
+            for (id<Favourite> f in allFavs) {
+                if ([f isKindOfClass:[Group class]]) {
+                    Group* g = (Group *)f;
+                    for (int i = 0; i < g.friends.count; i++) {
+                        Friend* u = [g.friends objectAtIndex:i];
+                        if ([oldFriends containsObject:u]) {
+                            [g removeFriendAtIndex:i];
+                        }
+                    }
+                }
+            }
+    
+
+            [sameFriendsOld minusSet:oldFriends];
+            [sameFriendsNew minusSet:newFriends];
+            NSAssert(sameFriendsNew.count == sameFriendsOld.count, @"Set count not the same!");
+            for (int i = 0; i < sameFriendsNew.count; i++) {
+                Friend* old = [[sameFriendsOld allObjects] objectAtIndex:i];
+                Friend* new = [[sameFriendsNew allObjects] objectAtIndex:i];
+                old.name = new.name;
+                if (![old.coverImageUrl isEqualToString:new.coverImageUrl]) {
+                    old.coverImageUrl = new.coverImageUrl;
+                    old.profileImage = nil;
+                }
+                if (![old.profileImageUrl isEqualToString:new.profileImageUrl]) {
+                    old.profileImageUrl = new.profileImageUrl;
+                    old.profileImage = nil;
+                }
+            }
+            
+            
+            self.friends = [self.friends arrayByAddingObjectsFromArray:[newFriends allObjects]];
+            for (Friend* f in newFriends) {
+                if (self.selectedFavourites.count < 3) {
+                    [self.selectedFavourites addObject:f];
+                } else {
+                    [self.unselectedFavourites addObject:f];
+                }
+            }
+            
+            for (Friend* f in self.friends) {
+                [f downloadImages];
+            }
+            [self downloadImages];
+            
+            
+            [self save];
         }
-        [self save];
-        
-        completion();
+        if (completion) {
+            completion();
+        }
     }];
 }
 
-- (void)completeUser:(User *)user withJson:(NSDictionary *)json {
-    user.coverImage = [self downloadImage:[json objectForKey:@"cover_photo_url"]];
-    user.profileImage = [self downloadImage:[json objectForKey:@"profile_photo_url"]];
-    user.name = [json objectForKey:@"name"];
-    user.identifier = [json objectForKey:@"id"];
-}
-
-- (UIImage *)downloadImage:(NSString *)url {
-    if ([url isKindOfClass:[NSNull class]] || url == nil) {
-        return nil;
-    }
-    NSMutableURLRequest* request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-    NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    return [[UIImage alloc] initWithData:data];
-}
-
-- (BOOL)isEqual:(id)object {
-    return self.identifier == ((User *)object).identifier;
+- (void)completePerson:(Person *)person withJson:(NSDictionary *)json {
+    person.coverImageUrl = [json objectForKey:@"cover_photo_url"];
+    person.profileImageUrl = [json objectForKey:@"profile_photo_url"];
+    person.name = [json objectForKey:@"name"];
+    person.identifier = [json objectForKey:@"id"];
 }
 
 @end

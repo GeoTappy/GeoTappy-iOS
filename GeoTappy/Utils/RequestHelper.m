@@ -21,8 +21,10 @@
 }
 
 + (void)startRequest:(NSMutableURLRequest *)request completion:(RequestHelperCompletionBlockWithData)completion {
-    __block int count = 0;
-    
+    [RequestHelper startRequest:request completion:completion retry:YES];
+}
+
++ (void)startRequest:(NSMutableURLRequest *)request completion:(RequestHelperCompletionBlockWithData)completion retry:(BOOL)retry {
     // check if access token is still valid
     if ([[UserDefaults instance].authentication.expiration timeIntervalSinceReferenceDate] >= [[NSDate date] timeIntervalSinceReferenceDate]) {
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -37,14 +39,9 @@
                                    } else {
                                        // check if token expired etc
                                        [RequestHelper refreshAccessTokenWithCompletion:^(BOOL success) {
-                                           if (success) {
+                                           if (!success && retry) {
                                                // do the request again
-                                               count++;
-                                               if (count > 1) {
-                                                   completion(NO, nil);
-                                               } else {
-                                                   [RequestHelper startRequest:request completion:completion];
-                                               }
+                                               [RequestHelper startRequest:request completion:completion retry:NO];
                                            } else {
                                                completion(NO, nil);
                                            }

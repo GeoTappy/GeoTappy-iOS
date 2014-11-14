@@ -10,6 +10,10 @@
 #import "User.h"
 #import "Authentication.h"
 
+static User* _currentUser;
+static Authentication* _authentication;
+
+
 @implementation UserDefaults {
     NSUserDefaults* _defaults;
 }
@@ -34,18 +38,26 @@ static UserDefaults* sharedInstance;
 
 #pragma mark - Public
 - (User *)currentUser {
-    return (User *)[self codableObjectForKey:@"currentUser"];
+    if (_currentUser == nil) {
+        _currentUser = (User *)[self codableObjectForKey:@"currentUser"];
+    }
+    return _currentUser;
 }
 
 - (void)setCurrentUser:(User *)currentUser {
+    _currentUser = currentUser;
     [self setCodableObject:currentUser forKey:@"currentUser"];
 }
 
 - (Authentication *)authentication {
-    return (Authentication *)[self codableObjectForKey:@"authentication"];
+    if (_authentication == nil) {
+        _authentication = (Authentication *)[self codableObjectForKey:@"authentication"];
+    }
+    return _authentication;
 }
 
 - (void)setAuthentication:(Authentication *)authentication {
+    _authentication = authentication;
     [self setCodableObject:authentication forKey:@"authentication"];
 }
 

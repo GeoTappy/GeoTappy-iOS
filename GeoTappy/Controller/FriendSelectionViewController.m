@@ -1,12 +1,13 @@
 //
-//  UserSelectionViewController.m
+//  FriendSelectionViewController.m
 //  GeoTappy
 //
 //  Created by Dylan Marriott on 12/10/14.
 //  Copyright (c) 2014 Dylan Marriott. All rights reserved.
 //
 
-#import "UserSelectionViewController.h"
+#import "FriendSelectionViewController.h"
+#import "Friend.h"
 #import "User.h"
 #import "UserDefaults.h"
 #import "Group.h"
@@ -14,17 +15,17 @@
 
 @implementation UserSelectionViewController {
     User* _user;
-    __weak id<UserSelectionDelegate> _delegate;
+    __weak id<FriendSelectionDelegate> _delegate;
     NSMutableArray* _friends;
 }
 
-- (instancetype)initWithDelegate:(id<UserSelectionDelegate>)delegate group:(Group *)group {
+- (instancetype)initWithDelegate:(id<FriendSelectionDelegate>)delegate group:(Group *)group {
     if (self = [super initWithStyle:UITableViewStyleGrouped]) {
         _delegate = delegate;
         _user = [UserDefaults instance].currentUser;
         _friends = [NSMutableArray array];
-        for (User* f in _user.friends) {
-            if (![group.users containsObject:f]) {
+        for (Friend* f in _user.friends) {
+            if (![group.friends containsObject:f]) {
                 [_friends addObject:f];
             }
         }
@@ -49,8 +50,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    User* u = [_friends objectAtIndex:indexPath.row];
-    [_delegate selectedUser:u];
+    Friend* f = [_friends objectAtIndex:indexPath.row];
+    [_delegate selectedFriend:f];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -1,8 +1,8 @@
 PODS:
   - Bolts (1.1.3)
-  - DMJobManager (1.0.0)
+  - DMJobManager (1.0.1)
   - DMListener (1.0.0)
-  - Facebook-iOS-SDK (3.19.0):
+  - Facebook-iOS-SDK (3.20.0):
     - Bolts (~> 1.0)
   - HockeySDK (3.6.1)
   - KLCPopup (1.0)
@@ -18,9 +18,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
-  DMJobManager: ea312f6809a181f4e78dccd4b268ad89634e174d
+  DMJobManager: f0ea8d28dfd6ad2d605e005082d00e14174431b3
   DMListener: 305bf297d907eb6f3ef305a698f04aa22d7650dc
-  Facebook-iOS-SDK: cb7d74759d0b1ba546e6e6f1dde407b0d4e448d6
+  Facebook-iOS-SDK: 5854404b4b651f612a8ef79ca06d766858f4cb8e
   HockeySDK: 15b24068466aa5ee421eed0cc1d58428d698edf6
   KLCPopup: 23548d0454ca156b0eb684f791f234b9c2134369
   SimulatorStatusMagic: ea1871b0e7119bc189ec3fb127bd56c54b937eed

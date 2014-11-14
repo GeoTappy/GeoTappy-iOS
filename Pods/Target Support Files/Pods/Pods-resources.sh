@@ -43,8 +43,7 @@ install_resource()
       ;;
   esac
 }
-          install_resource "Facebook-iOS-SDK/src/FBUserSettingsViewResources.bundle"
-                    install_resource "${BUILT_PRODUCTS_DIR}/DMJobManager.bundle"
+          install_resource "${BUILT_PRODUCTS_DIR}/DMJobManager.bundle"
                     install_resource "${BUILT_PRODUCTS_DIR}/DMJobManager.bundle"
                     install_resource "${BUILT_PRODUCTS_DIR}/HockeySDKResources.bundle"
           

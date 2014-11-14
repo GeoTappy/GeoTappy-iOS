@@ -70,11 +70,15 @@
         [DMJobManager postJob:job];
     }
     
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    [[UserDefaults instance].currentUser refreshWithCompletion:nil];
+    
     return YES;
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    [[UserDefaults instance].currentUser refreshWithCompletion:nil];
 }
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings NS_AVAILABLE_IOS(8_0) {

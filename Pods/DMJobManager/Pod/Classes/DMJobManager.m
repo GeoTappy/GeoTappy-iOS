@@ -48,10 +48,12 @@ static DMJobManager* instance;
 }
 
 - (void)postJob:(id<DMJob>)job {
-    [_queue addObject:job];
-    [self storeState];
-    if (!_running) {
-        [self processQueue];
+    if (![_queue containsObject:job]) {
+        [_queue addObject:job];
+        [self storeState];
+        if (!_running) {
+            [self processQueue];
+        }
     }
 }
 

@@ -36,4 +36,13 @@ typedef void (^CompletionBlock)(BOOL);
  */
 - (void)willRetry;
 
+/**
+ *  Only jobs that don't exist yet will be added to the queue. Implement this method if you want to control this behaviour. For instance you could compare the class description to only allow one instance of this job type.
+ *
+ *  @param object object to compare
+ *
+ *  @return equal or not
+ */
+- (BOOL)isEqual:(id)object;
+
 @end

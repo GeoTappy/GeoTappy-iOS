@@ -1,5 +1,5 @@
 //
-//  UserSelectionViewController.h
+//  FriendSelectionViewController.h
 //  GeoTappy
 //
 //  Created by Dylan Marriott on 12/10/14.
@@ -8,17 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-@class User;
+@class Friend;
 @class Group;
 
-@protocol UserSelectionDelegate <NSObject>
+@protocol FriendSelectionDelegate <NSObject>
 
-- (void)selectedUser:(User *)user;
+- (void)selectedFriend:(Friend *)friend;
 
 @end
 
 @interface UserSelectionViewController : UITableViewController
 
-- (instancetype)initWithDelegate:(id<UserSelectionDelegate>)delegate group:(Group *)group;
+- (instancetype)initWithDelegate:(id<FriendSelectionDelegate>)delegate group:(Group *)group;
 
 @end

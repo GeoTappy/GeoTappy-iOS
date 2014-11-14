@@ -16,6 +16,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Group.h"
 #import <HockeySDK/HockeySDK.h>
+#import "Friend.h"
 
 @interface TodayViewController () <NCWidgetProviding, CLLocationManagerDelegate>
 
@@ -61,13 +62,13 @@
     for (id<Favourite> favourite in user.selectedFavourites) {
         NSMutableArray* images = [NSMutableArray array];
         if ([favourite isKindOfClass:[User class]]) {
-            if (((User *)favourite).profileImage != nil) {
+            if (((Friend *)favourite).profileImage != nil) {
                 [images addObject:((User *)favourite).profileImage];
             }
         } else if ([favourite isKindOfClass:[Group class]]) {
-            for (User* u in ((Group *)favourite).users) {
-                if (u.profileImage != nil) {
-                    [images addObject:u.profileImage];
+            for (Friend* f in ((Group *)favourite).friends) {
+                if (f.profileImage != nil) {
+                    [images addObject:f.profileImage];
                 }
             }
         }
@@ -108,12 +109,12 @@
     User* user = [UserDefaults instance].currentUser;
     id<Favourite> favourite = [user.selectedFavourites objectAtIndex:index];
     if ([favourite isKindOfClass:[User class]]) {
-        User* friend = (User *)favourite;
-        [self sendLocationToUsers:@[friend] completion:^(BOOL success) {
+        Friend* friend = (Friend *)favourite;
+        [self sendLocationToFriends:@[friend] completion:^(BOOL success) {
             [self handleResponse:success view:view];
         }];
     } else if ([favourite isKindOfClass:[Group class]]) {
-        [self sendLocationToUsers:((Group *)favourite).users completion:^(BOOL success) {
+        [self sendLocationToFriends:((Group *)favourite).friends completion:^(BOOL success) {
             [self handleResponse:success view:view];
         }];
     }
@@ -137,13 +138,13 @@
     [view showError];
 }
 
-- (void)sendLocationToUsers:(NSArray *)users completion:(void (^)(BOOL))completion {
+- (void)sendLocationToFriends:(NSArray *)friends completion:(void (^)(BOOL))completion {
     NSMutableDictionary* jsonDict = [RequestHelper emptyJsonRequest];
     NSMutableDictionary* locationShare = [NSMutableDictionary dictionary];
     [locationShare setObject:@"" forKey:@"title"];
     NSMutableArray* userIds = [NSMutableArray array];
-    for (User* user in users) {
-        [userIds addObject:user.identifier];
+    for (Friend* friend in friends) {
+        [userIds addObject:friend.identifier];
     }
     [locationShare setObject:userIds forKey:@"user_ids"];
     NSMutableDictionary* location = [NSMutableDictionary dictionary];
