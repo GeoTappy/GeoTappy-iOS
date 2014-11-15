@@ -2,7 +2,7 @@ PODS:
   - Bolts (1.1.3)
   - DMJobManager (1.0.1)
   - DMListener (1.0.1)
-  - DragAndDropTableView (0.1.8)
+  - DragAndDropTableView (0.1.9)
   - Facebook-iOS-SDK (3.20.0):
     - Bolts (~> 1.0)
   - HockeySDK (3.6.1)
@@ -24,7 +24,7 @@ SPEC CHECKSUMS:
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   DMJobManager: f0ea8d28dfd6ad2d605e005082d00e14174431b3
   DMListener: 2f259034ec9451a846136b73196ed640c6f2d39b
-  DragAndDropTableView: 6c71137f85725a347a977570404c496ef7edb26a
+  DragAndDropTableView: d1e3f6c67050c6edfe524c74e353fa26cc86ae0f
   Facebook-iOS-SDK: 5854404b4b651f612a8ef79ca06d766858f4cb8e
   HockeySDK: 15b24068466aa5ee421eed0cc1d58428d698edf6
   KLCPopup: 23548d0454ca156b0eb684f791f234b9c2134369

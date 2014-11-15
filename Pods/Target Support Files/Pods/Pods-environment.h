@@ -28,7 +28,7 @@
 #define COCOAPODS_POD_AVAILABLE_DragAndDropTableView
 #define COCOAPODS_VERSION_MAJOR_DragAndDropTableView 0
 #define COCOAPODS_VERSION_MINOR_DragAndDropTableView 1
-#define COCOAPODS_VERSION_PATCH_DragAndDropTableView 8
+#define COCOAPODS_VERSION_PATCH_DragAndDropTableView 9
 
 // Facebook-iOS-SDK
 #define COCOAPODS_POD_AVAILABLE_Facebook_iOS_SDK

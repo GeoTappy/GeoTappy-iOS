@@ -104,7 +104,7 @@ static const NSUInteger MAX_FAVS = 5;
     [self.view addSubview:addButton];
     
     
-    _tableView = [[DragAndDropTableView alloc] initWithFrame:CGRectMake(0, 150, self.view.frame.size.width, self.view.frame.size.height - 150)];
+    _tableView = [[DragAndDropTableView alloc] initWithFrame:CGRectMake(0, 150, self.view.frame.size.width, self.view.frame.size.height - 150) style:UITableViewStyleGrouped];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [self.view addSubview:_tableView];

@@ -45,7 +45,17 @@ const static CGFloat kAutoScrollingThreshold = 60;
 
 - (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithFrame:frame style:UITableViewStyleGrouped];
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        [self setup];
+    }
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
+{
+    self = [super initWithFrame:frame style:style];
     if (self) {
         // Initialization code
         [self setup];
