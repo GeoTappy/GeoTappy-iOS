@@ -7,13 +7,7 @@
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "background_4@2x.png"
-    },
-    {
-      "idiom" : "iphone",
-      "filename" : "background@2x.png",
-      "subtype" : "retina4",
-      "scale" : "2x"
+      "filename" : "background@2x.png"
     },
     {
       "idiom" : "iphone",

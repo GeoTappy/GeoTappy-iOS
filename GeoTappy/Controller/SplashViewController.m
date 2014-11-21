@@ -26,18 +26,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    UIImageView* backgroundImage = [[UIImageView alloc] init];
-    backgroundImage.frame = self.view.bounds;
-    [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
-    backgroundImage.image = [UIImage imageNamed:@"background"];
-    
-    [self.view addSubview:backgroundImage];
+    UIImage* backgroundImage = [UIImage imageNamed:@"background"];
+    UIImageView* backgroundImageView = [[UIImageView alloc] init];
+    backgroundImageView.image = backgroundImage;
+    float imgFactor = backgroundImage.size.height / backgroundImage.size.width;
+    backgroundImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width * imgFactor);
+    [self.view addSubview:backgroundImageView];
 
     FBLoginView* fbLogin = [[FBLoginView alloc] initWithReadPermissions:@[@"public_profile", @"user_friends", @"email", @"publish_stream"]];
     fbLogin.frame = CGRectMake((self.view.frame.size.width / 2) - (fbLogin.frame.size.width / 2), self.view.frame.size.height - 80, fbLogin.frame.size.width, fbLogin.frame.size.height);
     fbLogin.delegate = self;
     [self.view addSubview:fbLogin];
+
+    self.view.backgroundColor = [UIColor colorWithRed:8.0f / 255 green:112.0f / 255 blue:209.0f / 255 alpha:1.0f];
 }
 
 - (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
@@ -51,7 +52,7 @@
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
 
-    spinner.center = CGPointMake(self.view.frame.size.width / 2.0, 370);
+    spinner.center = CGPointMake(self.view.frame.size.width / 2.0, self.view.frame.size.height - 100);
     spinner.hidesWhenStopped = YES;
     spinner.alpha = 0.0;
     [self.view addSubview:spinner];
