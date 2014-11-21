@@ -251,29 +251,36 @@ static const NSUInteger MAX_FAVS = 5;
         fav = [_user.unselectedFavourites objectAtIndex:indexPath.row];
     }
     CustomCell* cell = [[CustomCell alloc] initWithName:[fav displayName] favourite:fav];
+    BOOL swipeEnabled = NO;
     if ([fav isKindOfClass:[Group class]]) {
         cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if (((Group *)fav).friends.count > 0) {
+            swipeEnabled = YES;
+        }
     } else {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
+        swipeEnabled = YES;
     }
-    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Share" icon:[UIImage imageNamed:@"share"] backgroundColor:[UIColor colorWithRed:0.07 green:0.49 blue:0.97 alpha:1.00] callback:^BOOL(MGSwipeTableCell* cell) {
-        
-        if ([fav isKindOfClass:[Friend class]]) {
-            Friend* friend = (Friend *)fav;
-            [LocationPostmaster shareLocation:_locationManager.location toFriends:@[friend] completion:^(BOOL success) {
-                [self showStatus:success cell:cell];
-            }];
-        } else if ([fav isKindOfClass:[Group class]]) {
-            [LocationPostmaster shareLocation:_locationManager.location toFriends:((Group *)fav).friends completion:^(BOOL success) {
-                [self showStatus:success cell:cell];
-            }];
-        }
-        
-        return NO;
-    }]];
-    cell.rightSwipeSettings.transition = MGSwipeTransitionStatic;
+    if (swipeEnabled) {
+        cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Share" icon:[UIImage imageNamed:@"share"] backgroundColor:[UIColor colorWithRed:0.07 green:0.49 blue:0.97 alpha:1.00] callback:^BOOL(MGSwipeTableCell* cell) {
+            
+            if ([fav isKindOfClass:[Friend class]]) {
+                Friend* friend = (Friend *)fav;
+                [LocationPostmaster shareLocation:_locationManager.location toFriends:@[friend] completion:^(BOOL success) {
+                    [self showStatus:success cell:cell];
+                }];
+            } else if ([fav isKindOfClass:[Group class]]) {
+                [LocationPostmaster shareLocation:_locationManager.location toFriends:((Group *)fav).friends completion:^(BOOL success) {
+                    [self showStatus:success cell:cell];
+                }];
+            }
+            
+            return NO;
+        }]];
+        cell.rightSwipeSettings.transition = MGSwipeTransitionStatic;
+    }
     return cell;
 }
 

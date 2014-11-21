@@ -69,6 +69,10 @@
                 [images addObject:((Friend *)favourite).profileImage];
             }
         } else if ([favourite isKindOfClass:[Group class]]) {
+            if (((Group *)favourite).friends.count == 0) {
+                // empty group, skip
+                continue;
+            }
             for (Friend* f in ((Group *)favourite).friends) {
                 if (f.profileImage != nil) {
                     [images addObject:f.profileImage];
