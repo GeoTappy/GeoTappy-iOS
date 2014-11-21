@@ -108,4 +108,14 @@
     [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
 }
 
+- (void)logoutUser {
+    [FBSession.activeSession closeAndClearTokenInformation];
+    [FBSession.activeSession close];
+    [FBSession setActiveSession:nil];
+    [UserDefaults instance].currentUser = nil;
+    [UserDefaults instance].authentication = nil;
+    SplashViewController* vc = [[SplashViewController alloc] init];
+    self.window.rootViewController = vc;
+}
+
 @end

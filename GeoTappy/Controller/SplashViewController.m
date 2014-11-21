@@ -14,6 +14,8 @@
 #import "MainNavigationController.h"
 #import "Authentication.h"
 #import "RequestHelper.h"
+#import "UIBAlertView.h"
+#import "AppDelegate.h"
 
 @interface SplashViewController () <FBLoginViewDelegate>
 
@@ -61,7 +63,6 @@
 
     [RequestHelper createAccessTokenWithCompletion:^(BOOL sucess) {
         if (sucess) {
-            
             User* user = [UserDefaults instance].currentUser;
             if (user == nil) {
                 user = [[User alloc] init];
@@ -69,15 +70,29 @@
             }
             
             [user refreshWithCompletion:^() {
-                [spinner stopAnimating];
-                MainNavigationController* vc = [[MainNavigationController alloc] init];
-                vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-                self.view.window.rootViewController = vc;
+                if ([user isComplete]) {
+                    [spinner stopAnimating];
+                    MainNavigationController* vc = [[MainNavigationController alloc] init];
+                    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+                    self.view.window.rootViewController = vc;
+                } else {
+                    [self handleError];
+                }
             }];
-            
         } else {
-            // handle error
+            [self handleError];
         }
+    }];
+}
+
+- (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
+    [self handleError];
+}
+
+- (void)handleError {
+    UIBAlertView* av = [[UIBAlertView alloc] initWithTitle:@"Error" message:@"Authentication failed, please try again." cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+    [av showWithDismissHandler:^(NSInteger selectedIndex, NSString* selectedTitle, BOOL didCancel) {
+        [((AppDelegate *)[UIApplication sharedApplication].delegate) logoutUser];
     }];
 }
 

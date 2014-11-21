@@ -101,13 +101,7 @@
     } else if (indexPath.row == 1) {
         [_delegate openMail];
     } else if (indexPath.row == 2) {
-        [FBSession.activeSession closeAndClearTokenInformation];
-        [FBSession.activeSession close];
-        [FBSession setActiveSession:nil];
-        [UserDefaults instance].currentUser = nil;
-        [UserDefaults instance].authentication = nil;
-        SplashViewController* vc = [[SplashViewController alloc] init];
-        ((AppDelegate *)[UIApplication sharedApplication].delegate).window.rootViewController = vc;
+        [((AppDelegate *)[UIApplication sharedApplication].delegate) logoutUser];
     }
 }
 
