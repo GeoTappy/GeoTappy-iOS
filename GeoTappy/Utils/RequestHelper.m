@@ -33,7 +33,8 @@
                                completionHandler:^(NSURLResponse* response,
                                                    NSData* data,
                                                    NSError* error) {
-                                   if (!error && data) {
+                                   NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+                                   if (!error && httpResponse.statusCode == 200 && data) {
                                        NSLog(@"Response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                        completion(YES, data);
                                    } else {
@@ -96,7 +97,8 @@
                            completionHandler:^(NSURLResponse* response,
                                                NSData* data,
                                                NSError* error) {
-                               if (!error && data) {
+                               NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+                               if (!error && httpResponse.statusCode == 200 && data) {
                                    NSLog(@"Auth response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                    NSError* jsonError;
                                    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
