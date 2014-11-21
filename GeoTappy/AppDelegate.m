@@ -44,11 +44,6 @@
     if (token) {
     } else {
     }
-    
-    UILocalNotification* notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    if (notification) {
-        [self application:application didReceiveRemoteNotification:(NSDictionary*)notification];
-    }
 
     [DMJobManager startManager];
     
@@ -69,6 +64,13 @@
         PushTokenJob* job = [[PushTokenJob alloc] initWithToken:pushToken];
         [DMJobManager postJob:job];
     }
+
+    
+    UILocalNotification* notification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    if (notification) {
+        [self application:application didReceiveRemoteNotification:(NSDictionary*)notification];
+    }
+    
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [[UserDefaults instance].currentUser refreshWithCompletion:nil];
