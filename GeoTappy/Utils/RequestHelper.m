@@ -73,6 +73,10 @@
 }
 
 + (void)doAuthRequestWithGrantType:(NSString *)grantType token:(NSString *)token completion:(RequestHelperCompletionBlock)completion {
+    if (!token) {
+        completion(NO);
+        return;
+    }
     NSMutableDictionary* jsonDict = [[NSMutableDictionary alloc] init];
     [jsonDict setObject:[API clientId] forKey:@"client_id"];
     [jsonDict setObject:[API clientSecret] forKey:@"client_secret"];
