@@ -40,7 +40,7 @@
                                    } else {
                                        // check if token expired etc
                                        [RequestHelper refreshAccessTokenWithCompletion:^(BOOL success) {
-                                           if (!success && retry) {
+                                           if (success && retry) {
                                                // do the request again
                                                [RequestHelper startRequest:request completion:completion retry:NO];
                                            } else {
