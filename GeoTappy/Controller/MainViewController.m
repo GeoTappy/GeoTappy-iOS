@@ -227,7 +227,11 @@ static const NSUInteger MAX_FAVS = 5;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"Favourites";
+        if (_user.selectedFavourites.count == MAX_FAVS) {
+            return @"Favourites (MAX 5)";
+        } else {
+            return @"Favourites";
+        }
     } else if (section == 1) {
         return @"Other";
     }
