@@ -756,12 +756,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = GeoTappy/GeoTappy.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dylan Marriott (W5F5B94GXS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dylan Marriott (5EFBK52YD3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dylan Marriott (5EFBK52YD3)";
 				INFOPLIST_FILE = GeoTappy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "344d70f6-c25d-4076-a634-fd29a88fda53";
+				PROVISIONING_PROFILE = "f9272886-f1e0-4217-b611-e38293204bb4";
 			};
 			name = Release;
 		};
@@ -778,7 +778,7 @@
 				INFOPLIST_FILE = GeoTappyToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f078575c-afbf-48b6-ba4b-0e5b48dfbf55";
+				PROVISIONING_PROFILE = "b49677a7-1819-46e9-bb58-b46978fa59a6";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -788,12 +788,12 @@
 			baseConfigurationReference = 50D110AEAE60F9F5C0609F45 /* Pods.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = GeoTappyToday/GeoTappyToday.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dylan Marriott (W5F5B94GXS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Dylan Marriott (5EFBK52YD3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Dylan Marriott (5EFBK52YD3)";
 				INFOPLIST_FILE = GeoTappyToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f078575c-afbf-48b6-ba4b-0e5b48dfbf55";
+				PROVISIONING_PROFILE = "1cb9dfb9-b168-4b03-b6ea-a6890a8991bb";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
