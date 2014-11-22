@@ -102,9 +102,13 @@
             [sameFriendsOld minusSet:oldFriends];
             [sameFriendsNew minusSet:newFriends];
             NSAssert(sameFriendsNew.count == sameFriendsOld.count, @"Set count not the same!");
-            for (int i = 0; i < sameFriendsNew.count; i++) {
-                Friend* old = [[sameFriendsOld allObjects] objectAtIndex:i];
-                Friend* new = [[sameFriendsNew allObjects] objectAtIndex:i];
+            NSSortDescriptor* sort = [NSSortDescriptor sortDescriptorWithKey:@"identifier" ascending:YES];
+            NSArray* oldSorted = [sameFriendsOld.allObjects sortedArrayUsingDescriptors:@[sort]];
+            NSArray* newSorted = [sameFriendsNew.allObjects sortedArrayUsingDescriptors:@[sort]];
+            for (int i = 0; i < oldSorted.count; i++) {
+                Friend* old = [oldSorted objectAtIndex:i];
+                Friend* new = [newSorted objectAtIndex:i];
+                NSAssert(old.identifier.intValue == new.identifier.intValue, @"Id not the same!");
                 old.name = new.name;
                 if (![old.coverImageUrl isEqualToString:new.coverImageUrl]) {
                     old.coverImageUrl = new.coverImageUrl;
