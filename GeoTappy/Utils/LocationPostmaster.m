@@ -13,13 +13,17 @@
 @implementation LocationPostmaster
 
 + (void)shareLocation:(CLLocation *)location toFriends:(NSArray *)friends completion:(void (^)(BOOL))completion {
-    NSMutableDictionary* jsonDict = [RequestHelper emptyJsonRequest];
-    NSMutableDictionary* locationShare = [NSMutableDictionary dictionary];
-    [locationShare setObject:@"" forKey:@"title"];
     NSMutableArray* userIds = [NSMutableArray array];
     for (Friend* friend in friends) {
         [userIds addObject:friend.identifier];
     }
+    [LocationPostmaster shareLocation:location toUserIds:userIds completion:completion];
+}
+
++ (void)shareLocation:(CLLocation *)location toUserIds:(NSArray *)userIds completion:(void (^)(BOOL))completion {
+    NSMutableDictionary* jsonDict = [RequestHelper emptyJsonRequest];
+    NSMutableDictionary* locationShare = [NSMutableDictionary dictionary];
+    [locationShare setObject:@"" forKey:@"title"];
     [locationShare setObject:userIds forKey:@"user_ids"];
     NSMutableDictionary* locationDict = [NSMutableDictionary dictionary];
     [locationDict setObject:@(location.coordinate.latitude) forKey:@"lat"];

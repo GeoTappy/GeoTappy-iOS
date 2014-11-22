@@ -11,6 +11,6 @@
 
 @interface MapNavigationController : UINavigationController
 
-- (instancetype)initWithLocation:(CLLocationCoordinate2D)location name:(NSString *)name;
+- (instancetype)initWithLocation:(CLLocationCoordinate2D)location name:(NSString *)name identifier:(NSNumber *)identifier;
 
 @end

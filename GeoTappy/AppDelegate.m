@@ -106,7 +106,8 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSDictionary* location = [[userInfo objectForKey:@"info"] objectForKey:@"location"];
-    MapNavigationController* vc = [[MapNavigationController alloc] initWithLocation:CLLocationCoordinate2DMake([[location objectForKey:@"lat"] doubleValue], [[location objectForKey:@"lng"] doubleValue]) name:[[[userInfo objectForKey:@"info"] objectForKey:@"sender"] objectForKey:@"name"]];
+    NSDictionary* sender = [[userInfo objectForKey:@"info"] objectForKey:@"sender"];
+    MapNavigationController* vc = [[MapNavigationController alloc] initWithLocation:CLLocationCoordinate2DMake([[location objectForKey:@"lat"] doubleValue], [[location objectForKey:@"lng"] doubleValue]) name:[sender objectForKey:@"name"] identifier:[sender objectForKey:@"id"]];
     [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
 }
 

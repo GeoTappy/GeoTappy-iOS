@@ -11,9 +11,9 @@
 
 @implementation MapNavigationController
 
-- (instancetype)initWithLocation:(CLLocationCoordinate2D)location name:(NSString *)name {
+- (instancetype)initWithLocation:(CLLocationCoordinate2D)location name:(NSString *)name identifier:(NSNumber *)identifier {
     if (self = [super init]) {
-        MapViewController* vc = [[MapViewController alloc] initWithLocation:location name:name];
+        MapViewController* vc = [[MapViewController alloc] initWithLocation:location name:name identifier:identifier];
         [self pushViewController:vc animated:NO];
     }
     return self;

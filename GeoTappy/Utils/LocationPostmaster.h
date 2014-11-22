@@ -13,5 +13,6 @@
 @interface LocationPostmaster : NSObject
 
 + (void)shareLocation:(CLLocation *)location toFriends:(NSArray *)friends completion:(void (^)(BOOL))completion;
++ (void)shareLocation:(CLLocation *)location toUserIds:(NSArray *)userIds completion:(void (^)(BOOL))completion;
 
 @end
