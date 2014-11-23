@@ -79,6 +79,9 @@
 }
 
 - (BOOL)isEqual:(id)object {
+    if (![object isKindOfClass:[Person class]]) {
+        return NO;
+    }
     return [self.identifier isEqualToNumber:((Person *)object).identifier];
 }
 
