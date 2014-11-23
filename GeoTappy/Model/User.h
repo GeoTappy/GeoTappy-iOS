@@ -21,5 +21,6 @@ typedef void (^UserCompletionBlock)();
 - (BOOL)isComplete;
 - (void)save;
 - (void)refreshWithCompletion:(UserCompletionBlock)completion;
+- (void)updateWithJson:(NSDictionary *)json; // used for testing
 
 @end
