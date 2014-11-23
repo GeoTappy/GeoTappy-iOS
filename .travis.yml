@@ -1,2 +1,4 @@
 language: objective-c
+xcode_project: GeoTappy.xcworkspace
+xcode_scheme: GeoTappyTests
 script: xcodebuild -workspace GeoTappy.xcworkspace -scheme GeoTappy -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
