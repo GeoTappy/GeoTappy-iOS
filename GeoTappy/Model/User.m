@@ -137,8 +137,10 @@
         }
     }
     
-    
-    self.friends = [self.friends arrayByAddingObjectsFromArray:[newFriends allObjects]];
+    NSMutableArray* friends = [NSMutableArray arrayWithArray:self.friends];
+    [friends removeObjectsInArray:oldFriends.allObjects];
+    [friends addObjectsFromArray:newFriends.allObjects];
+    self.friends = friends;
     for (Friend* f in newFriends) {
         if (self.selectedFavourites.count < 3) {
             [self.selectedFavourites addObject:f];
