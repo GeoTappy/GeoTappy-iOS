@@ -963,6 +963,7 @@
 				9AF55C691A21492D00AF68DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
