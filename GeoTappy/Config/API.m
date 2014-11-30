@@ -7,22 +7,22 @@
 //
 
 #import "API.h"
-
-static NSString* CLIENT_ID = @"";
-static NSString* CLIENT_SECRET = @"";
+#import <CocoaPods-Keys/GeoTappyKeys.h>
 
 @implementation API
 
 static NSString* BASE_URL = @"https://api.geotappy.com/";
 
 + (NSString *)clientId {
-    NSString* ret = CLIENT_ID;
+    GeoTappyKeys* keys = [[GeoTappyKeys alloc] init];
+    NSString* ret = keys.clientId;
     NSAssert(ret.length > 0, @"No client id set.");
     return ret;
 }
 
 + (NSString *) clientSecret {
-    NSString* ret = CLIENT_SECRET;
+    GeoTappyKeys* keys = [[GeoTappyKeys alloc] init];
+    NSString* ret = keys.clientSecret;
     NSAssert(ret.length > 0, @"No client secret set.");
     return ret;
 }

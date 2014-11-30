@@ -1,4 +1,10 @@
 language: objective-c
-xcode_project: GeoTappy.xcworkspace
-xcode_scheme: GeoTappyTests
-script: xcodebuild -workspace GeoTappy.xcworkspace -scheme GeoTappy -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+before_install:
+    - brew update
+    - brew install xctool
+    - gem install cocoapods-keys
+    - pod keys set "ClientId" "a" GeoTappy
+    - pod keys set "ClientSecret" "a" GeoTappy
+    - pod install
+script: xctool -workspace GeoTappy.xcworkspace -scheme GeoTappyTests -sdk iphonesimulator8.1
+script: xctool -workspace GeoTappy.xcworkspace -scheme GeoTappy -sdk iphonesimulator8.1
